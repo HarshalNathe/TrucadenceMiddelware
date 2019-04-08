@@ -1,0 +1,20 @@
+type: object
+properties:
+  id:
+    type: string
+  Employer_Profile_Id:
+    type: string
+  Shift:
+    type: string
+  Days:
+    type: string
+  Start_Time:
+    type: string
+  End_Time:
+    type: string
+  Break:
+    type: number
+  LastModified_At:
+    type: string
+  Created_At:
+    type: string

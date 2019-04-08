@@ -1,0 +1,258 @@
+<div class="portlet light portlet-fit application_print" cg-busy="vm.promise">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class=" icon-layers font-green"></i>
+      <span class="caption-subject font-green bold uppercase"> Add Employee Dailogue</span>
+    </div>
+  </div>
+  <div class="portlet-body application_print">
+    <form name="addEmployeeForm" novalidate>
+      <div class="row addEmployee-row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label col-sm-4">Client's Name :
+              <span class="required"> * </span>
+            </label>
+            <div class="col-sm-8" ng-class="{ 'has-error' : addEmployeeForm.employerName.$invalid && !addEmployeeForm.employerName.$pristine}">
+              <select ui-select2 placeholder="Select Client" id="employerName" name="employerName" ng-options="employer as employer.Employer_Name for employer in vm.employerList"
+                ng-model="vm.newEmpDetailObject.Employer_Id" ng-readonly="vm.employerReadonly" ng-change="vm.employerName(vm.newEmpDetailObject.Employer_Id)">
+                <option value=""></option>
+                <option value="" selected disabled hidden>Select</option>
+              </select>
+              <span class="help-block" ng-messages="addEmployeeForm.employerName.$error" ng-if="addEmployeeForm.employerName.$dirty && addEmployeeForm.employerName.$invalid">
+                <span ng-show="addEmployeeForm.employerName.$error.required">Field is required.</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row addEmployee-row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label col-sm-4">Employee :
+              <span class="required"> * </span>
+            </label>
+            <div class="col-sm-8" ng-class="{ 'has-error' : addEmployeeForm.employeeName.$invalid && !addEmployeeForm.employeeName.$pristine}">
+              <select ui-select2 placeholder="Select Employee" name="employeeName" id="employeeName" ng-options="employee as employee.First_Name+ ' ' + employee.Last_Name for employee in vm.employeesList track by employee.id"
+                ng-model="vm.employeeList" required>
+                <option value=""></option>
+                <option value="" selected disabled hidden>Select</option>
+                <!-- <option value="vm.employeeList.First_Name">{{vm.employeeList.First_Name}}</option> -->
+              </select>
+              <span class="help-block" ng-messages="addEmployeeForm.employeeName.$error" ng-if="addEmployeeForm.employeeName.$dirty && addEmployeeForm.employeeName.$invalid">
+                <span ng-show="addEmployeeForm.employeeName.$error.required">Field is required.</span>
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label col-sm-4">Profile :
+              <span class="required"> * </span>
+            </label>
+            <div class="col-sm-8" ng-class="{ 'has-error' : addEmployeeForm.empJobProfile.$invalid && !addEmployeeForm.empJobProfile.$pristine}">
+              <select ui-select2 placeholder="Select Profile" name="profileName" id="empJobProfile" ng-options="profile as profile.jobProfiles.Profile_Name for profile in vm.profileListData track by profile.jobProfiles.id"
+                ng-model="vm.profileList" required>
+                <option value=""></option>
+                <option value="" selected disabled hidden>Select</option>
+              </select>
+              <span class="help-block" ng-messages="addEmployeeForm.empJobProfile.$error" ng-if="addEmployeeForm.empJobProfile.$dirty && addEmployeeForm.empJobProfile.$invalid">
+                <span ng-show="addEmployeeForm.empJobProfile.$error.required">Field is required.</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row addEmployee-row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label col-md-4">Start Date
+              <span class="required"> * </span>
+            </label>
+            <div class="col-md-8" ng-class="{ 'has-error' : addEmployeeForm.startDate.$invalid && !addEmployeeForm.startDate.$pristine}">
+              <div class='input-group date' id='StartDateDatePicker'>
+                <input type='text' class="form-control" name="startDate" placeholder="Select Start Date" ng-model="vm.newEmpDetailObject.Start_Date" autocomplete="off"
+                  required />
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+              <span class="help-block" ng-messages="addEmployeeForm.startDate.$error" ng-if="addEmployeeForm.startDate.$dirty && addEmployeeForm.startDate.$invalid">
+                <span ng-show="addEmployeeForm.startDate.$error.required">Start date is required.</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <div class="form-group">
+            <label class="control-label col-md-4">End Date
+              <span class="required"> * </span>
+            </label>
+            <div class="col-md-8" ng-class="{ 'has-error' : addEmployeeForm.endDate.$invalid && !addEmployeeForm.endDate.$pristine}">
+              <div class='input-group date' id='EndDateDatePicker'>
+                <input type='text' class="form-control" placeholder="Select End Date" name="endDate" ng-model=" vm.newEmpDetailObject.End_Date" autocomplete="off"
+                  required />
+                <span class="input-group-addon">
+                  <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+              </div>
+              <span class="help-block" ng-messages="addEmployeeForm.endDate.$error" ng-if="addEmployeeForm.endDate.$dirty && addEmployeeForm.endDate.$invalid">
+                <span ng-show="addEmployeeForm.endDate.$error.required">End date is required.</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row addEmployee-row">
+        <div class="col-md-6">
+          <!-- <div class="form-group"> -->
+          <label class="control-label col-md-4">Shift :
+            <span class="required"> * </span>
+          </label>
+          <div class="col-md-8" ng-class="{ 'has-error' : addEmployeeForm.empShift.$invalid && !addEmployeeForm.empShift.$pristine}">
+            <select class="form-control" name="empShift" ng-model="vm.newEmpDetailObject.Employer_Shift_Id" ng-options="option.shift_Name as option.shift_Name for option in vm.Employee_ShiftList"
+              required>
+              <option value="" selected disabled hidden>Select</option>
+            </select>
+            <span class="help-block" ng-messages="addEmployeeForm.empShift.$error" ng-if="addEmployeeForm.empShift.$dirty && addEmployeeForm.empShift.$invalid">
+              <span ng-show="addEmployeeForm.empShift.$error.required">Field is required.</span>
+            </span>
+          </div>
+          <!-- </div> -->
+        </div>
+        <div class="col-md-6">
+          <!-- <div class="form-group"> -->
+          <label class="control-label col-md-4">Job Type :
+            <span class="required"> * </span>
+          </label>
+          <div class="col-md-8" ng-class="{ 'has-error' : addEmployeeForm.empJobType.$invalid && !addEmployeeForm.empJobType.$pristine}">
+            <select class="form-control" name="empJobType" id="empJobType" ng-model=" vm.newEmpDetailObject.Job_Type"
+              ng-options="option.JobType_Name as option.JobType_Name for option in vm.Employee_JobTypeList" required>
+              <option value="" selected disabled hidden>Select</option>
+            </select>
+            <span class="help-block" ng-messages="addEmployeeForm.empJobType.$error" ng-if="addEmployeeForm.empJobType.$dirty && addEmployeeForm.empJobType.$invalid">
+              <span ng-show="addEmployeeForm.empJobType.$error.required">Field is required.</span>
+            </span>
+          </div>
+          <!-- </div> -->
+        </div>
+      </div>
+
+      <div class="row addEmployee-row">
+        <div class="col-md-6">
+          <!-- <div class="form-group"> -->
+          <label class="control-label col-md-4">Regular Pay
+            <span class="required"> * </span>
+          </label>
+          <div class="col-md-8" ng-class="{ 'has-error' : addEmployeeForm.EmpRegularPay.$invalid && !addEmployeeForm.EmpRegularPay.$pristine}">
+            <input type="number" class="form-control" ng-model="vm.newEmpDetailObject.Regular_Pay" name="EmpRegularPay"
+              placeholder="$" required>
+            <span class="help-block" ng-messages="addEmployeeForm.EmpRegularPay.$error" ng-if="addEmployeeForm.EmpRegularPay.$dirty && addEmployeeForm.EmpRegularPay.$invalid">
+              <span ng-show="addEmployeeForm.EmpRegularPay.$error.required">Field is required.</span>
+            </span>
+          </div>
+          <!-- </div> -->
+        </div>
+        <div class="col-md-6">
+          <!-- <div class="form-group"> -->
+          <label class="control-label col-md-4">Over Time Pay:
+            <span class="required"> * </span>
+          </label>
+          <div class="col-md-8" ng-class="{ 'has-error' : addEmployeeForm.overTimePay.$invalid && !addEmployeeForm.overTimePay.$pristine}">
+            <input type="number" class="form-control" ng-model="vm.newEmpDetailObject.Over_Time_Pay" name="overTimePay"
+              placeholder="$" required>
+            <span class="help-block" ng-messages="addEmployeeForm.overTimePay.$error" ng-if="addEmployeeForm.overTimePay.$dirty && addEmployeeForm.overTimePay.$invalid">
+              <span ng-show="addEmployeeForm.overTimePay.$error.required">Field is required.</span>
+            </span>
+          </div>
+          <!-- </div> -->
+        </div>
+      </div>
+
+      <div class="row addEmployee-row checkbox-div">
+        <div class="form-actions">
+          <div class="col-md-3 pull-left">
+            <div class="checkbox btn-checkbox">
+              <label><input type="checkbox" ng-modal="vm.newEmpDetailObject.Terminated" name="empTerminate" value="false">Terminate</label>
+            </div>
+          </div>
+          <div class="col-md-3 text-right">
+            <button type="submit" class="btn blue" ng-click="vm.saveNewEmpDetails()" ng-show="vm.edit" ng-disabled="addEmployeeForm.$invalid">Save</button>
+            <button type="submit" class="btn blue" ng-click="vm.editNewEmpDetails()" ng-hide="vm.edit" ng-disabled="addEmployeeForm.$invalid">Update</button>
+          </div>
+          <div class="col-md-6 text-left">
+            <button type="submit" class="btn blue" ng-click="vm.cancelEmpDetails()">Clear</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="portlet light portlet-fit application_print" ng-show="vm.employerEmployees.length">
+  <div class="portlet box green">
+    <div class="portlet-title">
+      <div class="caption">
+        <i class="fa fa-cogs"></i>New Employee List </div>
+    </div>
+    <div class="portlet-body">
+      <div class="table-responsive">
+        <table id="example1" width="100%" cellspacing="0" class="table table-striped table-bordered table-hover">
+          <thead>
+            <tr>
+              <th class="text-center"> # </th>
+              <th class="text-center">Client Name </th>
+              <th class="text-center">Employee Name</th>
+              <th class="text-center"> Job Description </th>
+              <th class="text-center"> Start Date </th>
+              <th class="text-center"> End Date </th>
+              <th class="text-center"> Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="empObject in vm.employerEmployees">
+              <td class="text-center"> {{$index + 1}}</td>
+              <td class="text-center">{{empObject.employers.Employer_Name}}
+              </td>
+              <td class="text-center">{{empObject.candidateMasters.First_Name}}
+                {{empObject.candidateMasters.Last_Name}}</td>
+              <td class="text-center">{{empObject.shiftJobProfiles.jobProfiles.Profile_Name}}</td>
+              <td class="text-center">{{empObject.Start_Date | date: "MM/dd/yyyy"}}</td>
+              <td class="text-center">{{empObject.End_Date | date: "MM/dd/yyyy"}}</td>
+              <td class="text-center row">
+                <div class="col-md-12 text-center">
+                  <div class="form-group edit-btn">
+                    <a>
+                      <i class="glyphicon glyphicon-edit"  ng-model="vm.employerReadonly" ng-click="vm.addEmployeeEdit($index,empObject)"></i>
+                    </a>
+                    <a class="edit-btn">
+                      <i class="glyphicon glyphicon-trash" data-toggle="modal" data-target="#basicModal" ng-click="vm.delete(empObject.id)"></i>
+                    </a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade empDltModal" id="basicModal" tabindex="-1" role="dialog" aria-labelledby="basicModal"
+    aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <h3 class="text-center">Are you sure for delete Record ??</h3>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary pull-left" data-dismiss="modal" ng-click="vm.dltConfirm('confirm')">Confirm</button>
+          <button type="button" class="btn btn-default pull-right" data-dismiss="modal" ng-click="vm.dltConfirm('close')">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,72 @@
+x-swagger-router-controller: job-profile-controller
+get:
+  operationId: jobProfileGet
+  description: "List of job profile"
+  summary: "Get Details of job profile"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: Is_Active
+      in: query
+      description: "Provide job profile name"
+      required: false
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/JobProfiles"
+    "403":
+      description: "Wrong job profile name"
+      schema:
+        $ref: "#/definitions/Error"
+post:
+  operationId: jobProfilePost
+  description: "Create new job profile"
+  summary: "Create new job profile"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: jobProfile
+      in: body
+      description: "Fill job profile details"
+      required: false
+      schema:
+        $ref: "#/definitions/JobProfiles"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/JobProfiles"
+    "403":
+      description: "pass valid input"
+      schema:
+        $ref: "#/definitions/Error"
+put:
+  operationId: jobProfilePut
+  description: "Update particular job profile"
+  summary: "Update particular job profile"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: jobProfile
+      in: body
+      description: "Provide jobProfile details"
+      required: false
+      schema:
+        $ref: "#/definitions/JobProfiles"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/JobProfiles"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"

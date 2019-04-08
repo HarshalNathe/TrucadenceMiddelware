@@ -1,0 +1,30 @@
+type: object
+properties:
+  id:
+    type: string
+  Candidate_ID:
+    type: string
+  Driving_License_No:
+    type: string
+  State_Issuing:
+    type: string
+  Maiden_Name_Used:
+    type: string
+  Is_ConsumerReport_Available:
+    type: boolean
+  Is_ConsumerReport_Provided:
+    type: boolean
+  Is_Driving_License:
+    type: boolean
+  BSA_Disclosure_Date:
+    type: string
+  Company_Representative_Name:
+    type: string
+  Is_DNA_Declaration_Done:
+    type: boolean
+  Candidate_DNA_Declaration_Date:
+    type: string
+  CompRep_DNA_Verification_Date:
+    type: string
+  Risk_Mgmt_Signature_Date:
+    type: string

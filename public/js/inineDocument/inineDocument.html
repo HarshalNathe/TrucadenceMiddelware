@@ -1,0 +1,142 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="row">
+	<div class="col-md-6">
+		<h1 class="page-title">I-9 Documents</h1>
+	</div>
+	<div class="col-md-6">
+		<div class="page-bar">
+			<ul class="page-breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="">Home</a>
+					<i class="fa fa-angle-right"></i>
+				</li>
+
+				<li>
+					<a href="">
+						<span>iNine Documents</span>
+					</a>
+				</li>
+			</ul>
+
+		</div>
+	</div>
+</div>
+<!-- END PAGE HEADER-->
+<div class="row">
+	<div class="col-md-12">
+		<div class="portlet light portlet-fit ">
+			<div class="portlet-title">
+				<div class="caption text-center">
+					<i class=" icon-layers font-green"></i>
+					<span class="caption-subject font-green bold uppercase">Upload I9 Related Documents</span>
+				</div>
+			</div>
+			<div class="portlet-body">
+
+				<form name="inine" class="form-horizontal" novalidate>
+					<div class="row">
+						<div class="col-md-12">
+							<P>
+								<strong>List A: Identity and Employment Authorization</strong>
+							</P>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label col-md-4 ">Document Type</label>
+								<div class="col-md-8">
+									<select class="form-control">
+										<option>Document Name</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<div class="col-md-9">
+									<input type="file" id="exampleInputFile" ng-model="vm.file" name="files" maxnum="1" multiple maxsize="1024" ng-change="vm.uploadImage(this)" base-sixty-four-input do-not-parse-if-oversize>
+									<p class="help-block"> Write Document Name </p>
+									<span ng-show="inine.files.$error.maxsize">Files must not exceed 1 MB</span>
+									<span ng-show="inine.files.$error.maxnum">Only 1 file is allowed</span>
+								</div>
+							</div>
+
+							<!--<div class="button"  ngf-select="vm.upload($file)" ngf-model-invalid="vm.invalidFiles" name="files" ngf-max-size='1MB'> Upload on file select</div>
+							<div class="help-block"  ng-if="vm.invalidFiles.$error=='maxSize'">
+								jfkdjfkjdkfj
+								</div>-->
+
+							</div>
+						
+						</div>
+					</div>
+
+					<hr class="hr-text" data-content="OR" />
+					<div class="row">
+						<div class="col-md-12">
+							<P>
+								<strong>List B: Identity </strong>
+							</P>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label col-md-4 ">Document Type</label>
+								<div class="col-md-8">
+									<select class="form-control">
+										<option>Document Name</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<div class="col-md-9">
+									<input type="file" id="exampleInputFile">
+									<p class="help-block"> Write Document Name </p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<P>
+								<strong>List C: Employment Authorization </strong>
+							</P>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-6">
+							<div class="form-group">
+								<label class="control-label col-md-4 ">Document Type</label>
+								<div class="col-md-8">
+									<select class="form-control">
+										<option>Document Name</option>
+									</select>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="form-group">
+								<div class="col-md-9">
+									<input type="file" id="exampleInputFile">
+									<p class="help-block"> Write Document Name </p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<button class="btn btn-primary">Cancel</button>
+							<button class="btn btn-primary pull-right">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

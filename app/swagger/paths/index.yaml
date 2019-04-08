@@ -1,0 +1,72 @@
+/login:
+  $ref: ./login.yaml
+/signup:
+  $ref: ./signup.yaml
+/verify/{token}:
+  $ref: ./verify.yaml
+/forgotPassword:
+  $ref: ./forgotPassword.yaml
+/changePassword/{token}:
+  $ref: ./changePassword.yaml
+/resetToken/{token}:
+  $ref: ./resetPasswordToken.yaml
+/candidateDetailsById/{ID}:
+  $ref: ./candidateDetailsById.yaml
+/candidate:
+  $ref: ./candidate.yaml
+/country:
+  $ref: ./country.yaml
+/state:
+  $ref: ./state.yaml
+/city:
+  $ref: ./city.yaml
+/selfIdentification:
+  $ref: ./eeoSelfIdentification.yaml
+/candidateAttachments:
+  $ref: ./candidate-attachment.yaml
+/bsaDisclosureRelease:
+  $ref: ./bsa-disclosure-release.yaml
+/illinoisAllowancesWorksheet:
+  $ref: ./illinois-allowances-worksheet.yaml
+/personalAllowancesWorksheet:
+  $ref: ./personal-allowances-worksheet.yaml
+/employmentDetails:
+  $ref: ./employment-details.yaml
+/documentLists:
+  $ref: ./document-list.yaml
+/formMasters:
+  $ref: ./form-master.yaml
+/attachmentTypes:
+  $ref: ./attachment-type.yaml
+/employmentEligibilityVerification:
+  $ref: ./employment-eligibility-verification.yaml
+/member:
+  $ref: ./member-application.yaml
+/formStatus:
+  $ref: ./form-status.yaml
+/users:
+  $ref: ./user.yaml
+/jobProfiles:
+  $ref: ./job-profile.yaml
+/candidate/{candidateId}/candidateAttachment/{candidateAttachmentId}:
+  $ref: ./candidate-attachmentById.yaml
+/globalSearch:
+  $ref: ./global-search.yaml
+/resetPassword:
+  $ref: ./reset-password.yaml
+/candidateRegisterStats:
+  $ref: ./dashboard.yaml
+/userRegisterStats:
+  $ref: ./user-register-stats.yaml
+/candidateStatistics:
+  $ref: ./candidateRegister-stats.yaml
+/profileStatistics:
+  $ref: ./profile-stats.yaml
+/employer:
+  $ref: ./employer.yaml
+/employerProfile:
+  $ref: ./employer-profile.yaml
+/employersEmployee:
+  $ref: ./employers-employee.yaml
+/timesheet:
+  $ref: ./timesheet.yaml

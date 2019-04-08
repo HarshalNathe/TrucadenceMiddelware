@@ -1,0 +1,6 @@
+type: object
+properties:
+  id:
+    type: string
+  Attachment_Type_Name:
+    type: string

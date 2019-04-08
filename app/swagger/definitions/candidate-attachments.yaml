@@ -1,0 +1,18 @@
+type: object
+properties:
+  id:
+    type: string
+  Attachment_Type_ID:
+    type: string
+  Candidate_ID:
+    type: string
+  Attachment_Date:
+    type: string
+  Metadata_URL:
+    type: string
+  Form_Master_ID:
+    type: string
+  Employee_Name:
+    type: string
+  Document_List_ID:
+    type: string

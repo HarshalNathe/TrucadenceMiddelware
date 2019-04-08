@@ -1,0 +1,23 @@
+x-swagger-router-controller: login-controller
+post:
+  operationId: postSignup
+  tags:
+    - "/users"
+  description: "User signup."
+  summary: "User signup."
+  parameters:
+    - name: user
+      in: body
+      description: "User Info."
+      required: false
+      schema:
+        $ref: "#/definitions/SignUp"
+  responses:
+    200:
+      description: "Successfully signup."
+      schema:
+        $ref: "#/definitions/SignUp"
+    default:
+      description: "Invalid request."
+      schema:
+        $ref: "#/definitions/Error"

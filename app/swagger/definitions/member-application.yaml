@@ -1,0 +1,34 @@
+type: object
+properties:
+  id:
+    type: string
+  Employer_Id:
+    type: string
+  Candidate_Id:
+    type: string
+  Plan:
+    type: array
+    items:
+      type: object
+  Coverage:
+    type: array
+    items:
+      type: object
+  Family_Information:
+    type: array
+    items:
+      type: object
+  Beneficiary_Information:
+    type: array
+    items:
+      type: object
+  Current_Plan:
+    type: array
+    items:
+      type: object
+  Date_Of_Event:
+    type: string
+  CandidateAttachments:
+    type: array
+    items:
+      $ref: ./candidate-attachments.yaml

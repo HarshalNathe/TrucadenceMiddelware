@@ -1,0 +1,83 @@
+x-swagger-router-controller: employment-eligibility-verification-controller
+get:
+  operationId: verificationGet
+  description: "List of employment eligibility verification with attachments"
+  summary: "Get list of employment eligibility verification with attachments"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: candidateId
+      in: query
+      description: "Provide candidate id"
+      required: true
+      type: string
+    - name: AttachmentTypeID
+      in: query
+      description: "Provide Attachment Type ID"
+      required: true
+      type: string
+    - name: FormMasterID
+      in: query
+      description: "Provide Form Master ID"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/EmploymentEligibilityVerification"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+post:
+  operationId: verificationPost
+  description: "Create new employment eligibility verification with attachments"
+  summary: "Create new employment eligibility verification with attachments"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: eligibilityVerification
+      in: body
+      description: "Fill EEO self identification details with attachments"
+      required: false
+      schema:
+        $ref: "#/definitions/EmploymentEligibilityVerification"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/EmploymentEligibilityVerification"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+put:
+  operationId: verificationPut
+  description: "Update employment eligibility verification alongwith attachments"
+  summary: "Update employment eligibility verification alongwith attachments"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: eligibilityVerification
+      in: body
+      description: "Provide eligibility verification alongwith attachments"
+      required: false
+      schema:
+        $ref: "#/definitions/EmploymentEligibilityVerification"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/EmploymentEligibilityVerification"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+

@@ -1,0 +1,46 @@
+type: object
+properties:
+  id:
+    type: string
+  Candidate_ID:
+    type: string
+  PAW_A_Value:
+    type: boolean
+  PAW_B_Value:
+    type: boolean
+  PAW_C_Value:
+    type: boolean
+  PAW_D_Value:
+    type: number
+  PAW_E_Value:
+    type: boolean
+  PAW_F_Value:
+    type: boolean
+  PAW_G_Value:
+    type: boolean
+  PAW_H_Value:
+    type: number
+  Is_Withhold_Married:
+    type: string
+  Is_SSC_Replacement:
+    type: boolean
+  Total_Allowances_Claim:
+    type: number
+  Addition_Amt_Required:
+    type: number
+  Is_Exempt:
+    type: string
+  WAC_Signature_Date:
+    type: string
+  Is_IRS:
+    type: boolean
+  Employer_Name_Address:
+    type: string
+  Employer_Office_Code:
+    type: string
+  Employer_Identification_No:
+    type: string
+  CandidateAttachments:
+    type: array
+    items:
+      $ref: ./candidate-attachments.yaml

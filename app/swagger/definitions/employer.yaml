@@ -1,0 +1,27 @@
+type: object
+properties:
+  id:
+    type: string
+  Balance_With_Jobs:
+    type: number
+  Billing_Address:
+    type: string
+  Created_At:
+    type: string
+  Email:
+    type: string
+  Employer_Name:
+    type: string
+  Family_Name:
+    type: string
+  Is_Active:
+    type: boolean
+  LastModified_At:
+    type: string
+  Primary_Phone:
+    type: string
+  Shipping_Address:
+    type: string
+  Taxable:
+    type: boolean
+

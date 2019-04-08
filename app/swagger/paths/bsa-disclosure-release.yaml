@@ -1,0 +1,58 @@
+x-swagger-router-controller: bsa-disclosure-release-controller
+get:
+  operationId: bsaDisclosureReleaseGet
+  description: "List of BSA disclosure release with attachments"
+  summary: "List of BSA disclosure release with attachments"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: candidateId
+      in: query
+      description: "Provide candidate id"
+      required: true
+      type: string
+    - name: AttachmentTypeID
+      in: query
+      description: "Provide Attachment Type ID"
+      required: true
+      type: string
+    - name: FormMasterID
+      in: query
+      description: "Provide Form Master ID"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/DrugTesting"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+put:
+  operationId: bsaDisclosureReleasePost
+  description: "Create new BSA disclosure release with attachments"
+  summary: "Create new BSA disclosure release with attachments"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: bsaDisclosureRelease
+      in: body
+      description: "Fill BSA disclosure release details with attachments"
+      required: false
+      schema:
+        $ref: "#/definitions/DrugTesting"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/DrugTesting"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"

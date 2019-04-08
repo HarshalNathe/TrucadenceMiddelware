@@ -1,0 +1,83 @@
+x-swagger-router-controller: eeoselfidentification-controller
+get:
+  operationId: selfIdentificationGet
+  description: "List of EEO self identification with attachments"
+  summary: "Get list of EEO self identification with attachments"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: candidateId
+      in: query
+      description: "Provide candidate id"
+      required: true
+      type: string
+    - name: AttachmentTypeID
+      in: query
+      description: "Provide Attachment Type ID"
+      required: true
+      type: string
+    - name: FormMasterID
+      in: query
+      description: "Provide Form Master ID"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/EEOSelfIdentifications"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+post:
+  operationId: selfIdentificationPost
+  description: "Create new EEO self identification with attachments"
+  summary: "Create new EEO self identification with attachments"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: eeoSelfIdentification
+      in: body
+      description: "Fill EEO self identification details with attachments"
+      required: false
+      schema:
+        $ref: "#/definitions/EEOSelfIdentifications"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/EEOSelfIdentifications"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+put:
+  operationId: selfIdentificationPut
+  description: "Update selfIdentification alongwith attachments"
+  summary: "Update selfIdentification alongwith attachments"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: eeoSelfIdentification
+      in: body
+      description: "Provide selfIdentification alongwith attachments"
+      required: false
+      schema:
+        $ref: "#/definitions/EEOSelfIdentifications"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/EEOSelfIdentifications"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+

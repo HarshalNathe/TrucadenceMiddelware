@@ -1,0 +1,92 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="row" cg-busy="vm.promise">
+  <div class="col-md-offset-6 col-md-6 col-sm-12 col-xs-12">
+      <form name="searchForm" novalidate>
+        <div class="input-group searchBox">
+          <input type="text" ng-model="vm.search" class="form-control" placeholder="Search" id="txtSearch"
+          ng-keyup="$event.keyCode == 13 && vm.globalSearch(vm.search)" required/>
+          <div class="input-group-btn">
+            <button class="btn btn-primary" type="submit" ng-disabled="searchForm.$invalid" ng-click="vm.globalSearch(vm.search)">
+              <span class="glyphicon glyphicon-search"></span>
+            </button>
+          </div>
+        </div>
+        </form>
+  </div>
+  <!-- <div class="col-md-6">
+    <div class="page-bar">
+      <ul class="page-breadcrumb">
+        <li>
+          <i class="icon-home"></i>
+          <a href="" ui-sref="app.home">Home</a>
+          <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+
+          <a href="">Candidate</a>
+          <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+          <a href="">
+            <span>Candidate List</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </div> -->
+</div>
+<!-- END PAGE HEADER-->
+<div class="portlet box green">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class="fa fa-cogs"></i>All Candidate List </div>
+    <!-- <div class="caption" ng-show="vm.userData.user[0].role === '0'">
+      <i class="fa fa-cogs"></i>Candidate Application List </div> -->
+    <a href="" class="margin-top-10 hidden-print btn btn-xs btn-primary pull-right" style="
+    margin-left:  5px;"
+      ui-sref="app.newCandidate">
+      <i class="fa fa-plus"></i> Add Candidate</a>
+    <!-- <button type="submit" class="margin-top-10 hidden-print btn btn-xs btn-primary pull-right" ng-click="vm.globalSearch(vm.search)"><i
+        class="glyphicon glyphicon-search"></i></button>
+    <input type="text" ng-model="vm.search" class="margin-top-10 btn btn-xs btn-default pull-right" placeholder="Search"
+      name="search"> -->
+  </div>
+  <div class="portlet-body">
+    <div class="table-responsive">
+      <table id="example" datatable="ng" width="100%" cellspacing="0" class="table table-striped table-bordered table-hover">
+        <thead>
+          <tr>
+            <th> # </th>
+            <th> Name </th>
+            <th> SSN# </th>
+            <th> Education </th>
+            <th> Position Interested </th>
+            <th> US Work Permit </th>
+            <th> Actions </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr ng-repeat="candidate in vm.candidateList.list">
+            <td> {{$index + 1}} </td>
+            <td>{{candidate.First_Name}} {{candidate.Last_Name}}</td>
+            <td> XXX-XX-{{candidate.Social_Security_Number.slice(-4);}} </td>
+            <td ng-repeat="edl in eduLvl = (candidate.Education_Level | filter:{selected : true})"> {{edl.educationName }}</td>
+            <td ng-if="eduLvl.length < 1"> NA </td>
+            <td ng-if="candidate.positionInterested !== undefined"> {{candidate.positionInterested.Profile_Name}}</td>
+            <td ng-if="candidate.positionInterested === undefined"> NA </td>
+            <td ng-if="candidate.Is_US_WorkPermit"> Yes </td>
+            <td ng-if="!candidate.Is_US_WorkPermit"> NO </td>
+            <td class="text-center">
+              <a ng-click="vm.goToCandidateDetail(candidate.id)" class="btn btn-xs btn-primary">
+                <i class="fa fa-eye"></i>
+                <!--<a href="" class="btn btn-xs btn-success">
+									<i class="fa fa-eye"></i>
+								</a>-->
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

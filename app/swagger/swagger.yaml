@@ -1,0 +1,24 @@
+swagger: "2.0"
+info:
+  version: "1.0.0"
+  title: Trucadence
+  description: Trucadence API's Documentation.
+host: trucadence.lexiconnetworks.com
+basePath: /api
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  OAuth2:
+    type: oauth2
+    flow: password
+    tokenUrl: https://169.53.13.77/lexicon/testenv/authProvider/oauth2/token
+    scopes:
+      scope1: Grants scope1
+paths:
+  $ref: ./app/swagger/paths/index.yaml
+definitions:
+  $ref: ./app/swagger/definitions/index.yaml

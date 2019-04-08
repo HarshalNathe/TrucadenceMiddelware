@@ -1,0 +1,24 @@
+x-swagger-router-controller: global-search-controller
+get:
+  operationId: searchingAll
+  description: "find keyword as per pattern"
+  summary: "find keyword as per pattern"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: keyValue
+      in: query
+      description: "Provide a keyword"
+      required: false
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/GlobalSearching"
+    "403":
+      description: "Wrong job profile name"
+      schema:
+        $ref: "#/definitions/Error"

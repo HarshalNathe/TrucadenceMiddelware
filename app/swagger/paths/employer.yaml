@@ -1,0 +1,34 @@
+x-swagger-router-controller: employer-controller
+get:
+  operationId: employerGet
+  description: "get list of employers"
+  summary: "Get list of employers"
+  security:
+    - OAuth2: []
+  tags:
+    - "/employer"
+  parameters:
+    - name: keyword
+      in: query
+      description: "Provide email or employer name"
+      required: false
+      type: string
+    - name: skip
+      in: query
+      description: "Provide skip value"
+      required: false
+      type: string
+    - name: limit
+      in: query
+      description: "Provide limit value"
+      required: false
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/Employers"
+    "404":
+      description: "Not found"
+      schema:
+        $ref: "#/definitions/Error"

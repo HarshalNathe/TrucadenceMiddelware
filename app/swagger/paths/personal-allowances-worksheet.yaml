@@ -1,0 +1,82 @@
+x-swagger-router-controller: personal-allowances-worksheet-controller
+get:
+  operationId: personalAllowancesWorksheetGet
+  description: "List of personal allowances worksheet with attachments"
+  summary: "List of personal allowances worksheet with attachments"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: candidateId
+      in: query
+      description: "Provide candidate id"
+      required: true
+      type: string
+    - name: AttachmentTypeID
+      in: query
+      description: "Provide attachment type id"
+      required: true
+      type: string
+    - name: FormMasterID
+      in: query
+      description: "Provide form master id"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/PersonalAllowancesWorksheet"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+post:
+  operationId: personalAllowancesWorksheetPost
+  description: "Create new personal allowances worksheet with attachments"
+  summary: "Create new personal allowances worksheet with attachments"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: personalAllowanceWorksheet
+      in: body
+      description: "Fill personal allowances worksheet details with attachments"
+      required: false
+      schema:
+        $ref: "#/definitions/PersonalAllowancesWorksheet"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/PersonalAllowancesWorksheet"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+put:
+  operationId: personalAllowancesWorksheetEdit
+  description: "Update personal allowances worksheet alongwith attachments"
+  summary: "Update personal allowances worksheet alongwith attachments"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: personalAllowanceWorksheet
+      in: body
+      description: "personalAllowanceWorksheet details"
+      required: false
+      schema:
+        $ref: "#/definitions/PersonalAllowancesWorksheet"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/PersonalAllowancesWorksheet"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"

@@ -1,0 +1,44 @@
+x-swagger-router-controller: document-list-controller
+get:
+  operationId: documentListGet
+  description: "List of documentList"
+  summary: "Get Details of documentList"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters: []
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/DocumentLists"
+    "403":
+      description: "Unable to get document list"
+      schema:
+        $ref: "#/definitions/Error"
+put:
+  operationId: documentListPut
+  description: "Update particular document list"
+  summary: "Update particular document list"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: documentList
+      in: body
+      description: "Provide document list details"
+      required: false
+      schema:
+        $ref: "#/definitions/DocumentLists"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/DocumentLists"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+

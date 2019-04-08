@@ -1,0 +1,32 @@
+type: object
+properties:
+  id:
+    type: string
+  active:
+    type: boolean
+  email:
+    type: string
+  firstName:
+    type: string
+  lastName:
+    type: string
+  password:
+    type: string
+  resetPasswordExpires:
+    type: string
+  resetPasswordToken:
+    type: string
+  role:
+    type: string
+  username:
+    type: string
+  securefieldPassword:
+    type: string
+  address:
+    type: string
+  mobileNo:
+    type: string
+  createdAt:
+    type: string
+
+

@@ -1,0 +1,256 @@
+<style>
+  .chip {
+    font-size: large;
+  }
+
+  calendar>div.week>span.day.selected {
+    background: none !important;
+  }
+
+  .clientFont {
+    font-weight: bolder;
+  }
+</style>
+
+<div class="header">
+  <i class="fa fa-angle-left" ng-click="previous()"></i>
+  <span>{{month.format("MMMM, YYYY")}}</span>
+  <i class="fa fa-angle-right" ng-click="next()"></i>
+</div>
+  
+<div class="week names" cg-busy="promise" >
+  <span class="day" style="font-size: 1.2em;">Name</span>
+  <span class="day" style="font-size: 1.2em;" ng-repeat=" days in daysArray ">{{days.day}}  {{days.date}}</span>
+  <span class="day" style="font-size: 1.2em;">total</span>
+</div>
+
+<div class="week" ng-repeat="week in weeks">
+  <span class="day" style="font-size: 1.2em;font-weight: bold">{{week.name}} </span>
+  <span class="day" data-toggle="modal" data-target="#flipFlop" ng-class="{ today: day.isToday, 'different-month': !day.isCurrentMonth, selected: day.date.isSame(selected) }"
+    ng-click="select(day, week.name)" ng-repeat="day in week.days" style="overflow:auto; line-height:15px !important;">
+    <!-- <span class="chip" style="background-color:white !important">{{ day.date.date() }}</span><br/> -->
+    <span class="chip" ng-repeat="ct in day.timeLog" ng-if="day.timeLog.length">{{ ct.Shift }} : {{ ct.Hours }}hr</span>
+  </span>
+  <!-- </button> -->
+  <span class="day" style="line-height:18px!important">
+    <label style="font-size:0.5 px;font-weight: bold">Working hours {{week.workingHours}}hrs</label>
+    <!-- TO DO <label style="font-size:0.5 px;font-weight: bold">O.T.Daily {{week.overTimeHoursDaily}}hrs</label>
+    <label style="font-size:0.5 px;font-weight:bold">O.T.Weekly{{week.overTimeHoursWeekly}}hrs</label> -->
+    <label style="font-size:0.5 px;font-weight: bold">Regular hours:{{week.regularTimeHours}}hrs</label>
+  </span>
+</div>
+<div class="week" ng-if="!weeks.length">
+  <span style="font-size: 1.2em;font-weight: bold; margin-left: 43%;">Records not found !!</span>
+</div>
+<!-- modal for calaendar -->
+<div class="modal fade" id="flipFlop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+  aria-labelledby="modalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="modalLabel">Time Log Dialogue</h4>
+      </div>
+      <div ng-show="IsVisible">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="portlet light portlet-fit application_print">
+              <form name="timeLogForm" autocomplete="off" novalidate>
+                <ul class="list-group">
+                  <li class="list-group-item addJobShift-bgClr">
+                    <div class="portlet-body application_print">
+                      <div class="row addEmployee-row">
+                        <div class="col-md-6 clientFont">
+                          <label class="control-label col-md-4 clientFont">Client:</label>
+                          <div class="col-md-8 clientFont">
+                            {{employer_Name}}
+                          </div>
+                        </div>
+                        <div class="col-md-6 clientFont">
+                          <label class="control-label col-md-4 clientFont">Candidate:</label>
+                          <div class="col-md-8 clientFont">
+                            {{selectedName}}
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="row addEmployee-row">
+                        <div class="col-md-6">
+                          <label class="control-label col-md-4">Shift
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : timeLogForm.timeLogShift.$invalid && ! timeLogForm.timeLogShift.$pristine}">
+                            <select class="form-control" name="timeLogShift" id="timeLogShift" ng-model="timeLogDetails.shift"
+                              ng-options="shift.Shift as shift.Shift for shift in employerProfileShift" ng-change="shiftSelect(employerProfileShift)"
+                              required>
+                              <option value="" selected disabled hidden> Select Shift </option>
+                              <!-- <option ng-repeat="shift in employerProfileShift" value="{{shift.Shift}}">{{shift.Shift}}
+                              </option> -->
+                            </select>
+                            <span class="help-block" ng-messages="timeLogForm.timeLogShift.$error" ng-if="timeLogForm.timeLogShift.$dirty && timeLogForm.timeLogShift.$invalid">
+                              <span ng-show="timeLogForm.timeLogShift.$error.required">Option is required.</span>
+                            </span>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label class="control-label col-md-4">Profile
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : timeLogForm.TimeLogProfile.$invalid && !timeLogForm.timeLogProfile.$pristine}">
+                            <select class="form-control" name="TimeLogProfile" id="TimeLogProfile" ng-model="selectedProfile" ng-options
+                            ="selectedProfile.id as selectedProfile.Profile_Name for selectedProfile in jobProfileList ">
+                              <option value="" selected disabled hidden>Select Profile</option>
+                            </select>
+                            <span class="help-block" ng-messages="timeLogForm.TimeLogProfile.$error" ng-if="timeLogForm.TimeLogProfile.$dirty && timeLogForm.TimeLogProfile.$invalid">
+                              <span ng-show="timeLogForm.TimeLogProfile.$error.required">Option is required.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row addEmployee-row">
+                        <div class="col-md-6">
+                          <label class="control-label col-md-4">In Time
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : timeLogForm.startTime.$invalid && !timeLogForm.startTime.$pristine}">
+                            <div class='input-group date' id='Timepicker_pannel1'>
+                              <input type='text' class="form-control" name="startTime" id="startTime" ng-model="timeLogDetails.startTime" ng-blur="checkInValue()" autocomplete="off" />
+                              <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                              </span>
+                              <span class="help-block" ng-messages="timeLogForm.startTime.$error" ng-if="timeLogForm.startTime.$dirty && timeLogForm.startTime.$invalid">
+                                <span ng-show="timeLogForm.startTime.$error.required">Option is required.</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label class="control-label col-md-4">Out Time
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : timeLogForm.EndTime.$invalid && !timeLogForm.EndTime.$pristine}">
+                            <div class='input-group date' id='TimepickerEnd_pannel1'>
+                              <input type='text' class="form-control" id="EndTime" name="EndTime" ng-blur="checkOutValue()" ng-model="timeLogDetails.endTime"
+                                ng-disabled="disableOutTime"  autocomplete="off"/>
+                              <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-time"></span>
+                              </span>
+                              <span class="help-block" ng-messages="timeLogForm.EndTime.$error" ng-if="timeLogForm.EndTime.$dirty && timeLogForm.EndTime.$invalid">
+                                <span ng-show="timeLogForm.EndTime.$error.required">Option is required.</span>
+                              </span>
+                            </div>
+                            <span class="help-block" ng-show="timeValidation">
+                              <span style="color:red">Out Time should be greater than In Time</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="row addEmployee-row">
+                        <div class="col-md-6">
+                          <label class="control-label col-md-4">Hours
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <input type="text" class="form-control" id="hours" name="hours" ng-model="timeLogDetails.hours"
+                              required>
+                          </div>
+                        </div>
+                        <div class="col-md-6">
+                          <label class="control-label col-md-4">Repeat
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : timeLogForm.RepeatDay.$invalid && !timeLogForm.RepeatDay.$pristine}">
+                            <select class="form-control" name="RepeatDay" ng-model="timeLogDetails.shiftRepeat"
+                              required>
+                              <option value="" selected disabled hidden>Select Repeat</option>
+                              <option value="Daily">Daily</option>
+                              <option value="Monday">Monday</option>
+                              <option value="Tuesday">Tuesday</option>
+                              <option value="Wednesday">Wednesday</option>
+                              <option value="Thursday">Thursday</option>
+                              <option value="Friday">Friday</option>
+                              <option value="Saturday">Saturday</option>
+                              <option value="Sunday">Sunday</option>
+                            </select>
+                            <span class="help-block" ng-messages="timeLogForm.RepeatDay.$error" ng-if="timeLogForm.RepeatDay.$dirty && timeLogForm.RepeatDay.$invalid">
+                              <span ng-show="timeLogForm.RepeatDay.$error.required">Option is required.</span>
+                            </span>
+                          </div>
+                        </div>
+                        <!--  <div class="col-md-6 text-center">
+                            <div class="form-group pull-right edit-btn" ng-show="showme">
+                              <a href="" data-toggle="tooltip" title="Edit" ng-click="disableALLFields('edit')">
+                                <i class="glyphicon glyphicon-edit"></i>
+                              </a>
+                              <a href="" data-toggle="tooltip" title="Remove">
+                                <i class="glyphicon glyphicon-trash"></i>
+                              </a>
+                            </div>
+                          </div> -->
+                      </div>
+                    </div>
+                    <div class="row addEmployee-row">
+                      <div class="col-md-12 text-center">
+                        <button type="submit" class="btn blue" ng-hide="hideEditBtn" ng-click="editTimeLog()"
+                          ng-disabled="timeLogForm.$invalid" ng-hide="saveHide">Edit Time Log</button>
+                        <button type="submit" class="btn blue" ng-click="saveTimeLog()" ng-disabled="(!timeLogForm.$invalid && timeLogDetails.hours) ? false : true"
+                          ng-hide="saveHide">Add Time Log</button>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+
+                <div class="" >
+                  <table class="table">
+                    <thead>
+                      <tr>
+                        <th>Shift</th>
+                        <th>Profile</th>
+                        <th>Start Time</th>
+                        <th>End Time</th>
+                        <th>Hours</th>
+                        <th>Repeat</th>
+                        <th>Edit</th>
+                      </tr>
+                    </thead>
+                    <tbody ng-repeat="week in weeks" >
+                      <tr ng-repeat-start="day in week.days"></tr>
+                      <tr ng-repeat-start="timelog in day.timeLog"></tr>
+                      <tr ng-repeat-end>
+                        <td ng-if="day.candidateId === selectedDay.candidateId && selectedDay.number === day.number">
+                          {{timelog.Shift}}</td>
+                        <td ng-if="day.candidateId === selectedDay.candidateId && selectedDay.number === day.number">
+                          {{timelog.profileName}} </td>
+                        <td ng-if="day.candidateId === selectedDay.candidateId && selectedDay.number === day.number">
+                          {{timelog.In_Time}}</td>
+                        <td ng-if="day.candidateId === selectedDay.candidateId && selectedDay.number === day.number">
+                          {{timelog.Out_Time}}</td>
+                        <td ng-if="day.candidateId === selectedDay.candidateId && selectedDay.number === day.number">
+                          {{timelog.Hours}} </td>
+                        <td ng-if="day.candidateId === selectedDay.candidateId && selectedDay.number === day.number">
+                          {{timelog.Shift_Repeat}}</td>
+                        <td ng-if="day.candidateId === selectedDay.candidateId && selectedDay.number === day.number">
+                          <a href="" data-toggle="tooltip" title="Edit" ng-click="edit($index,timelog.id, day.number, week.year, week.month)">
+                            <i class="glyphicon glyphicon-edit"></i>
+                          </a>
+                          <a href="" data-toggle="tooltip" title="Remove" ng-click="deleteTimeLog($index,timelog.id, day.number, week.year, week.month)">
+                            <i class="glyphicon glyphicon-trash"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr ng-repeat-end ng-hide='true'></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-body" ng-hide="IsVisible">
+        <button type="button" class="btn btn-primary btn-lg center-block" ng-click="ShowHidepanel()">Add
+          Time Log</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" ng-click="reset()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,583 @@
+<style>
+  .active {
+    background: red;
+  }
+</style>
+<div class="portlet light portlet-fit application_print">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class=" icon-layers font-green"></i>
+      <span class="caption-subject font-green bold uppercase">Client's Profile</span>
+    </div>
+  </div>
+  <div class="portlet-body application_print">
+    <form name="addProfileForm" novalidate>
+      <div class="row addEmployee-row">
+        <div class="col-md-6">
+          <label class="control-label col-md-4">Client Name
+            <span class="required"> * </span>
+          </label>
+          <div class="col-md-8" ng-class="{ 'has-error' : addProfileForm.empName.$invalid && !addProfileForm.empName.$pristine}">
+            <input type="text" placeholder="Write client name" ng-model="vm.clientProfile.Employer_Name" class="form-control"
+              name="empName" ng-minlength="1" ng-maxlength="20" ng-pattern='/^[a-zA-Z]+$/' readonly />
+            <span class="help-block" ng-messages="addProfileForm.empName.$error" ng-if="addProfileForm.empName.$dirty && addProfileForm.empName.$invalid">
+              <span ng-show="addProfileForm.empName.$error.required">Client name is required.</span>
+              <span ng-show="addProfileForm.empName.$error.pattern">Invalid employee name.</span>
+              <span ng-show="addProfileForm.empName.$error.minlength">First name is too short.</span>
+              <span ng-show="addProfileForm.empName.$error.maxlength">First name is too long.</span>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label col-md-4">Over Time Scheme :
+            <span class="required"> * </span>
+          </label>
+          <!-- <div class="col-md-8" ng-class="{ 'has-error' : tab1From.currentState.$invalid && !tab1From.currentState.$pristine}">
+            <select ng-model="vm.personalDetails.currState" ng-options="currState as currState.Name for currState in vm.stateOfIssueList"
+              ng-init="vm.personalDetails.currState = vm.stateOfIssueList[0].id" class="form-control"
+              name="currentState" ng-change="vm.getCity(vm.personalDetails.currState.id)" required>
+              <option value="" selected disabled hidden>Select</option>
+              <option ng-repeat="currState in vm.stateOfIssueList" ng-value="currState.id">{{currState.Name}}</option>
+            </select>
+            <span class="help-block" ng-messages="tab1From.currentState.$error" ng-if="tab1From.currentState.$dirty && tab1From.currentState.$invalid">
+              <span ng-show="tab1From.currentState.$error.required">State is required.</span>
+            </span>
+          </div> -->
+          <div class="col-md-8" ng-class="{ 'has-error' : addProfileForm.overTimeScheme.$invalid && !addProfileForm.overTimeScheme.$pristine}">
+            <select required class="form-control" ng-model="vm.employersProfiles.Over_Time_Scheme" id="Over_Time_Scheme"
+              name="overTimeScheme">
+              <option value="" selected disabled hidden>Select</option>
+              <option value="Daily">Daily</option>
+              <option value="Daily">Weekly</option>
+            </select>
+            <span class="help-block" ng-messages="addProfileForm.overTimeScheme.$error" ng-if="addProfileForm.overTimeScheme.$dirty && addProfileForm.overTimeScheme.$invalid">
+              <span ng-show="addProfileForm.overTimeScheme.$error.required">Option is required.</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row addEmployee-row">
+        <div class="col-md-6">
+          <label class="control-label col-md-4">Markup
+            <span class="required"> * </span>
+          </label>
+          <div class="col-md-8" ng-class="{ 'has-error' : addProfileForm.markupCommision.$invalid && !addProfileForm.markupCommision.$pristine}">
+            <input type="number" placeholder="$" min="0" ng-model="vm.employersProfiles.Regular_Commision" class="form-control"
+              name="markupCommision" required />
+            <span class="help-block" ng-messages="addProfileForm.markupCommision.$error" ng-if="addProfileForm.markupCommision.$dirty && addProfileForm.markupCommision.$invalid">
+              <span ng-show="addProfileForm.markupCommision.$error.required">Field is required.</span>
+              <!-- <span ng-show="addProfileForm.markupCommision.$error.pattern">Invalid employee name.</span> -->
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label col-md-4">Over-Time Markup
+            <span class="required"> * </span>
+          </label>
+          <div class="col-md-8" ng-class="{ 'has-error' : addProfileForm.overTimeMarkup.$invalid && !addProfileForm.overTimeMarkup.$pristine}">
+            <input type="number" placeholder="$" min="0" ng-model="vm.employersProfiles.Over_Time_Commision" class="form-control"
+              name="overTimeMarkup" required />
+            <span class="help-block" ng-messages="addProfileForm.overTimeMarkup.$error" ng-if="addProfileForm.overTimeMarkup.$dirty && addProfileForm.overTimeMarkup.$invalid">
+              <span ng-show="addProfileForm.overTimeMarkup.$error.required">Field is required.</span>
+              <!-- <span ng-show="addProfileForm.overTimeMarkup.$error.pattern">Invalid employee name.</span> -->
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="row addEmployee-row">
+        <div class="col-md-6">
+          <label class="control-label col-md-4">Employee Conversion Period:
+            <span class="required"> * </span>
+          </label>
+          <div class="col-md-8" ng-class="{ 'has-error' : addProfileForm.employeeConversion.$invalid && !addProfileForm.employeeConversion.$pristine}">
+            <input type="text" placeholder="In Hrs" ng-model="vm.personalDetails.employeeConversion" class="form-control" name="employeeConversion"
+              required />
+            <span class="help-block" ng-messages="addProfileForm.employeeConversion.$error" ng-if="addProfileForm.employeeConversion.$dirty && addProfileForm.employeeConversion.$invalid">
+              <span ng-show="addProfileForm.employeeConversion.$error.required">Field is required.</span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label col-md-4">Conversion Amount :
+            <span class="required"> * </span>
+          </label>
+          <div class="col-md-8" ng-class="{ 'has-error' : addProfileForm.ConversionAmount.$invalid && !addProfileForm.ConversionAmount.$pristine}">
+            <input type="text" placeholder=" $ " ng-model="vm.personalDetails.ConversionAmount" class="form-control" name="ConversionAmount"
+              required />
+            <span class="help-block" ng-messages="addProfileForm.ConversionAmount.$error" ng-if="addProfileForm.ConversionAmount.$dirty && addProfileForm.ConversionAmount.$invalid">
+              <span ng-show="addProfileForm.ConversionAmount.$error.required">Field is required.</span>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="row addEmployee-row">
+        <div class="col-md-6">
+          <label class="control-label col-md-4">Background Check Cost:
+            <span class="required"> * </span>
+            <br>(one time for an employee)
+          </label>
+          <div class="col-md-8" ng-class="{ 'has-error' : addProfileForm.CheckCost.$invalid && !addProfileForm.CheckCost.$pristine}">
+            <input type="number" placeholder=" $ " min="0" ng-model="vm.employersProfiles.Background_Test_Cost" class="form-control"
+              name="CheckCost" required />
+            <span class="help-block" ng-messages="addProfileForm.CheckCost.$error" ng-if="addProfileForm.CheckCost.$dirty && addProfileForm.CheckCost.$invalid">
+              <span ng-show="addProfileForm.CheckCost.$error.required">Cost is required.</span>
+              <!-- <span ng-show="addProfileForm.CheckCost.$error.pattern">Invalid employee name.</span> -->
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label col-md-4">Drug Test Cost :
+            <span class="required"> * </span>
+            <br>(one time for an employee)
+          </label>
+          <div class="col-md-8" ng-class="{ 'has-error' : addProfileForm.DrugCost.$invalid && !addProfileForm.DrugCost.$pristine}">
+            <input type="number" placeholder=" $ " min="0" ng-model="vm.employersProfiles.Drug_Test_Cost" class="form-control"
+              name="DrugCost" required />
+            <span class="help-block" ng-messages="addProfileForm.DrugCost.$error" ng-if="addProfileForm.DrugCost.$dirty && addProfileForm.DrugCost.$invalid">
+              <span ng-show="addProfileForm.DrugCost.$error.required">Cost is required.</span>
+              <!-- <span ng-show="addProfileForm.DrugCost.$error.pattern">Invalid employee name.</span> -->
+          </div>
+        </div>
+      </div>
+
+      <div class="row addEmployee-row">
+        <div class="col-md-6">
+          <label class="control-label col-md-4">Minimum work Hrs:
+            <span class="required"> * </span>
+          </label>
+          <div class="col-md-8" ng-class="{ 'has-error' : addProfileForm.minWorkHours.$invalid && !addProfileForm.minWorkHours.$pristine}">
+            <input type="number" placeholder=" $ " min="0" ng-model="vm.employersProfiles.Minimum_Work_Hours" class="form-control"
+              name="minWorkHours" required />
+            <span class="help-block" ng-messages="addProfileForm.minWorkHours.$error" ng-if="addProfileForm.minWorkHours.$dirty && addProfileForm.minWorkHours.$invalid">
+              <span ng-show="addProfileForm.minWorkHours.$error.required">Field is required.</span>
+              <!-- <span ng-show="addProfileForm.minWorkHours.$error.pattern">Invalid employee name.</span> -->
+          </div>
+        </div>
+      </div>
+    </form>
+    <div class="portlet light portlet-fit application_print">
+
+      <ul class="list-group">
+        <li class="list-group-item addShift-bgClr">
+          <div class="portlet-body application_print">
+            <div class="row">
+              <div class="col-md-12">
+                <h3>Conversion Time </h3>
+              </div>
+            </div>
+            <form name="conversionform" novalidate>
+              <div class="row addEmployee-row">
+                <div class="col-md-4 text-center">
+                  <label class="control-label col-md-4">From Hours
+                    <span class="required"> * </span>
+                  </label>
+                  <div class="col-md-8" ng-class="{ 'has-error' : conversionform.ConversionFormTime.$invalid && !conversionform.ConversionFormTime.$pristine}">
+                    <input type="number" placeholder="No. of Hrs" name="ConversionFormTime" ng-model="vm.ConversionTimeDetails.ConversionStartTime"
+                      class="form-control" min="1" required />
+                    <span class="help-block" ng-messages="conversionform.ConversionFormTime.$error" ng-if="conversionform.ConversionFormTime.$dirty && conversionform.ConversionFormTime.$invalid">
+                      <span ng-show="conversionform.ConversionFormTime.$error.required">From Hours is required.</span>
+                      <span ng-show="conversionform.ConversionFormTime.$error.min"></span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-4 text-center">
+                  <label class="control-label col-md-4">To Hours
+                    <span class="required"> * </span>
+                  </label>
+                  <div class="col-md-8" ng-class="{ 'has-error' : conversionform.ConversionToTime.$invalid && !conversionform.ConversionToTime.$pristine}">
+                    <input type="number" placeholder="No. of Hrs" min="{{vm.ConversionTimeDetails.ConversionStartTime}}"
+                      ng-model="vm.ConversionTimeDetails.ConversionEndTime" class="form-control" name="ConversionToTime"
+                      required />
+                    <span class="help-block" ng-messages="conversionform.ConversionToTime.$error" ng-if="conversionform.ConversionToTime.$dirty && conversionform.ConversionToTime.$invalid">
+                      <span ng-show="conversionform.ConversionToTime.$error.required">To Hours is required.</span>
+                      <span ng-show="conversionform.ConversionToTime.$error.min">Invalid Hours.Please enter valid
+                        number.</span>
+                      <span></span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-4 text-center">
+                  <label class="control-label col-md-4">Conversion Fee
+                    <span class="required"> * </span>
+                  </label>
+                  <div class="col-md-8" ng-class="{ 'has-error' : conversionform.ConversionFee.$invalid && !conversionform.ConversionFee.$pristine}">
+                    <input type="number" placeholder="Amount (In Percent)" ng-model="vm.ConversionTimeDetails.ConversionFee"
+                      class="form-control" name="ConversionFee" required />
+                    <span class="help-block" ng-messages="conversionform.ConversionFee.$error" ng-if="conversionform.ConversionFee.$dirty && conversionform.ConversionFee.$invalid">
+                      <span ng-show="conversionform.ConversionFee.$error.required">Conversion Fee is required.</span>
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row addEmployee-row">
+                <div class="form-actions">
+                  <div class="col-md-12 text-right">
+                    <button class="margin-top-10 hidden-print btn btn-xs btn-primary pull-right" style="
+                            margin-right: 30px;"
+                      ng-disabled="conversionform.$invalid" ng-click="vm.addConversionTimeList()">
+                      <i class="fa fa-plus"></i> </button>
+                    <!-- <button type="submit" class="btn blue addShiftBtn" ui-sref="app.addShiftDetails">Add Conversion Details </button> -->
+                  </div>
+                </div>
+              </div>
+            </form>
+            <div class="portlet light portlet-fit application_print" ng-show="vm.employersProfiles.conversionTime.length">
+              <ul class="list-group">
+                <li class="list-group-item addJobShift-bgClr">
+                  <table class="table">
+                    <thead>
+                      <th class="text-center">From Hours</th>
+                      <th class="text-center">To Hours</th>
+                      <th class="text-center">Conversion Fee</th>
+                      <th class="text-center">Actions</th>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="conversion in vm.employersProfiles.conversionTime track by $index">
+                        <td class="text-center"> {{conversion.ConversionStartTime}} </td>
+                        <td class="text-center"> {{conversion.ConversionEndTime}} </td>
+                        <td class="text-center"> {{conversion.ConversionFee}} </td>
+                        <td class="text-center">
+                          <button ng-click="vm.editConversionData($index)" class="btn btn-xs btn-primary">
+                            <i class="glyphicon glyphicon-edit"></i> </button>
+                          <button ng-click="vm.deleteConversionTime($index)" class="btn btn-xs btn-primary">
+                            <i class="glyphicon glyphicon-trash"></i> </button>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </li>
+                <!-- <li class="list-group-item addJobShift-bgClr">
+                      <div class="portlet-body application_print">
+                        <div class="row addEmployee-row">
+                          <div class="col-md-4">
+                            <label class="control-label col-md-4">From Hours
+                               <span class="required"> * </span> 
+                            </label>
+                            <div class="col-md-8">
+                              <input type="number" placeholder="No. of Hrs" ng-model="" class="form-control" name="ConversionStartTime"
+                                required />
+                              <span class="help-block" ng-messages="addProfileForm.empName.$error" ng-if="addProfileForm.empName.$dirty && addProfileForm.empName.$invalid">
+                                <span ng-show="addProfileForm.empName.$error.required">Field name is required.</span>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-md-4 text-center">
+                            <label class="control-label col-md-4">To Hours
+                               <span class="required"> * </span> 
+                            </label>
+                            <div class="col-md-8">
+                              <input type="number" placeholder="No. of Hrs" ng-model="" class="form-control" name="ConversionStartTime"
+                                required />
+                              <span class="help-block" ng-messages="addProfileForm.empName.$error" ng-if="addProfileForm.empName.$dirty && addProfileForm.empName.$invalid">
+                                <span ng-show="addProfileForm.empName.$error.required">Field name is required.</span>
+                              </span>
+                            </div>
+                          </div>
+                          <div class="col-md-4 text-center">
+                            <label class="control-label col-md-4">Conversion Feee
+                               <span class="required"> * </span> 
+                            </label>
+                            <div class="col-md-8" ng-class="{ 'has-error' : addProfileForm.ConversionStartTime.$invalid && !addProfileForm.ConversionStartTime.$pristine}">
+                              <input type="number" placeholder="Amount (In Percent)" ng-model="vm.ConversionStartTime"
+                                class="form-control" name="ConversionStartTime" required />
+                              <span class="help-block" ng-messages="addProfileForm.empName.$error" ng-if="addProfileForm.empName.$dirty && addProfileForm.empName.$invalid">
+                                <span ng-show="addProfileForm.empName.$error.required">Field name is required.</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </li> -->
+              </ul>
+            </div>
+
+          </div>
+        </li>
+      </ul>
+
+    </div>
+
+    <div class="portlet light portlet-fit application_print" ng-show="vm.showShiftDetails">
+      <form name="shiftform" novalidate>
+        <ul class="list-group">
+          <li class="list-group-item addShift-bgClr">
+            <div class="portlet-body application_print">
+              <div class="row" ng-show="vm.showShiftDetails">
+                <div class="col-md-12">
+                  <h3>Shift Profile </h3>
+                </div>
+              </div>
+              <div class="row addEmployee-row" ng-show="vm.showShiftDetails">
+                <div class="col-md-6">
+                  <label class="control-label col-md-3 text-center">Shift
+                    <span class="required"> * </span>
+                  </label>
+                  <div class="col-md-9" ng-class="{ 'has-error' : shiftform.empShift.$invalid && !shiftform.empShift.$pristine}">
+                    <select class="form-control" ng-model="vm.employerShifts.Shift" name="empShift" required>
+                      <option value="">Select</option>
+                      <option value="Daily">Daily</option>
+                      <option value="Morning">Morning</option>
+                      <option value="Day">Day</option>
+                      <option value="Night">Night</option>
+                    </select>
+                    <span class="help-block" ng-messages="shiftform.empShift.$error" ng-if="shiftform.empShift.$dirty && addProfileForm.empShift.$invalid">
+                      <span ng-show="shiftform.empShift.$error.required">Option is required.</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="col-md-6">
+
+                  <label class="control-label col-md-3 text-center">Break:
+                    <span class="required"> * </span>
+                  </label>
+                  <div class="col-md-9" ng-class="{ 'has-error' : shiftform.Break.$invalid && !shiftform.Break.$pristine}">
+                    <input type="number" min="0" ng-model="vm.employerShifts.Break" class="form-control" name="Break"
+                      required />
+                    <span class="help-block" ng-messages="shiftform.Break.$error" ng-if="shiftform.Break.$dirty && shiftform.Break.$invalid">
+                      <span ng-show="shiftform.Break.$error.required">Field is required.</span>
+                      <!-- <span ng-show="addProfileForm.Break.$error.pattern">Invalid employee name.</span> -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="row addEmployee-row" ng-show="vm.showShiftDetails">
+
+                <div class="col-md-6">
+                  <label class="control-label col-md-3 text-center">Start Time :
+                    <span class="required"> * </span>
+                  </label>
+                  <div class="col-md-9">
+                    <div class='input-group date' id='addProfileStartTimeDatePicker' ng-class="{ 'has-error' : shiftform.empStartTime.$invalid && !shiftform.empStartTime.$pristine}">
+                      <input type="text" ng-model="vm.employerShifts.Start_Time" class="form-control" name="empStartTime"
+                        required />
+                      <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                      </span>
+                      <span class="help-block" ng-messages="shiftform.empStartTime.$error" ng-if="shiftform.empStartTime.$dirty && shiftform.empStartTime.$invalid">
+                        <span ng-show="shiftform.empStartTime.$error.required">Field is required.</span>
+                      </span>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <label class="control-label col-md-3 text-center">End Time
+                    <span class="required"> * </span>
+                  </label>
+                  <div class="col-md-9">
+                    <div class='input-group date' id='addProfileEndTimeDatePicker'>
+                      <input type='text' class="form-control" name="startTime" ng-model="vm.employerShifts.End_Time"
+                        ng-required="true" />
+                      <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-time"></span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="row addEmployee-row" ng-show="vm.showShiftDetails">
+
+                <div class="col-md-6">
+                  <label class="control-label col-md-3 text-center">Days :
+                    <span class="required"> * </span>
+                  </label>
+                  <div class="col-md-9" ng-class="{ 'has-error' : shiftform.ShiftDay.$invalid && !shiftform.ShiftDay.$pristine}">
+                    <select class="form-control" ng-model="vm.employerShifts.Days" name="ShiftDay" required>
+                      <option value="">Select</option>
+                      <option value="Daily">Daily</option>
+                      <option value="Monday">Monday</option>
+                      <option value="Tuesday">Tuesday</option>
+                      <option value="Wednesday">Wednesday</option>
+                      <option value="Thursday">Thursday</option>
+                      <option value="Friday">Friday</option>
+                      <option value="Saturday">Saturday</option>
+                      <option value="Sunday">Sunday</option>
+                    </select>
+                    <span class="help-block" ng-messages="shiftform.ShiftDay.$error" ng-if="shiftform.ShiftDay.$dirty && shiftform.ShiftDay.$invalid">
+                      <span ng-show="shiftform.ShiftDay.$error.required">Option is required.</span>
+                    </span>
+                  </div>
+                </div>
+                <div class="row addEmployee-row">
+                  <div class="form-actions">
+                    <div class="col-md-12 text-right">
+                      <button type="submit" ng-disabled="shiftform.$invalid" ng-click="vm.saveShiftDetails()" class="btn blue addShiftBtn mg-right">
+                        Save Shift</button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="portlet light portlet-fit application_print" ng-show="vm.employersProfiles.employerShifts.length">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h3 style="margin: 11px !important;">Shift Profile </h3>
+                  </div>
+                </div>
+                <ul class="list-group">
+                  <li class="list-group-item addJobShift-bgClr">
+                    <table class="table">
+                      <thead>
+                        <th class="text-center">#</th>
+                        <th class="text-center">Shift</th>
+                        <th class="text-center">Days</th>
+                        <th class="text-center">Start_Time</th>
+                        <th class="text-center">End_Time</th>
+                        <th class="text-center">Actions</th>
+                        <th class="text-center">Add Job Description</th>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="shift in vm.employersProfiles.employerShifts track by $index">
+                          <td class="text-center"> {{$index + 1}} </td>
+                          <td class="text-center"> {{shift.Shift}} </td>
+                          <td class="text-center"> {{shift.Days}} </td>
+                          <td class="text-center"> {{shift.Start_Time}} </td>
+                          <td class="text-center"> {{shift.End_Time}} </td>
+                          <td class="text-center">
+                            <button ng-click="vm.editshift($index, shift)" ng-class="{active : vm.activeEditMenu === shift}">
+                              <i class="glyphicon glyphicon-edit"></i> </button>
+                            <button ng-click="vm.deleteShift($index)" class="btn btn-xs btn-primary">
+                              <i class="glyphicon glyphicon-trash"></i> </button>
+                          </td>
+                          <td class="text-center"> <button ng-click="vm.showShiftJobDescription($index, shift)"
+                              ng-class="{active : vm.activeMenu === shift}">
+                              <i class="glyphicon glyphicon-plus"></i> </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </li>
+                </ul>
+              </div>
+              <div ng-show="vm.showJobDescription">
+                <form name="jobDescriptionForm" novalidate>
+                  <div class="portlet light portlet-fit application_print">
+                    <ul class="list-group">
+                      <li class="list-group-item addJobShift-bgClr">
+                        <div class="portlet-body application_print">
+                          <div class="row addEmployee-row">
+                            <div class="col-md-6">
+                              <label class="control-label col-md-3">Job Description
+                              </label>
+                              <div class="col-md-9">
+                                <select class="form-control" name="job" ng-model="vm.shiftJobProfiles.Job_Profile_Id">
+                                  <option value="">Select</option>
+                                  <option value="Fitter">Fitter</option>
+                                  <option value="Welder">Welder</option>
+                                </select>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <label class="control-label col-md-3">Over Time pay:
+                              </label>
+                              <div class="col-md-9" ng-class="{ 'has-error' : jobDescriptionForm.overTimePay.$invalid && !jobDescriptionForm.overTimePay.$pristine}">
+                                <input type="text" min="0" step=".01" placeholder="$" ng-pattern="/^\d*(\.\d{0,2})?$/"
+                                  ng-model="vm.shiftJobProfiles.Over_Time_Pay" class="form-control" name="overTimePay"
+                                  id="overTimePay">
+                                <span class="help-block" ng-messages="jobDescriptionForm.overTimePay.$error" ng-if="jobDescriptionForm.overTimePay.$dirty && jobDescriptionForm.overTimePay.$invalid">
+                                  <span ng-show="jobDescriptionForm.overTimePay.$error.pattern">Invalid</span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row addEmployee-row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label class="control-label col-md-3">Regular Pay:
+                                </label>
+                                <div class="col-md-9" ng-class="{ 'has-error' : jobDescriptionForm.regularPay.$invalid && !jobDescriptionForm.regularPay.$pristine}">
+                                  <input type="text" placeholder="$" pattern='/^\d*(\.\d{0,2})?$/' min="0" ng-model="vm.shiftJobProfiles.Regular_Pay"
+                                    class="form-control" name="regularPay" id="usr">
+                                  <span class="help-block" ng-messages="jobDescriptionForm.regularPay.$error" ng-if="jobDescriptionForm.regularPay.$dirty && jobDescriptionForm.regularPay.$invalid">
+                                    <span ng-show="jobDescriptionForm.regularPay.$error.pattern">Invalid</span>
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+
+                  <div class="row addEmployee-row" ng-show="vm.showShiftDetails">
+                    <div class="form-actions">
+                      <div class="col-md-12 text-right">
+                        <button type="submit" class="btn blue addShiftBtn" ng-click="vm.addJobDescription()">
+                          Add Job Description</button>
+                      </div>
+                    </div>
+
+                  </div>
+                  <div class="row addEmployee-row" ng-show="vm.showShiftDetails">
+                    <div class="form-actions">
+                      <div class="col-md-12 text-right">
+                        <button type="submit" class="btn blue addShiftBtn" ng-click="vm.cancelJobDescription()">
+                          Cancel</button>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <div class="portlet light portlet-fit application_print" ng-show="vm.employersProfiles.employerShifts[vm.shiftEditIndex].shiftJobProfiles.length">
+                <div class="row">
+                  <div class="col-md-12">
+                    <h3 style="margin: 11px !important;">Job Description </h3>
+                  </div>
+                </div>
+                <ul class="list-group">
+                  <li class="list-group-item addJobShift-bgClr">
+                    <table class="table">
+                      <thead>
+                        <th class="text-center">#</th>
+                        <th class="text-center">Regular Pay</th>
+                        <th class="text-center">Over Time Pay</th>
+                        <th class="text-center">Job Profile</th>
+                        <th class="text-center">Actions</th>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="jobDescription in vm.employersProfiles.employerShifts[vm.shiftEditIndex].shiftJobProfiles track by $index">
+                          <td class="text-center"> {{$index + 1}} </td>
+                          <td class="text-center"> {{jobDescription.Regular_Pay}} </td>
+                          <td class="text-center"> {{jobDescription.Over_Time_Pay}} </td>
+                          <td class="text-center"> {{jobDescription.Job_Profile_Id}} </td>
+                          <td class="text-center">
+                            <button ng-click="vm.editJobDescription($index)" class="btn btn-xs btn-primary">
+                              <i class="glyphicon glyphicon-edit"></i> </button>
+                            <button ng-click="vm.deleteJobDescription($index)" class="btn btn-xs btn-primary">
+                              <i class="glyphicon glyphicon-trash"></i> </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </form>
+    </div>
+
+    <div class="row addEmployee-row">
+      <div class="form-actions">
+        <div class="col-md-12 text-center">
+          <button type="submit" class="btn blue addShiftBtn" ng-click="vm.showShiftPanel()">Add Shift</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="form-actions">
+        <div class="col-md-6 text-left">
+          <!-- ng-disabled="addProfileForm.$invalid && conversionform.$invalid && shiftform.$invalid" -->
+          <button type="submit" class="btn blue" ng-click="vm.saveClientProfile()">Save</button>
+        </div>
+        <div class="col-md-6 text-right">
+          <button type="submit" ng-click="vm.cancel()" class="btn blue">Cancel</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

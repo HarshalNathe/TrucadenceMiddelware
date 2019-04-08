@@ -1,0 +1,24 @@
+type: object
+properties:
+  id:
+    type: string
+  Candidate_ID:
+    type: string
+  Is_BSA_Fill:
+    type: boolean
+  Is_Drug_Testing_Fill:
+    type: boolean
+  Is_Safety_Rules_Fill:
+    type: boolean
+  Is_Personal_Allowance_Fill:
+    type: boolean
+  Is_Illinois_Allowance_Fill:
+    type: boolean
+  Is_SelfIdentification_Fill:
+    type: boolean
+  Is_EmploymentEligibilityVerification_Fill:
+    type: boolean
+  Is_IdolEmployment_Fill:
+    type: boolean
+
+

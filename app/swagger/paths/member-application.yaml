@@ -1,0 +1,84 @@
+x-swagger-router-controller: member-application-controller
+post:
+  operationId: memberPost
+  description: "Create a new member application"
+  summary: "Create a new member application"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: member
+      in: body
+      description: "Fill member details alongwith attachments"
+      required: false
+      schema:
+        $ref: "#/definitions/MemberApplication"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/MemberApplication"
+    "403":
+      description: "pass valid input"
+      schema:
+        $ref: "#/definitions/Error"
+get:
+  operationId: memberGet
+  description: "List of member information with attachments"
+  summary: "Get list of member information with attachments"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: candidateId
+      in: query
+      description: "Provide candidate ID"
+      required: true
+      type: string
+    - name: AttachmentTypeID
+      in: query
+      description: "Provide Attachment Type ID"
+      required: true
+      type: string
+    - name: FormMasterID
+      in: query
+      description: "Provide Form Master ID"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/MemberApplication"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+put:
+  operationId: memberPut
+  description: "Update existing member alongwith attachments"
+  summary: "Update existing member alongwith attachments"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: member
+      in: body
+      description: "Provide member information alongwith attachments"
+      required: false
+      schema:
+        $ref: "#/definitions/MemberApplication"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/MemberApplication"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+
+

@@ -1,0 +1,53 @@
+x-swagger-router-controller: user-controller
+get:
+  operationId: userGet
+  description: "List of user"
+  summary: "Gets list of user"
+  security:
+    - OAuth2: []
+  tags:
+    - "/users"
+  parameters:
+    - name: userId
+      in: query
+      description: "id of user"
+      required: true
+      type: string
+    - name: secureFieldPassword
+      in: query
+      description: "provide secure field password value"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/Users"
+    "403":
+      description: "Wrong ID's"
+      schema:
+        $ref: "#/definitions/Error"
+put:
+  operationId: userPut
+  description: "Update particular user profile"
+  summary: "Update particular user profile"
+  security:
+    - OAuth2: []
+  tags:
+    - "/users"
+  parameters:
+    - name: userProfile
+      in: body
+      description: "Provide userProfile details"
+      required: false
+      schema:
+        $ref: "#/definitions/Users"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/Users"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"

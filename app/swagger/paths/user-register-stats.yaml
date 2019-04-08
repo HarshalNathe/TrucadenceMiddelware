@@ -1,0 +1,19 @@
+x-swagger-router-controller: dashboard-controller
+get:
+  operationId: userRegistrationStatsGet
+  description: "Display current user statistics"
+  summary: "Display current user statistics"
+  security:
+    - OAuth2: []
+  tags:
+    - "/dashboard"
+  parameters: []
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/Response"
+    "403":
+      description: "Unable to display"
+      schema:
+        $ref: "#/definitions/Error"

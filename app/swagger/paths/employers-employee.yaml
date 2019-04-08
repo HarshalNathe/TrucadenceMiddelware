@@ -1,0 +1,95 @@
+x-swagger-router-controller: employers-employee-controller
+get:
+  operationId: employersEmployeeGet
+  description: "get employersEmployee detail through employerID"
+  summary: "Get employersEmployee detail through employerID"
+  security:
+    - OAuth2: []
+  tags:
+    - "/employer"
+  parameters:
+    - name: employerId
+      in: query
+      description: "Provide employer id"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/EmployersEmployee"
+    "404":
+      description: "Not found"
+      schema:
+        $ref: "#/definitions/Error"
+post:
+  operationId: employersEmployeeCreate
+  description: "Create new employersEmployee"
+  summary: "Create new employersEmployee"
+  security:
+    - OAuth2: []
+  tags:
+    - "/employer"
+  parameters:
+    - name: employersEmployee
+      in: body
+      description: "Fill employersEmployee details"
+      required: false
+      schema:
+        $ref: "#/definitions/EmployersEmployeeDetail"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/EmployersEmployeeDetail"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+put:
+  operationId: employersEmployeeUpdate
+  description: "Update employee detail through employeeId"
+  summary: "Update employee detail through employeeId"
+  security:
+    - OAuth2: []
+  tags:
+    - "/employer"
+  parameters:
+    - name: employersEmployee
+      in: body
+      description: "Fill employersEmployee details to be updated"
+      required: false
+      schema:
+        $ref: "#/definitions/EmployersEmployeeDetail"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/EmployersEmployeeDetail"
+    "403":
+      description: "Wrong EmployersEmployee Id"
+      schema:
+        $ref: "#/definitions/Error"
+delete:
+  operationId: employersEmployeeDelete
+  description: "Delete employee through employeeId"
+  summary: "Delete employee through employeeId"
+  security:
+    - OAuth2: []
+  tags:
+    - "/employer"
+  parameters:
+    - name: id
+      in: query
+      description: "Provide employersEmployee Id whose record to be deleted"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/EmployersEmployeeDetail"
+    "403":
+      description: "Wrong EmployersEmployee Id"
+      schema:
+        $ref: "#/definitions/Error"

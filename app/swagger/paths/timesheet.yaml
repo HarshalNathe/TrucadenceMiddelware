@@ -1,0 +1,109 @@
+x-swagger-router-controller: timesheet-controller
+post:
+  operationId: timeSheetPost
+  description: "Create timeSheet for employee"
+  summary: "Create timeSheet for employee"
+  security:
+    - OAuth2: []
+  tags:
+    - "/employer"
+  parameters:
+    - name: args
+      in: body
+      description: "Fill timeSheet for employee"
+      schema:
+        properties:
+          sources:
+            type: array
+            items:
+              $ref: "#/definitions/TimeSheet"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/TimeSheet"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+get:
+  operationId: timeSheetGet
+  description: "Get timesheet through employerId"
+  summary: "Get timesheet through employerId"
+  security:
+    - OAuth2: []
+  tags:
+    - "/employer"
+  parameters:
+    - name: employerId
+      in: query
+      description: "Provide employerId which displays associated timesheet"
+      required: true
+      type: string
+    - name: startDate
+      in: query
+      description: "Provide start date filter which displays associated timesheet"
+      required: true
+      type: string
+    - name: endDate
+      in: query
+      description: "Provide end date filter which displays associated timesheet"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/TimeSheet"
+    "403":
+      description: "Wrong employer Id"
+      schema:
+        $ref: "#/definitions/Error"
+delete:
+  operationId: timeSheetDelete
+  description: "Delete timesheet through timesheetId"
+  summary: "Delete timesheet through timesheetId"
+  security:
+    - OAuth2: []
+  tags:
+    - "/employer"
+  parameters:
+    - name: id
+      in: query
+      description: "Provide timesheet Id whose record to be deleted"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/TimeSheet"
+    "403":
+      description: "Wrong TimeSheet Id"
+      schema:
+        $ref: "#/definitions/Error"
+put:
+  operationId: timeSheetUpdate
+  description: "Update particular timeSheet through timesheetId"
+  summary: "Update particular timeSheet"
+  security:
+    - OAuth2: []
+  tags:
+    - "/employer"
+  parameters:
+    - name: args
+      in: body
+      description: "Provide timeSheet details which is to be updated"
+      required: false
+      schema:
+        $ref: "#/definitions/TimeSheet"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/TimeSheet"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+

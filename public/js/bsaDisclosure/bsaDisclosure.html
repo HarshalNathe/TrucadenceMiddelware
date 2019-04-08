@@ -1,0 +1,503 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="row hidden-print" cg-busy="vm.promise">
+  <div class="col-md-6">
+    <h1 class="page-title">BSA Disclosure</h1>
+  </div>
+  <!-- <div class="col-md-6" ng-show="vm.showBreadCrumbs">
+    <div class="page-bar">
+      <ul class="page-breadcrumb">
+        <li>
+          <i class="icon-home"></i>
+          <a href="" ui-sref="app.home">Home</a>
+          <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+          <a href="" ng-click="vm.goToCandidateDetail()">Candidate Dashboard</a>
+          <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+          <a href="">
+            <span>BSA Disclosure</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </div> -->
+</div>
+<!-- END PAGE HEADER-->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light portlet-fit ">
+      <div class="portlet-title">
+        <div class="caption text-center">
+          <i class=" icon-layers font-green"></i>
+          <span class="caption-subject font-green bold uppercase">DISCLOSURE AND RELEASE FORM (Databased Records) 15
+            U.S.C. §1681b and 1681k</span>
+          <p>Background Screeners of America · 15335 Morrison St. Suite 245 Sherman Oaks, CA 91403 · 866-570-4949 · FAX
+            866-570-5656
+            ·
+          </p>
+        </div>
+        <button class="btn btn-primary pull-right btn-xs hidden-print" ng-click="vm.edit()" ng-hide="!vm.isEdit"><i
+            class="fa fa-edit"></i> Edit</button>
+      </div>
+      <div class="portlet-body">
+
+        <p>In connection with my application for employment (including contract for services or volunteer services) or
+          tenancy with
+          <strong>Trucadence LLC</strong> , at
+          <strong> 1 TIFFANY POINTE, SUITE 108, BLOOMINGDALE IL 60108</strong>, I understand that an investigative
+          background inquiry is
+          to be made on myself. The resulting reports may include the following types of information: names and dates
+          of previous
+          employers, reason for termination of employment, work experience, education, accidents, licensure, credit,
+          etc. I further
+          understand that such reports may contain current and/or databased public record information such as, but not
+          limited
+          to: my driving record, workers’ compensation claims, credit, judgments, bankruptcy proceedings, criminal
+          records, etc.,
+          from federal, state and other commercial agencies which maintain such records. Public records will include
+          records obtained
+          from commercial databases. </p>
+
+        <p>
+          <strong> AUTHORIZE, WITHOUT RESERVATION, ANY PARTY OR AGENCY CONTACTED BY THE CONSUMER REPORTING AGENCY TO
+            FURNISH THE ABOVE-MENTIONED
+            INFORMATION.
+          </strong>
+        </p>
+        <p> I have the right to make a request to the consumer reporting agency, Background Screeners of America: upon
+          proper identification,
+          to request the nature and substance of all information in its files on me at the time of my request,
+          including the sources
+          of information; and the recipients of any reports on me which the agency has previously furnished within the
+          two year
+          period for employment requests, and one year for other purposes preceding my request (California three
+          years). I hereby
+          consent to your obtaining the above information from the agency; and I agree that such information which the
+          agency
+          has or obtains, and my employment or tenant history with you, may be supplied by you to the agency for
+          release to other
+          companies which subscribe to the agency’s services. I hereby authorize procurement of consumer report(s). If
+          hired (or
+          contracted), this authorization shall remain on file and shall serve as ongoing authorization for you to
+          procure consumer
+          reports at any time during my employment (or contract) period
+        </p>
+        <form name="bsaDisclosureForm" novalidate>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mt-checkbox-inline">
+                <label class="mt-checkbox">
+                  <input type="checkbox" ng-model="vm.Is_ConsumerReport_Available" id="inlineCheckbox21" ng-disabled="vm.isEdit"
+                    ng-value="option1"> California, Minnesota and Oklahoma Applicants only: Check box if you request a
+                  copy of any consumer report ordered
+                  on you
+                  <span></span>
+                </label>
+              </div>
+              <div class="mt-checkbox-inline">
+                <label class="mt-checkbox">
+                  <input type="checkbox" ng-model="vm.Is_ConsumerReport_Provided" id="inlineCheckbox21" ng-disabled="vm.isEdit"
+                    ng-value="option1" name="acknowledge" required> I acknowledge I have been provided a copy of
+                  consumer’s rights under the Fair Credit Reporting Act.
+                  <span></span>
+                </label>
+                <span class="help-block" ng-messages="bsaDisclosureForm.acknowledge.$error" ng-if="bsaDisclosureForm.acknowledge.$invalid && bsaDisclosureForm.acknowledge.$dirty">
+                  <span ng-show="bsaDisclosureForm.acknowledge.$error.required">Please accept .</span>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="box application_print">
+            <div class="row">
+              <div class="col-md-6 col-xs-6">
+                <h2 class="uppercase">
+                  Name
+                </h2>
+                <p class="">
+                  {{vm.candidatDetails.First_Name}} {{vm.candidatDetails.Middle_Name}} {{vm.candidatDetails.Last_Name}}
+                </p>
+              </div>
+              <div class="col-md-6 col-xs-6">
+                <h2 class="uppercase">
+                  Birthdate
+                </h2>
+                <p class="">
+                  {{vm.candidatDetails.DOB.split('T')[0] |date : "mediumDate"}}
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-xs-6">
+                <h2 class="uppercase">
+                  Email ID
+                </h2>
+                <p class="">
+                  {{vm.candidatDetails.Email_ID}}
+                </p>
+              </div>
+              <div class="col-md-6 col-xs-6">
+                <h2 class="uppercase">
+                  Social Security
+                </h2>
+                <p class="">
+                  XXX-XX-{{vm.candidatDetails.Social_Security_Number.slice(-4);}}
+                  <a href="" class="margin-left-16 btn btn-xs hidden-print btn-primary" data-toggle="modal" data-target="#basic">
+                    <i class="fa fa-eye"></i>
+                  </a>
+                </p>
+              </div>
+            </div>
+            <div class="row" ng-if="vm.candidatDetails.bSADisclosureReleases[0].Driving_License_No != ''">
+              <div class="col-md-6 col-xs-6">
+                <h2 class="uppercase">
+                  Driving License
+                </h2>
+                <p class="">
+                  {{vm.candidatDetails.bSADisclosureReleases[0].Driving_License_No}}
+                </p>
+              </div>
+              <div class="col-md-6 col-xs-6">
+                <h2 class="uppercase">
+                  Issuing State
+                </h2>
+                <p class="">
+                  {{vm.candidatDetails.bSADisclosureReleases[0].state.Name}}
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 col-xs-6">
+                <h2 class="uppercase">
+                  Current Address
+                </h2>
+                <p class="">
+                  {{vm.candidatDetails.Address_1}}
+                  <br /> {{vm.candidatDetails.Address_2}}
+                  <br /> {{vm.candidatDetails.state.Name}}, {{vm.candidatDetails.city.Name}} {{vm.candidatDetails.ZIP}}
+                </p>
+              </div>
+              <div class="col-md-6 col-xs-6">
+                <h2 class="uppercase">
+                  Previous Address
+                </h2>
+                <p class="">
+                  {{vm.candidatDetails.Permanent_Address_1}}
+                  <br /> {{vm.candidatDetails.Permanent_Address_2}}
+                  <br /> {{vm.candidatDetails.PermanentState.Name}}, {{vm.candidatDetails.PermanentCity.Name}}
+                  {{vm.candidatDetails.Permanent_ZIP}}
+                </p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row" ng-hide="vm.isEdit">
+            <div class="col-md-12">
+              <div class="mt-checkbox-inline">
+                <label class="mt-checkbox">
+                  <input type="checkbox" ng-change="vm.usePreviousSign()" ng-model="vm.isPreviousSign" id="inlineCheckbox23"
+                    ng-hide="vm.isEdit" ng-value="option1"> Use Previous Signature ?
+                  <span></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row  margin-top-40">
+            <div class="col-md-8 col-xs-8">
+              <div class="form-group">
+                <label class="control-label col-md-3">Signature
+                  <span class="required"> * </span>
+                </label>
+
+                <div class="col-md-6">
+                  <div class="" ng-hide="vm.isEdit || vm.isPreviousSign" style="min-height: 150px;" ng-style="{'max-width': boundingBox.width + 'px', 'max-height': boundingBox.height + 'px'}">
+                    <signature-pad id="canvas" class="signature_box" ng-class="{disabled: vm.signPadDisable}" style="min-height: 150px;"
+                      accept="accept" clear="clear" height="220" width="568" dataurl="dataurl" disabled="vm.isEdit"
+                      ng-model="vm.signature.dataUrl" ng-required="true"></signature-pad>
+                    <div class="buttons text-right">
+                      <button class="btn btn-xs btn-default" ng-click="vm.clear()" ng-hide="vm.isEdit">Clear</button>
+                      <button class="btn btn-xs btn-success" ng-click="vm.signature = accept();vm.signaturePadDisabled();">Sign</button>
+                    </div>
+                  </div>
+                  <img class="img-responsive signature_img" data-ng-src="{{vm.getImage()}}" ng-if="vm.isEdit || vm.isPreviousSign" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-xs-4">
+              <div class="form-group">
+                <label class="control-label col-md-6">Date: {{vm.AssignedDate | date}}</label>
+                <!--<div class="col-md-8">
+									<input type="text" class="form-control" disabled name="" />
+								</div>-->
+              </div>
+            </div>
+          </div>
+
+          <div class="row margin-top-20">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="control-label col-md-4">Employee Name
+                    <span class="required"> * </span>
+                </label>
+                <div class="col-md-8" ng-if="vm.isEdit">{{vm.bsaDisclosureDetails.CandidateAttachments[0].Employee_Name}}</div>
+                <div class="col-md-8" ng-hide="vm.isEdit" ng-class="{ 'has-error' : bsaDisclosureForm.employeeName.$invalid && !bsaDisclosureForm.employeeName.$pristine}">
+                  <input type="text" class="form-control" name="employeeName" ng-model="vm.Employee_Name" ng-pattern="/^([a-zA-Z' ]+)$/"
+                    ng-minlength="0" ng-maxlength="25" ng-required="true" />
+                  <span class="help-block" ng-messages="bsaDisclosureForm.employeeName.$error" ng-if="bsaDisclosureForm.employeeName.$dirty && bsaDisclosureForm.employeeName.$invalid">
+                    <span ng-show="bsaDisclosureForm.employeeName.$error.pattern">Invalid Employee Name.</span>
+                    <span ng-show="bsaDisclosureForm.employeeName.$error.maxlength">Employee Name is too long.</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="text-center">
+                Consumer Rights Under the FCRA
+              </h3>
+              <p>Para information en español, visite
+                <a href=""> www.ftc.gov/credit </a> o escribe a la FTC Consumer Response Center, Room 130-A
+                600Pennsylvania Ave. N. W., Washington,
+                D. C. 20580.</p>
+              <h3 class="text-center">
+                A Summary of Your Rights Under the Fair Credit Reporting Act
+              </h3>
+              <p>The federal Fair Credit Reporting Act (FCRA) promotes the accuracy, fairness, and privacy of
+                information in the files
+                of consumer reporting agencies. There are many types of consumer reporting agencies, including credit
+                bureaus and
+                specialty agencies (such as agencies that sell information about check writing histories, medical
+                records, and rental
+                history records). Here is a summary of your major rights under the FCRA.
+                <strong> For more information, including information about additional rights, go to www.ftc.gov/credit
+                  or write to: Consumer
+                  Response Center, Room 130-A, Federal Trade Commission, 600 Pennsylvania Ave. N.W., Washington, D.C.
+                  20580.</strong>
+              </p>
+              <ul>
+                <li>
+                  <strong> You must be told if information in your file has been used against you. </strong>Anyone who
+                  uses a credit report
+                  or another type of consumer report to deny your application for credit, insurance, or employment - or
+                  to take another
+                  adverse action against you - must tell you, and must give you the name, address, and phone number of
+                  the agency
+                  that provided the information
+                </li>
+                <li>
+                  <strong>You have the right to know what is in your file.</strong> You may request and obtain all the
+                  information about you
+                  in the files of a consumer reporting agency (your "file disclosure"). You will be required to provide
+                  proper identification,
+                  which may include your Social Security number. In many cases, the disclosure will be free. You are
+                  entitled to a
+                  free file disclosure if:
+                  <ul>
+                    <li> a person has taken adverse action against you because of information in your credit report;
+                    </li>
+                    <li>you are the victim of identity</li>
+                    <li>theft and place a fraud alert in your file;</li>
+                    <li>your file contains inaccurate information as a result of fraud; </li>
+                    <li> you are on public assistance; </li>
+                    <li>you are unemployed but expect to apply for employment within 60 days.</li>
+                  </ul>
+                  In addition, by September 2005 all consumers will be entitled to one free disclosure every 12 months
+                  upon request from each
+                  nationwide credit bureau and from nationwide specialty consumer reporting agencies. See
+                  www.ftc.gov/credit for additional
+                  information.
+                </li>
+                <li>
+                  <strong> You have the right to ask for a credit score. </strong>Credit scores are numerical summaries
+                  of your credit-worthiness
+                  based on information from credit bureaus. You may request a credit score from consumer reporting
+                  agencies that create
+                  scores or distribute scores used in residential real property loans, but you will have to pay for it.
+                  In some mortgage
+                  transactions, you will receive credit score information for free from the mortgage lender.
+                </li>
+                <li>
+                  <strong> You have the right to dispute incomplete or inaccurate information.</strong> If you identify
+                  information in your
+                  file that is incomplete or inaccurate, and report it to the consumer reporting agency, the agency
+                  must investigate
+                  unless your dispute is frivolous. See www.ftc.gov/credit for an explanation of dispute procedures.
+                </li>
+                <li>
+                  <strong>Consumer reporting agencies must correct or delete inaccurate, incomplete, or unverifiable
+                    information.</strong>
+                  Inaccurate, incomplete or unverifiable information must be removed or corrected, usually within 30
+                  days. However, a consumer
+                  reporting agency may continue to report information it has verified as accurate.</li>
+                <li>
+                  <strong>Consumer reporting agencies may not report outdated negative information.</strong> In most
+                  cases, a consumer reporting
+                  agency may not report negative information that is more than seven years old, or bankruptcies that
+                  are more than
+                  10 years old.
+                </li>
+                <li>
+                  <strong>Access to your file is limited.</strong> A consumer reporting agency may provide information
+                  about you only to people
+                  with a valid need -- usually to consider an application with a creditor, insurer, employer, landlord,
+                  or other business.
+                  The FCRA specifies those with a valid need for access.</li>
+                <li>
+                  <strong>You must give your consent for reports to be provided to employers.</strong> A consumer
+                  reporting agency may not
+                  give out information about you to your employer, or a potential employer, without your written
+                  consent given to
+                  the employer. Written consent generally is not required in the trucking industry. For more
+                  information, go to www.ftc.gov/credit
+                </li>
+                <li>
+                  <strong>You may limit "prescreened" offers of credit and insurance you get based on information in
+                    your credit report.</strong>
+                  Unsolicited "prescreened" offers for credit and insurance must include a toll-free phone number you
+                  can call if you choose
+                  to remove your name and address from the lists these offers are based on. You may opt-out with the
+                  nationwide credit
+                  bureaus at 1-888-567-8688.
+                </li>
+                <li>
+                  <strong>You may seek damages from violators. </strong>If a consumer reporting agency, or, in some
+                  cases, a user of consumer
+                  reports or a furnisher of information to a consumer reporting agency violates the FCRA, you may be
+                  able to sue in
+                  state or federal court.</li>
+                <li>
+                  <strong>Identity theft victims and active duty military personnel have additional rights.</strong>
+                  For more information,
+                  visit www.ftc.gov/credit
+                </li>
+              </ul>
+              <p>
+                <strong>
+                  States may enforce the FCRA, and many states have their own consumer reporting laws. In some cases,
+                  you may have more rights
+                  under state law. For more information, contact your state or local consumer protection agency or your
+                  state Attorney
+                  General. Federal enforcers are:
+                </strong>
+              </p>
+
+              <table class="table table-striped table-bordered">
+                <tr>
+                  <th>Types of Business</th>
+                  <th>Contact</th>
+                </tr>
+                <tr>
+                  <td>
+                    Consumer reporting agencies, creditors and others not listed below
+                  </td>
+                  <td>
+                    Federal Trade Commission: Consumer Response Center - FCRA Washington, DC 20580 1-877-382-4357
+                  </td>
+                </tr>
+                <tr>
+                  <td>National banks, federal branches/agencies of foreign banks (word "National" or initials "N.A."
+                    appear in or after
+                    bank's name)
+                  </td>
+                  <td>Office of the Comptroller of the Currency
+                    <br /> Compliance Management, Mail Stop 6-6
+                    <br /> Washington, DC 20219 800-613-6743</td>
+                </tr>
+                <tr>
+                  <td>Federal Reserve System member banks (except national banks, and federal branches/agencies of
+                    foreign banks)</td>
+                  <td>Federal Reserve Board
+                    <br />Division of Consumer & Community Affairs
+                    <br />Washington, DC 20551 202-452-3693
+                  </td>
+                </tr>
+                <tr>
+                  <td>Savings associations and federally chartered savings banks (word "Federal" or initials "F.S.B."
+                    appear in federal
+                    institution's name)
+                  </td>
+                  <td>
+                    Office of Thrift Supervision
+                    <br /> Consumer Complaints
+                    <br /> Washington, DC 20552 800-842-6929
+                  </td>
+                </tr>
+                <tr>
+                  <td>Federal credit unions (words "Federal Credit Union" appear in institution's name)</td>
+                  <td>National Credit Union Administration
+                    <br /> 1775 Duke Street
+                    <br /> Alexandria, VA 22314 703-519-4600</td>
+                </tr>
+                <tr>
+                  <td>State-chartered banks that are not members of the Federal Reserve System</td>
+                  <td>Federal Deposit Insurance Corporation
+                    <br /> Consumer Response Center, 2345 Grand Avenue, Suite 100
+                    <br /> Kansas City, Missouri 64108-2638 1-877-275-3342 </td>
+                </tr>
+                <tr>
+                  <td>Air, surface, or rail common carriers regulated by former Civil Aeronautics Board or Interstate
+                    Commerce Commission</td>
+                  <td>Department of Transportation , Office of Financial Management Washington, DC 20590 202-366-1306</td>
+                </tr>
+                <tr>
+                  <td>Activities subject to the Packers and Stockyards Act, 1921</td>
+                  <td>Department of Agriculture
+                    <br />Office of Deputy Administrator - GIPSA
+                    <br />Washington, DC 20250 202-720-7051</td>
+                </tr>
+              </table>
+
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="text-right">
+                    <ul class="button-list">
+                      <li><button class="btn hidden-print" ng-click="vm.cancel()">Cancel</button></li>
+                      <li><button class="btn btn-primary pull-right" ng-disabled="bsaDisclosureForm.$invalid" ng-click="vm.submit()"
+                          ng-hide="vm.isEdit || vm.showUpdateButton">Submit</button></li>
+                      <li><button class="btn btn-primary pull-right" ng-disabled="bsaDisclosureForm.$invalid" ng-click="vm.update()"
+                          ng-hide="!vm.showUpdateButton">Update</button></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div ng-hide="vm.hidePopUp">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">Enter Secure password</h4>
+        </div>
+        <div class="modal-body">
+          <input type="password" autocomplete="off" placeholder="Password" name="password" ng-model="vm.securePassword"
+            data-toggle="tooltip" data-placement="top" required />
+        </div>
+      </div>
+      <div class="modal-body" ng-hide="!vm.hidePopUp">
+        <h4 class="modal-title">SSN is : <strong>{{vm.ssn}} </strong></h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn dark btn-outline" data-dismiss="modal" ng-click="vm.close()">Close</button>
+        <button type="button" class="btn green" ng-hide="vm.hidePopUp" ng-click="vm.getSecurePassword()">Validate</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

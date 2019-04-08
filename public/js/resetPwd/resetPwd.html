@@ -1,0 +1,57 @@
+<!-- login page
+
+<button ui-sref="app.home">Login</button> -->
+
+<div class=" login" cg-busy="vm.promise">
+  <!-- BEGIN LOGO -->
+  <div class="logo">
+    <a href="">
+      <img src="" alt="" />
+    </a>
+  </div>
+  <!-- END LOGO -->
+  <!-- BEGIN LOGIN -->
+  <div class="content">
+    <!-- BEGIN LOGIN FORM -->
+    <form class="login-form" name="registrationForm" novalidate>
+      <h3 class="form-title font-green">Reset Password</h3>
+
+      <div class="form-group" ng-class="{ 'has-error' : registrationForm.password.$invalid && !registrationForm.password.$pristine}">
+        <label class="control-label visible-ie8 visible-ie9">Password</label>
+        <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off"
+          placeholder="New Password" name="password" ng-model="vm.newPassword" ng-pattern="/^(?=(.*[a-zA-Z].*))(?=.*[A-Z])(?=.*\d.*)(?=.*\W.*)[a-zA-Z0-9\S]{8,14}$/"
+          data-toggle="tooltip" data-placement="top" title="Password should contain atlest 1 alphabet, 1 number and 1 special character. Length must be 8-14!"
+          required />
+        <span class="help-block" ng-messages="registrationForm.password.$error" ng-if="registrationForm.password.$dirty && registrationForm.password.$invalid">
+          <span ng-show="registrationForm.password.$error.required">Password is required.</span>
+          <span ng-show="registrationForm.password.$error.pattern">Password should contain at least 1 alphabet with
+            uppercase,
+            1 number and 1 special character. Length must be 8-14!.</span>
+        </span>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : registrationForm.confirmPassword.$invalid && !registrationForm.confirmPassword.$pristine}">
+        <label class="control-label visible-ie8 visible-ie9">Confirm Password</label>
+        <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off"
+          placeholder="Confirm Password" name="confirmPassword" ng-model="confirmPassword" required password-confirm
+          match-target="vm.newPassword" />
+        <span class="help-block" ng-messages="registrationForm.confirmPassword.$error" ng-if="registrationForm.confirmPassword.$invalid && registrationForm.confirmPassword.$dirty">
+          <span ng-show="registrationForm.confirmPassword.$error.required">Password is required.</span>
+          <span ng-show="registrationForm.confirmPassword.$error.match">Must match the previous entry.</span>
+        </span>
+      </div>
+      <div class="form-actions">
+        <button class="btn green uppercase" ng-disabled="registrationForm.$invalid" ng-click="vm.changePassword()">Reset
+          Password</button>
+        <a href="" ui-sref="forgotPassword" class="forget-password">Trouble with Login </a>
+      </div>
+
+      <div class="create-account">
+        <p>
+          <a href="" ui-sref="login" class="uppercase"> Back To Login </a>
+        </p>
+      </div>
+    </form>
+    <!-- END LOGIN FORM -->
+
+  </div>
+  <div class="copyright"> 2018 © Trucadence. </div>

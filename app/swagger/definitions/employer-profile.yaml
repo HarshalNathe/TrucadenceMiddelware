@@ -1,0 +1,22 @@
+type: object
+properties:
+  id:
+    type: string
+  Employer_Id:
+    type: string
+  Over_Time_Scheme:
+    type: string
+  Regular_Commision:
+    type: number
+  Over_Time_Commision:
+    type: number
+  Background_Test_Cost:
+    type: number
+  Drug_Test_Cost:
+    type: number
+  Minimum_Work_Hours:
+    type: number
+  Created_At:
+    type: string
+  LastModified_Date:
+    type: string

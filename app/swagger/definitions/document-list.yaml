@@ -1,0 +1,10 @@
+type: object
+properties:
+  id:
+    type: string
+  Doc_Name:
+    type: string
+  Abbreviations:
+    type: string
+  List_Type:
+    type: string

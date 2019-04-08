@@ -1,0 +1,34 @@
+x-swagger-router-controller: candidate-master-controller
+get:
+  operationId: candidateDetailsById
+  description: "List of candidate by Id"
+  summary: "Gets list of candidate by Id"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: ID
+      in: path
+      description: "Candidate ID"
+      required: true
+      type: string
+    - name: AttachmentID
+      in: query
+      description: "AttachmentID"
+      required: false
+      type: string
+    - name: FormMasterID
+      in: query
+      description: "FormMasterID"
+      required: false
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/Candidate"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"

@@ -1,0 +1,15 @@
+type: object
+properties:
+  id:
+    type: string
+  Candidate_ID:
+    type: string
+  EEO_Signature_Date:
+    type: string
+  Ethnicity:
+    type: string
+  CandidateAttachments:
+    type: array
+    items:
+      $ref: ./candidate-attachments.yaml
+

@@ -1,0 +1,17 @@
+type: object
+properties:
+  id:
+    type: string
+  Employer_Shift_Id:
+    type: string
+  Regular_Pay:
+    type: number
+  Over_Time_Pay:
+    type: number
+  LastModified_At:
+    type: string
+  Created_At:
+    type: string
+  Job_Profile_Id:
+    type: string
+

@@ -1,0 +1,30 @@
+x-swagger-router-controller: employment-details-controller
+delete:
+  operationId: employmentDetaildelete
+  description: "Delete employment detail"
+  summary: "Delete employment detail"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: candidateId
+      in: query
+      description: "Candidate master id"
+      required: true
+      type: string
+    - name: employmentId
+      in: query
+      description: "Employment detail id"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/EmploymentDetails"
+    "403":
+      description: "Wrong Employment Id or Candidate Id"
+      schema:
+        $ref: "#/definitions/Error"
+

@@ -1,0 +1,32 @@
+type: object
+properties:
+  id:
+    type: string
+  Candidate_Id:
+    type: string
+  Created_At:
+    type: string
+  Employer_Id:
+    type: string
+  Employer_Shift_Id:
+    type: string
+  Hours:
+    type: string
+  In_Time:
+    type: string
+  LastModified_At:
+    type: string
+  Out_Time:
+    type: string
+  Shift_Job_Profile_Id:
+    type: string
+  Week_No:
+    type: number
+  Month:
+    type: number
+  Day:
+    type: number
+  Year:
+    type: number
+  Shift_Repeat:
+    type: string

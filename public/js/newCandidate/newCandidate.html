@@ -1,0 +1,1868 @@
+<div class="row" cg-busy="vm.promise">
+  <div class="col-md-12">
+    <div class="portlet light" id="rootwizard">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class=" icon-layers font-red"></i>
+          <span class="caption-subject font-red bold uppercase"> Application for Employment
+          </span>
+        </div>
+      </div>
+      <div class="portlet-body form">
+        <div class="form-horizontal">
+          <div class="form-wizard">
+            <div class="form-body">
+              <div class="navbar mb0">
+                <div class="navbar-inner">
+                  <ul class="nav nav-pills nav-justified steps truc_whiz">
+                    <li>
+                      <a data-target="#tab1" data-toggle="tab">
+                        <span class="gray_bg">1</span> Personal Details</a>
+                    </li>
+                    <li class="">
+                      <a data-target="#tab2" data-toggle="tab">
+                        <span class="gray_bg">2</span> Employment Details</a>
+                    </li>
+                    <li>
+                      <a data-target="#tab3" data-toggle="tab">
+                        <span class="gray_bg">3</span> Employment History</a>
+                    </li>
+                    <li>
+                      <a data-target="#tab4" data-toggle="tab">
+                        <span class="gray_bg">4</span> Confirm & Agree</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div id="bar" class="progress">
+                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                  style="width: 0%;"></div>
+              </div>
+
+              <div class="tab-content">
+                <div class="tab-pane" id="tab1">
+                  <form name="tab1From" ng-submit="submitForm(tab1From.$valid)" novalidate>
+                    <p>
+                      <strong> STATEMENT OF POLICY:</strong> Employment with Trucadence is based on individual merit,
+                      and
+                      qualification. Employment opportunities are provided without regard to race, color, sex, age,
+                      marital
+                      status, religion, national origin, or veteran status.</p>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">First Name
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.fName.$invalid && !tab1From.fName.$pristine}">
+                            <input type="text" ng-model="vm.personalDetails.firstName" class="form-control" name="fName"
+                              ng-minlength="1" ng-maxlength="20" ng-pattern='/^[a-zA-Z]+$/' required />
+                            <span class="help-block" ng-messages="tab1From.fName.$error" ng-if="tab1From.fName.$dirty && tab1From.fName.$invalid">
+                              <span ng-show="tab1From.fName.$error.required">First name is required.</span>
+                              <span ng-show="tab1From.fName.$error.pattern">Invalid first name.</span>
+                              <span ng-show="tab1From.fName.$error.minlength">First name is too short.</span>
+                              <span ng-show="tab1From.fName.$error.maxlength">First name is too long.</span>
+                          </div>
+
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Middle Name
+                            <!--<span class="required"> * </span>-->
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.mName.$invalid && !tab1From.mName.$pristine}">
+                            <input type="text" ng-model="vm.personalDetails.middleName" class="form-control" name="mName"
+                              ng-pattern='/^[a-zA-Z]+$/' ng-minlength="1" ng-maxlength="20" />
+                            <span class="help-block" ng-messages="tab1From.mName.$error" ng-if="tab1From.mName.$dirty && tab1From.mName.$invalid">
+                              <span ng-show="tab1From.mName.$error.pattern">Invalid Middle name.</span>
+                              <span ng-show="tab1From.mName.$error.minlength">Middle name is too short.</span>
+                              <span ng-show="tab1From.mName.$error.maxlength">Middle name is too long.</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Last Name
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.lName.$invalid && !tab1From.lName.$pristine}">
+                            <input type="text" ng-model="vm.personalDetails.lastName" class="form-control" name="lName"
+                              ng-minlength="1" ng-maxlength="20" ng-pattern='/^[a-zA-Z]+$/' required />
+                            <span class="help-block" ng-messages="tab1From.lName.$error" ng-if="tab1From.lName.$dirty && tab1From.lName.$invalid">
+                              <span ng-show="tab1From.lName.$error.required">Last name is required.</span>
+                              <span ng-show="tab1From.lName.$error.pattern">Invalid last name.</span>
+                              <span ng-show="tab1From.lName.$error.minlength">Last name is too short.</span>
+                              <span ng-show="tab1From.lName.$error.maxlength">Last name is too long.</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Nick Name
+                            <!--<span class="required"> * </span>-->
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.nickName.$invalid && !tab1From.nickName.$pristine}">
+                            <input type="text" ng-model="vm.personalDetails.nickName" class="form-control" name="nickName"
+                              ng-pattern='/^[a-zA-Z]+$/' ng-minlength="0" ng-maxlength="20" />
+                            <span class="help-block" ng-messages="tab1From.nickName.$error" ng-if="tab1From.nickName.$dirty && tab1From.nickName.$invalid">
+                              <span ng-show="tab1From.nickName.$error.pattern">Invalid Nick name.</span>
+                              <span ng-show="tab1From.nickName.$error.maxlength">Nick name is too long.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Other Last Name (if any)
+                          </label>
+                          <div class="col-md-8">
+                            <input type="text" ng-model="vm.personalDetails.otherLastName" class="form-control" name="otherlName"
+                              ng-maxlength="20" ng-pattern='/^[a-zA-Z]+$/' />
+                            <span class="help-block" ng-messages="tab1From.otherlName.$error" ng-if="tab1From.otherlName.$dirty && tab1From.otherlName.$invalid">
+                              <span ng-show="tab1From.otherlName.$error.pattern">Invalid last name.</span>
+                              <span ng-show="tab1From.otherlName.$error.maxlength">Last name is too long.</span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Phone Number
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.phoneNumber.$invalid && !tab1From.phoneNumber.$pristine}">
+                            <input type="text" ng-model="vm.personalDetails.phoneNumber" class="form-control" name="phoneNumber"
+                              ng-pattern="/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/" ng-minlength="10" ng-maxlength="14"
+                              data-toggle="tooltip" data-placement="top" title="(308)-135-7895 or 308-135-7895 or 308135-7895 or 3081357895!" />
+                            <span class="help-block" ng-messages="tab1From.phoneNumber.$error" ng-if="tab1From.phoneNumber.$dirty && tab1From.phoneNumber.$invalid">
+                              <span ng-show="tab1From.phoneNumber.$error.required">Phone Number is required.</span>
+                              <span ng-show="tab1From.phoneNumber.$error.pattern && (!tab1From.phoneNumber.$error.minlength && !tab1From.phoneNumber.$error.maxlength)">Invalid
+                                Phone Number.</span>
+                              <span ng-show="tab1From.phoneNumber.$error.minlength">Phone Number is too short.</span>
+                              <span ng-show="tab1From.phoneNumber.$error.maxlength">Phone Number is too long.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Email
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.email.$invalid && !tab1From.email.$pristine}">
+                            <input type="text" ng-model="vm.personalDetails.email" class="form-control" name="email"
+                              ng-pattern="/^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/"
+                              required />
+                            <span class="help-block" ng-messages="tab1From.email.$error" ng-if="tab1From.email.$dirty && tab1From.email.$invalid">
+                              <span ng-show="tab1From.email.$error.required">Email is required.</span>
+                              <span ng-show="tab1From.email.$error.pattern">Invalid email address.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Other Phone
+                            <!--<span class="required"> * </span>-->
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.otherPhone.$invalid && !tab1From.otherPhone.$pristine}">
+                            <input type="text" class="form-control" name="otherPhone" ng-model="vm.personalDetails.otherPhone"
+                              ng-pattern="/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/" ng-minlength="10" ng-maxlength="14"
+                              data-toggle="tooltip" data-placement="top" title="(308)-135-7895 or 308-135-7895 or 308135-7895 or 3081357895!" />
+                            <span class="help-block" ng-messages="tab1From.otherPhone.$error" ng-if="tab1From.otherPhone.$dirty && tab1From.otherPhone.$invalid">
+                              <span ng-show="tab1From.otherPhone.$error.required">Phone Number is required.</span>
+                              <span ng-show="tab1From.otherPhone.$error.pattern && (!tab1From.otherPhone.$error.minlength && !tab1From.otherPhone.$error.maxlength)">Invalid
+                                Phone Number.</span>
+                              <span ng-show="tab1From.otherPhone.$error.maxlength">Phone Number is too long.</span>
+                              <span ng-show="tab1From.otherPhone.$error.minlength">Phone Number is too short.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+
+                      <!--<div class="col-md-6">
+												<div class="form-group">
+													<label class="control-label col-md-4">Pager
+													</label>
+													<div class="col-md-8" ng-class="{ 'has-error' : tab1From.pager.$invalid && !tab1From.pager.$pristine}">
+														<input type="text" ng-model="vm.personalDetails.pager" class="form-control" name="pager" ng-pattern="/^\d{11}$/" ng-maxlength="11"
+														/>
+														<span class="help-block" ng-messages="tab1From.pager.$error" ng-if="tab1From.pager.$dirty && tab1From.pager.$invalid">
+															<span ng-show="tab1From.pager.$error.required">Pager is required.</span>
+															<span ng-show="tab1From.pager.$error.pattern">Invalid Pager.</span>
+														</span>
+													</div>
+												</div>
+											</div>-->
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Mobile Number
+                            <!-- <span class="required"> * </span> -->
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.mobileNumber.$invalid && !tab1From.mobileNumber.$pristine}">
+                            <input type="text" ng-model="vm.personalDetails.mobileNumber" class="form-control" name="mobileNumber"
+                              ng-pattern="/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/" ng-minlength="10" ng-maxlength="14"
+                              data-toggle="tooltip" data-placement="top" title="(308)-135-7895 or 308-135-7895 or 308135-7895 or 3081357895!" />
+                            <!-- <span class="help-block" ng-messages="tab1From.mobileNumber.$error" ng-if="tab1From.mobileNumber.$dirty && tab1From.mobileNumber.$invalid">
+                              <span ng-show="tab1From.mobileNumber.$error.required">Mobile Number is required.</span> -->
+                            <span ng-show="tab1From.mobileNumber.$error.pattern && (!tab1From.mobileNumber.$error.minlength && !tab1From.mobileNumber.$error.maxlength)">Invalid
+                              Mobile Number.</span>
+                            <!-- <span ng-show="tab1From.mobileNumber.$error.minlength">Mobile Number is too short.</span>
+                              <span ng-show="tab1From.mobileNumber.$error.maxlength">Mobile Number is too long.</span>
+                            </span> -->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Birth Date
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8" id="birthDate1" ng-class="{ 'has-error' : tab1From.dateOfBirth.$invalid && !tab1From.dateOfBirth.$pristine}">
+                            <div class="input-group date" id="birthdate">
+                              <input type="text" name="dateOfBirth" ng-model="vm.personalDetails.birthDate" class="form-control datepicker"
+                                ng-required="true">
+                              <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                            </div>
+                            <span class="help-block" ng-messages="tab1From.dateOfBirth.$error" ng-if="tab1From.dateOfBirth.$touched && tab1From.dateOfBirth.$invalid">
+                              <span ng-show="tab1From.dateOfBirth.$error.required">Date of Birth is required.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Emergency Contact Person Name
+                            <!--<span class="required"> * </span>-->
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.emergencyContact.$invalid && !tab1From.emergencyContact.$pristine}">
+                            <input type="text" ng-model="vm.personalDetails.emergencyContact" class="form-control" name="emergencyContact"
+                              ng-pattern="/^([a-zA-Z' ]+)$/" ng-minlength="0" ng-maxlength="65" />
+                            <span class="help-block" ng-messages="tab1From.emergencyContact.$error" ng-if="tab1From.emergencyContact.$dirty && tab1From.emergencyContact.$invalid">
+                              <span ng-show="tab1From.emergencyContact.$error.pattern">Invalid Emergency Contact.</span>
+                              <span ng-show="tab1From.emergencyContact.$error.maxlength">Emergency Contact is too long.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Emergency Contact Phone Number
+                            <!--<span class="required"> * </span>-->
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.emergencyNumber.$invalid && !tab1From.emergencyNumber.$pristine}">
+                            <input type="text" ng-model="vm.personalDetails.emergencyNumber" class="form-control" name="emergencyNumber"
+                              ng-pattern="/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/" ng-minlength="10" ng-maxlength="11" />
+                            <span class="help-block" ng-messages="tab1From.emergencyNumber.$error" ng-if="tab1From.emergencyNumber.$dirty && tab1From.emergencyNumber.$invalid">
+                              <span ng-show="tab1From.emergencyNumber.$error.minlength">Emergency Number is too short.</span>
+                              <span ng-show="tab1From.emergencyNumber.$error.pattern && (!tab1From.emergencyNumber.$error.minlength && !tab1From.emergencyNumber.$error.maxlength)">Invalid
+                                Emergency Number.</span>
+                              <span ng-show="tab1From.emergencyNumber.$error.maxlength">Emergency Number is too long.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Do you have Driver's Licence?
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <div class="mt-radio-inline">
+                              <label class="mt-radio">
+                                <input type="radio" name="drivingLicence" ng-value=true ng-model="vm.personalDetails.isDrivingLicence"
+                                  ng-required="!vm.personalDetails.isDrivingLicence" ng-change="vm.clearDrivingLicenceField();">
+                                Yes
+                                <span></span>
+                              </label>
+                              <label class="mt-radio">
+                                <input type="radio" name="drivingLicence" ng-value=false ng-model="vm.personalDetails.isDrivingLicence"
+                                  ng-required="!vm.personalDetails.isDrivingLicence" ng-change="vm.clearDrivingLicenceField();">
+                                No
+                                <span></span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Gender</label>
+                          <div class="col-md-8">
+                            <div class="mt-radio-inline">
+                              <label class="mt-radio">
+                                <input type="radio" name="optionsRadios1" value='Male' ng-model="vm.personalDetails.gender">
+                                Male
+                                <span></span>
+                              </label>
+                              <label class="mt-radio">
+                                <input type="radio" name="optionsRadios1" value='Female' ng-model="vm.personalDetails.gender">
+                                Female
+                                <span></span>
+                              </label>
+
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row" ng-if="vm.personalDetails.isDrivingLicence == true">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Driver's Licence Number
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.drivingLicence.$invalid && vm.personalDetails.isDrivingLicence == true}">
+                            <input type="text" ng-model="vm.personalDetails.drivingLicence" class="form-control" name="drivingLicence"
+                              ng-required="vm.personalDetails.isDrivingLicence" />
+                            <!-- <span class="help-block" ng-messages="tab1From.drivingLicence.$error" ng-if="tab1From.drivingLicence.$invalid && vm.personalDetails.isDrivingLicence == true">
+															<span ng-show="tab1From.drivingLicence.$error.required">Driver's Licence is required.</span>
+															 <span ng-show="tab1From.drivingLicence.$error.pattern">Invalid Driver's Licence.</span> 
+														</span> -->
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6" ng-if="vm.personalDetails.drivingLicence != ''|| vm.personalDetails.isDrivingLicence == false">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">State Issuing
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.stateOfIssue.$invalid && vm.personalDetails.isDrivingLicence == true}">
+                            <select ng-model="vm.personalDetails.stateOfIssue" class="form-control" name="stateOfIssue"
+                              ng-required="vm.personalDetails.drivingLicence != ''">
+                              <option value="" selected disabled hidden>Select</option>
+                              <option ng-repeat="stateOfIssue in vm.stateOfIssueList" ng-value="stateOfIssue.id">{{stateOfIssue.Name}}</option>
+                            </select>
+                            <!-- <span class="help-block" ng-messages="tab1From.stateOfIssue.$error" ng-if="tab1From.stateOfIssue.$invalid && vm.personalDetails.isDrivingLicence == true">
+															<span ng-show="tab1From.stateOfIssue.$error.required">State is required.</span>
+														</span> -->
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Social Security
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.socialSecurity.$invalid && !tab1From.socialSecurity.$pristine}">
+                            <input type="text" name="socialSecurity" ng-model="vm.personalDetails.socialSecurity" class="form-control"
+                              name="socialSecurity" ng-pattern="/^\d{3}-?\d{2}-?\d{4}$/" ssn-input required />
+                            <span class="help-block" ng-messages="tab1From.socialSecurity.$error" ng-if="tab1From.socialSecurity.$dirty && tab1From.socialSecurity.$invalid">
+                              <span ng-show="tab1From.socialSecurity.$error.required">Social Security number is
+                                required.</span>
+                              <span ng-show="tab1From.socialSecurity.$error.pattern">Social Security number is invalid.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <h3 class="form-title">Current Address</h3>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Address 1
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.currAddress1.$invalid && !tab1From.currAddress1.$pristine}">
+                            <input type="text" ng-model="vm.personalDetails.currAddress1" class="form-control" name="currAddress1"
+                              ng-pattern="/^[a-zA-Z0-9\s,'#@/()-.]*$/" required />
+                            <span class="help-block" ng-messages="tab1From.currAddress1.$error" ng-if="tab1From.currAddress1.$dirty && tab1From.currAddress1.$invalid">
+                              <span ng-show="tab1From.currAddress1.$error.required">Current Address1 is required.</span>
+                              <span ng-show="tab1From.currAddress1.$error.pattern">Current Address1 is invalid.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Address 2
+                            <!-- <span class="required"> * </span> -->
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.currAddress2.$invalid && !tab1From.currAddress2.$pristine}">
+                            <input type="text" ng-model="vm.personalDetails.currAddress2" class="form-control" name="currAddress2"
+                              ng-pattern="/^[a-zA-Z0-9\s,'#@/()-.]*$/" />
+                            <span class="help-block" ng-messages="tab1From.currAddress2.$error" ng-if="tab1From.currAddress2.$dirty && tab1From.currAddress2.$invalid">
+                              <span ng-show="tab1From.currAddress2.$error.pattern">Current Address2 is invalid.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Apt.No.
+                          </label>
+                          <div class="col-md-8">
+                            <input type="text" ng-model="vm.personalDetails.Apt_No" class="form-control" name="aptNo"
+                              ng-maxlength="20" />
+                            <span class="help-block" ng-messages="tab1From.aptNo.$error" ng-if="tab1From.aptNo.$dirty && tab1From.aptNo.$invalid">
+                              <span ng-show="tab1From.aptNo.$error.maxlength">Last name is too long.</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">State
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.currentState.$invalid && !tab1From.currentState.$pristine}">
+                            <select ng-model="vm.personalDetails.currState" ng-options="currState as currState.Name for currState in vm.stateOfIssueList"
+                              ng-init="vm.personalDetails.currState = vm.stateOfIssueList[0].id" class="form-control"
+                              name="currentState" ng-change="vm.getCity(vm.personalDetails.currState.id)" required>
+                              <option value="" selected disabled hidden>Select</option>
+                              <option ng-repeat="currState in vm.stateOfIssueList" ng-value="currState.id">{{currState.Name}}</option>
+                            </select>
+                            <span class="help-block" ng-messages="tab1From.currentState.$error" ng-if="tab1From.currentState.$dirty && tab1From.currentState.$invalid">
+                              <span ng-show="tab1From.currentState.$error.required">State is required.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">City
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.currentCity.$invalid && !tab1From.currentCity.$pristine}">
+                            <select ng-model="vm.personalDetails.currCity" ng-options="currCity as currCity.Name for currCity in vm.cityList"
+                              ng-init="vm.personalDetails.currCity = vm.cityList[0].id" class="form-control" name="currentCity"
+                              required>
+                              <option value="" selected disabled hidden>Select</option>
+                              <option ng-repeat="currCity in vm.cityList" ng-value="currCity.id">{{currCity.Name}}</option>
+                            </select>
+                            <span class="help-block" ng-messages="tab1From.currentCity.$error" ng-if="tab1From.currentCity.$dirty && tab1From.currentCity.$invalid">
+                              <span ng-show="tab1From.currentCity.$error.required">City is required.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Zip Code
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.currentZipcode.$invalid && !tab1From.currentZipcode.$pristine}">
+                            <input type="text" ng-model="vm.personalDetails.currentZipcode" class="form-control" name="currentZipcode"
+                              ng-pattern="/^\d{5}$/" ng-maxlength="5" required />
+                            <span class="help-block" ng-messages="tab1From.currentZipcode.$error" ng-if="tab1From.currentZipcode.$dirty && tab1From.currentZipcode.$invalid">
+                              <span ng-show="tab1From.currentZipcode.$error.required">Zip code is required.</span>
+                              <span ng-show="tab1From.currentZipcode.$error.pattern">Invalid Zip Code.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+
+                      </div>
+                    </div>
+                    <h3 class="form-title">Previous Address</h3>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Address 1
+                            <!-- <span class="required"> * </span> -->
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.prevAddress1.$invalid && !tab1From.prevAddress1.$pristine}">
+                            <input type="text" ng-model="vm.personalDetails.prevAddress1" class="form-control" name="prevAddress1"
+                              ng-pattern="/^[a-zA-Z0-9\s,'#@/()-.]*$/" />
+                            <span class="help-block" ng-messages="tab1From.prevAddress1.$error" ng-if="tab1From.prevAddress1.$dirty && tab1From.prevAddress1.$invalid">
+                              <span ng-show="tab1From.prevAddress1.$error.required">Previous Address1 is required.</span>
+                              <span ng-show="tab1From.prevAddress1.$error.pattern">Previous Address1 is invalid.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Address 2
+                            <!-- <span class="required"> * </span> -->
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.prevAddress2.$invalid && !tab1From.prevAddress2.$pristine}">
+                            <input type="text" ng-model="vm.personalDetails.prevAddress2" class="form-control" name="prevAddress2"
+                              ng-pattern="/^[a-zA-Z0-9\s,'#@/()-.]*$/" />
+                            <span class="help-block" ng-messages="tab1From.prevAddress2.$error" ng-if="tab1From.prevAddress2.$dirty && tab1From.prevAddress2.$invalid">
+                              <span ng-show="tab1From.prevAddress2.$error.pattern">Previous Address2 is invalid.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">State
+                            <!-- <span class="required"> * </span> -->
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.previousState.$invalid && !tab1From.previousState.$pristine}">
+                            <select ng-model="vm.personalDetails.prevState" ng-options="option.id as option.Name for option in vm.stateOfIssueList"
+                              ng-init="vm.personalDetails.prevState = vm.stateOfIssueList[0].id" class="form-control"
+                              name="previousState" ng-change="vm.getPrevCity(vm.personalDetails.prevState)">
+                              <option value="" selected disabled hidden>Select</option>
+                              <option ng-repeat="prevState in vm.stateOfIssueList" ng-value="prevState.id">{{prevState.Name}}</option>
+                            </select>
+                            <span class="help-block" ng-messages="tab1From.previousState.$error" ng-if="tab1From.previousState.$dirty && tab1From.previousState.$invalid">
+                              <span ng-show="tab1From.previousState.$error.required">State is required.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">City
+                            <!-- <span class="required"> * </span> -->
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.previousCity.$invalid && !tab1From.previousCity.$pristine}">
+                            <select ng-model="vm.personalDetails.prevCity" ng-options="option.id as option.Name for option in vm.prevCityList"
+                              ng-init="vm.personalDetails.prevCity = vm.prevCityList[0].id" class="form-control" name="previousCity">
+                              <option value="" selected disabled hidden>Select</option>
+                              <option ng-repeat="prevCity in vm.prevCityList" ng-value="prevCity.id">{{prevCity.Name}}</option>
+                            </select>
+                            <span class="help-block" ng-messages="tab1From.previousCity.$error" ng-if="tab1From.previousCity.$dirty && tab1From.previousCity.$invalid">
+                              <span ng-show="tab1From.previousCity.$error.required">City is required.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Zip Code
+                            <!-- <span class="required"> * </span> -->
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.previousZipcode.$invalid && !tab1From.previousZipcode.$pristine}">
+                            <input type="text" ng-model="vm.personalDetails.previousZipcode" class="form-control" name="previousZipcode"
+                              ng-pattern="/^\d{5}$/" ng-maxlength="5" />
+                            <span class="help-block" ng-messages="tab1From.previousZipcode.$error" ng-if="tab1From.previousZipcode.$dirty && tab1From.previousZipcode.$invalid">
+                              <span ng-show="tab1From.previousZipcode.$error.required">Zip code is required.</span>
+                              <span ng-show="tab1From.previousZipcode.$error.pattern">Invalid Zip Code.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Remarks</label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab1From.remarks.$invalid && !tab1From.remarks.$pristine}">
+                            <textarea class="form-control" ng-model="vm.personalDetails.remark" rows="2" name="remarks"
+                              ng-pattern="/^([a-zA-Z0-9' ]+)$/" ng-maxlength="200"></textarea>
+                            <span class="help-block" ng-messages="tab1From.remarks.$error">
+                              <span ng-show="tab1From.remarks.$error.maxlength">Remark is too long.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <p>
+                      <strong>Note to Applicants:</strong> Only United States Citizens or aliens who have a legal right
+                      to
+                      work in the United States are eligible for employment. Should you be made an offer of employment,
+                      you
+                      will be asked to submit documentation verifying your identity and your legal right to work in the
+                      United
+                      States.
+                    </p>
+                    <!--<button class="btn green uppercase" ng-disabled="tab1From.$invalid">Valid</button>-->
+                    <!--added by rohini for testing-->
+                  </form>
+                </div>
+                <div class="tab-pane" id="tab2" active="false">
+                  <form name="tab2From" ng-submit="submitForm(tab2From.$valid)" ng-model='vm.tab2FromData' novalidate>
+                    <p>
+                      <strong> NOTICE TO ALL APPLICANTS:</strong> In compliance with the Americans with Disabilities
+                      Act
+                      of 1990. During the interview process, you may be asked questions concerning your ability to
+                      perform
+                      job related functions. If you are given a conditional offer of employment, you may be required to
+                      complete
+                      a post-job offer medical history questionnaire and / or undergo a medical examination. If
+                      required,
+                      all entering employees in the same job category will be subject to the same medical questionnaire
+                      and
+                      /or examination and all information will be kept confidential and in separate files.
+                    </p>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">How did you hear about Trucadence?
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <div class="mt-checkbox-inline">
+                              <label class="mt-checkbox" ng-repeat="refChannel in vm.refChannelMedia">
+                                <input type="checkbox" name="refChannel" ng-value="refChannel.value" ng-model="refChannel.selected"
+                                  ng-click="vm.validateRefChannel($event,refChannel)" ng-required="refChannelArray.length==0">
+                                {{refChannel.mediaName}}
+                                <span></span>
+                              </label>
+                              <span class="help-block" ng-messages="tab2From.refChannel.$error" ng-if="vm.refChannelArray.length==0">
+                                <span class="required">Please select at least one.</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Have your ever filled an application here before?
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <div class="mt-radio-inline">
+                              <label class="mt-radio">
+                                <input type="radio" name="isAppliedBefore" ng-value=true ng-model="vm.employmentDetails.isAppliedBefore"
+                                  ng-required="!vm.employmentDetails.isAppliedBefore"> Yes
+                                <span></span>
+                              </label>
+                              <label class="mt-radio">
+                                <input type="radio" name="isAppliedBefore" ng-value=false ng-model="vm.employmentDetails.isAppliedBefore"
+                                  ng-required="!vm.employmentDetails.isAppliedBefore"> No
+                                <span></span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6" ng-show="vm.employmentDetails.isAppliedBefore == true">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">If Yes, then when? </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab2From.preApplicationMonth.$invalid && vm.employmentDetails.isAppliedBefore == true}">
+                            <div class='input-group date' id='datetimepicker10'>
+                              <input type='text' class="form-control" ng-model="vm.employmentDetails.preApplicationMonth"
+                                name="preApplicationMonth" ng-required="vm.employmentDetails.isAppliedBefore" />
+                              <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                            </div>
+                            <span class="help-block" ng-messages="tab2From.preApplicationMonth.$error" ng-if="tab2From.preApplicationMonth.$invalid && vm.employmentDetails.isAppliedBefore == true">
+                              <span ng-show="tab2From.preApplicationMonth.$error.required">Year is required.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Have you ever been employed here?
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <div class="mt-radio-inline">
+                              <label class="mt-radio">
+                                <input type="radio" name="exTruecadenceEmployee" id="" ng-value=true ng-model="vm.employmentDetails.exTruecadenceEmployee"
+                                  checked> Yes
+                                <span></span>
+                              </label>
+                              <label class="mt-radio">
+                                <input type="radio" name="exTruecadenceEmployee" id="" ng-value=false ng-model="vm.employmentDetails.exTruecadenceEmployee"
+                                  checked> No
+                                <span></span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6" ng-show="vm.employmentDetails.exTruecadenceEmployee == true">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">If Yes, then please state when, where and position?
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <div class="row">
+                              <div class="col-md-6 col-xs-6" ng-class="{ 'has-error' : tab2From.exTruecadenceEmployeeYear.$invalid && vm.employmentDetails.exTruecadenceEmployee == true}">
+                                <div class='input-group date' id='datetimepicker9'>
+                                  <input type='text' class="form-control" name="exTruecadenceEmployeeYear" ng-model="vm.employmentDetails.exTruecadenceEmployeeYear"
+                                    ng-required="vm.employmentDetails.exTruecadenceEmployee" />
+                                  <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                  </span>
+                                </div>
+                                <span class="help-block" ng-messages="tab2From.exTruecadenceEmployeeYear.$error" ng-if="tab2From.exTruecadenceEmployeeYear.$invalid && vm.employmentDetails.exTruecadenceEmployee == true">
+                                  <span ng-show="tab2From.exTruecadenceEmployeeYear.$error.required">Year is required.</span>
+                                </span>
+                              </div>
+
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label class="control-label col-md-4">Where </label>
+                                  <div class="col-md-8" ng-class="{ 'has-error' : tab2From.exTruecadenceEmployeePlace.$invalid && vm.employmentDetails.exTruecadenceEmployee == true}">
+                                    <input type="text" ng-model="vm.employmentDetails.exTruecadenceEmployeePlace" class="form-control"
+                                      name="exTruecadenceEmployeePlace" ng-required="vm.employmentDetails.exTruecadenceEmployee"
+                                      ng-minlength="1" ng-maxlength="65" ng-pattern="/^[a-zA-Z]+$/" />
+                                    <span class="help-block" ng-messages="tab2From.exTruecadenceEmployeePlace.$error"
+                                      ng-if="tab2From.exTruecadenceEmployeePlace.$invalid && vm.employmentDetails.exTruecadenceEmployee == true">
+                                      <span ng-show="tab2From.exTruecadenceEmployeePlace.$error.required">Place is
+                                        required.</span>
+                                      <span ng-show="tab2From.exTruecadenceEmployeePlace.$error.pattern">Invalid Place.</span>
+                                      <span ng-show="tab2From.exTruecadenceEmployeePlace.$error.maxlength">Place is too
+                                        long.</span>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <!--<div class="col-md-6 col-xs-6" ng-class="{ 'has-error' : tab2From.exTruecadenceEmployeePlace.$invalid && vm.employmentDetails.exTruecadenceEmployee == true}">
+																<select class="form-control" name="exTruecadenceEmployeePlace" ng-model="vm.employmentDetails.exTruecadenceEmployeePlace"
+																ng-required="vm.employmentDetails.exTruecadenceEmployee">
+																	<option value="">Where</option>
+																	<option value="AF">place</option>
+																	<option value="AF">place</option>
+																	<option value="AF">place</option>
+																</select>
+																<span class="help-block" ng-messages="tab2From.exTruecadenceEmployeePlace.$error" ng-if="tab2From.exTruecadenceEmployeePlace.$invalid && vm.employmentDetails.exTruecadenceEmployee == true">
+																	<span ng-show="tab2From.exTruecadenceEmployeePlace.$error.required">Place is required.</span>
+																</span>
+															</div>-->
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label class="control-label col-md-4">Position</label>
+                                  <div class="col-md-8" ng-class="{ 'has-error' : tab2From.exTruecadenceEmployeePosition.$invalid && vm.employmentDetails.exTruecadenceEmployee == true}">
+                                    <input type="text" ng-model="vm.employmentDetails.exTruecadenceEmployeePosition"
+                                      class="form-control" name="exTruecadenceEmployeePosition" ng-required="vm.employmentDetails.exTruecadenceEmployee"
+                                      ng-minlength="1" ng-maxlength="65" ng-pattern="/^[a-zA-Z]+$/" />
+                                    <span class="help-block" ng-messages="tab2From.exTruecadenceEmployeePosition.$error"
+                                      ng-if="tab2From.exTruecadenceEmployeePosition.$invalid && vm.employmentDetails.exTruecadenceEmployee == true">
+                                      <span ng-show="tab2From.exTruecadenceEmployeePosition.$error.required">Position
+                                        name
+                                        is required.</span>
+                                      <span ng-show="tab2From.exTruecadenceEmployeePosition.$error.pattern">Invalid
+                                        Position
+                                        name.
+                                      </span>
+                                      <span ng-show="tab2From.exTruecadenceEmployeePosition.$error.maxlength">Position
+                                        name
+                                        is too long.</span>
+                                    </span>
+                                  </div>
+                                </div>
+                              </div>
+                              <!--<div class="col-md-6 col-xs-6" ng-class="{ 'has-error' : tab2From.exTruecadenceEmployeePosiotion.$invalid && vm.employmentDetails.exTruecadenceEmployee == true}">
+																<select class="form-control" name="exTruecadenceEmployeePosiotion" ng-model="vm.employmentDetails.exTruecadenceEmployeePosition"
+																  ng-required="vm.employmentDetails.exTruecadenceEmployee">
+																	<option value="">Position</option>
+																	<option value="AF">Manager</option>
+																	<option value="AF">HR</option>
+																	<option value="AF">Developer</option>
+																</select>
+																<span class="help-block" ng-messages="tab2From.exTruecadenceEmployeePosiotion.$error" ng-if="tab2From.exTruecadenceEmployeePosiotion.$invalid && vm.employmentDetails.exTruecadenceEmployee == true">
+																	<span ng-show="tab2From.exTruecadenceEmployeePosiotion.$error.required">Positin is required.</span>
+																</span>
+															</div>-->
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Are you 18 years of age or older?
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <div class="mt-radio-inline">
+                              <label class="mt-radio">
+                                <input type="radio" name="isAdult" id="" ng-value=true checked ng-model="vm.employmentDetails.isAdult"
+                                  ng-required="!vm.employmentDetails.isAdult"> Yes
+                                <span></span>
+                              </label>
+                              <label class="mt-radio">
+                                <input type="radio" name="isAdult" id="" ng-value=false checked ng-model="vm.employmentDetails.isAdult"
+                                  ng-required="!vm.employmentDetails.isAdult"> No
+                                <span></span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6" ng-if="vm.employmentDetails.isAdult == false">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">If not can you furnish work permit?
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <div class="mt-radio-inline">
+                              <label class="mt-radio">
+                                <input type="radio" name="underAgeWorkPermit" id="" ng-value=true checked ng-model="vm.employmentDetails.underAgeWorkPermit"
+                                  ng-required="!vm.employmentDetails.underAgeWorkPermit"> Yes
+                                <span></span>
+                              </label>
+                              <label class="mt-radio">
+                                <input type="radio" name="underAgeWorkPermit" id="" ng-value=false checked ng-model="vm.employmentDetails.underAgeWorkPermit"
+                                  ng-required="!vm.employmentDetails.underAgeWorkPermit"> No
+                                <span></span>
+                              </label>
+                              <span class="help-block" ng-messages="tab2From.underAgeWorkPermit.$error" ng-if="vm.employmentDetails.isAdult == false">
+                                <span ng-show="tab2From.underAgeWorkPermit.$error.required">Please select at least one.</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Education Level
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <div class="mt-radio-inline">
+                              <label class="mt-radio" ng-repeat="course in vm.educationLevel">
+                                <input type="radio" name="course" ng-value=true ng-model="course.selected" ng-change="vm.validateEducationLevel($event,course)"
+                                  ng-required="educationLevelArray.length==0"> {{course.educationName}}
+                                <span></span>
+                              </label>
+                            </div>
+                            <span class="help-block" ng-messages="tab2From.course.$error" ng-if="vm.educationLevelArray.length==0">
+                              <span class="required">Please select at least one.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">US work eligibility?
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <div class="mt-radio-inline">
+                              <label class="mt-radio">
+                                <input type="radio" name="isUSWorkPermit" id="" ng-value=true checked ng-model="vm.employmentDetails.isUSWorkPermit"
+                                  ng-required="!vm.employmentDetails.isUSWorkPermit"> Yes
+                                <span></span>
+                              </label>
+                              <label class="mt-radio">
+                                <input type="radio" name="isUSWorkPermit" id="" ng-value=false checked ng-model="vm.employmentDetails.isUSWorkPermit"
+                                  ng-required="!vm.employmentDetails.isUSWorkPermit"> No
+                                <span></span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">What areas are you willing to work?
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab2From.areaOfWork.$invalid && tab2From.areaOfWork.$dirty}">
+                            <input type="text" ng-model="vm.employmentDetails.areaOfWork" class="form-control" name="areaOfWork"
+                              required />
+                            <span class="help-block" ng-messages="tab2From.areaOfWork.$error" ng-if="tab2From.areaOfWork.$invalid && tab2From.areaOfWork.$dirty">
+                              <span ng-show="tab2From.areaOfWork.$error.required">Area is required.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">What position you are applying for?
+                            <span class="required"> * </span>
+                          </label>
+                          <!-- Commented as per feedback <div class="col-md-8" ng-class="{ 'has-error' : tab2From.positionsInterested.$invalid && tab2From.positionsInterested.$dirty}">
+														<input type="text" ng-model="vm.employmentDetails.positionsInterested" class="form-control" name="positionsInterested" ng-required="vm.employmentDetails.positionsInterested"
+														/>
+														<span class="help-block" ng-messages="tab2From.positionsInterested.$error" ng-if="tab2From.positionsInterested.$invalid && tab2From.positionsInterested.$dirty">
+															<span ng-show="tab2From.positionsInterested.$error.required">Position is required.</span>
+														</span>  ng-init="vm.employmentDetails.positionsInterested = vm.positionsApplying[0].id"
+													</div> -->
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab2From.positionsInterested.$invalid && !tab2From.positionsInterested.$pristine}">
+                            <select ng-model="vm.employmentDetails.positionsInterested" ng-options="option as option.Profile_Name for option in vm.positionsApplying"
+                              class="form-control" name="positionsInterested" required>
+                              <option value="" selected disabled hidden>Select</option>
+                              <!--<option ng-repeat="positions in vm.positionsApplying" ng-value="positions.id">{{positions.name}}</option>-->
+                            </select>
+                            <span class="help-block" ng-messages="tab2From.positionsInterested.$error" ng-if="tab2From.positionsInterested.$dirty && tab2From.positionsInterested.$invalid">
+                              <span ng-show="tab2From.positionsInterested.$error.required">Position is required.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">What shifts are you willing to work?
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <div class="mt-checkbox-inline">
+                              <label class="mt-checkbox" ng-repeat="favShift in vm.favourableShifts">
+                                <input type="checkbox" name="favShift" ng-value="favShift.shiftTypeName" ng-model="favShift.selected"
+                                  ng-click="vm.validateFavourableShifts($event,favShift)" ng-required="favourableShiftsArray.length==0">
+                                {{favShift.shiftTypeName}}
+                                <span></span>
+                              </label>
+                              <span class="help-block" ng-messages="tab2From.favShift.$error" ng-if="vm.favourableShiftsArray.length < 1">
+                                <span class="required">Please select at least one.</span>
+                              </span>
+                            </div>
+                            <div class="mt-checkbox-inline">
+                              <label class="mt-checkbox" ng-repeat="favDays in vm.favourableDays">
+                                <input type="checkbox" name="favDays" ng-value="favDays.shiftTypeName" ng-model="favDays.selected"
+                                  ng-click="vm.validateFavShiftDays($event,favDays)" ng-required="favShiftDaysArray.length==0">
+                                {{favDays.shiftTypeName}}
+                                <span></span>
+                              </label>
+                              <span class="help-block" ng-messages="tab2From.favDays.$error" ng-if="vm.favShiftDaysArray.length < 1">
+                                <span class="required">Please select at least one.</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <!-- Commented as per feedback <div class="form-group">
+													<label class="control-label col-md-4">Part Time Hours
+														<span class="required"> * </span>
+													</label>
+													<div class="col-md-8" ng-class="{ 'has-error' : tab2From.partTimeHrs.$invalid && tab2From.partTimeHrs.$dirty}">
+														<input type="text" ng-model="vm.employmentDetails.partTimeHrs" class="form-control" name="partTimeHrs" ng-required="vm.employmentDetails.partTimeHrs"
+														ng-pattern="/^[0-9]*$/"/>
+														<span class="help-block" ng-messages="tab2From.partTimeHrs.$error" ng-if="tab2From.partTimeHrs.$invalid && tab2From.partTimeHrs.$dirty">
+															<span ng-show="tab2From.partTimeHrs.$error.required">Hours is required.</span>
+															<span ng-show="tab2From.partTimeHrs.$error.pattern">Please enter valid Hours.</span>
+														</span>
+													</div>
+												</div> -->
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Working hours
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <div class="mt-radio-inline">
+                              <label class="mt-radio" ng-repeat="workHour in vm.workingHours">
+                                <input type="radio" name="workHours" ng-value=true ng-model="workHour.selected"
+                                  ng-click="vm.validateWorkingHour($event,workHour)" ng-required="vm.workingHoursArray.length==0">
+                                {{workHour.workType}}
+                                <span></span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">If hired, how will you like to receive your cheque each
+                            week?
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <div class="mt-radio-inline">
+                              <label class="mt-radio" ng-repeat="paymentMode in vm.modeOfPayments">
+                                <input type="radio" name="paymentMode" ng-value=true ng-model="paymentMode.selected"
+                                  ng-click="vm.validateModeOfPayments($event,paymentMode)" ng-required="vm.modeOfPaymentArray.length==0">
+                                {{paymentMode.paymentType}}
+                                <span></span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Do you have access to reliable transportation?
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <div class="mt-radio-inline">
+                              <label class="mt-radio">
+                                <input type="radio" name="isTransportationAvailable" id="" ng-value=true checked
+                                  ng-model="vm.employmentDetails.isTransportationAvailable" ng-required="!vm.employmentDetails.isTransportationAvailable">
+                                Yes
+                                <span></span>
+                              </label>
+                              <label class="mt-radio">
+                                <input type="radio" name="isTransportationAvailable" id="" ng-value=false checked
+                                  ng-model="vm.employmentDetails.isTransportationAvailable" ng-required="!vm.employmentDetails.isTransportationAvailable">
+                                No
+                                <span></span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">Have you ever been suspended or discharged from
+                            employment?
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <div class="mt-radio-inline">
+                              <label class="mt-radio">
+                                <input type="radio" name="isSuspended" id="" ng-value=true checked ng-model="vm.employmentDetails.isSuspended"
+                                  ng-required="!vm.employmentDetails.isSuspended"> Yes
+                                <span></span>
+                              </label>
+                              <label class="mt-radio">
+                                <input type="radio" name="isSuspended" id="" ng-value=false checked ng-model="vm.employmentDetails.isSuspended"
+                                  ng-required="!vm.employmentDetails.isSuspended"> No
+                                <span></span>
+                              </label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6" ng-if="vm.employmentDetails.isSuspended == true">
+                        <div class="form-group">
+                          <label class="control-label col-md-4">If Yes, please explain </label>
+                          <div class="col-md-8" ng-class="{ 'has-error' : tab2From.descriptionForSuspention.$invalid && vm.employmentDetails.isSuspended == true}">
+                            <textarea class="form-control" rows="2" name="descriptionForSuspention" ng-model="vm.employmentDetails.descriptionForSuspention"
+                              required ng-minlength="1" ng-maxlength="200"></textarea>
+                            <span class="help-block" ng-messages="tab2From.descriptionForSuspention.$error" ng-if="vm.employmentDetails.isSuspended == true">
+                              <span ng-show="tab2From.descriptionForSuspention.$error.required">Please provide the
+                                reason.</span>
+                              <span ng-show="tab2From.descriptionForSuspention.$error.maxlength">Reason is too long.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--<button class="btn green uppercase" ng-disabled="tab2From.$invalid || vm.refChannelArray.length==0 || vm.educationLevelArray.length==0 || vm.favourableShiftsArray.length == 0 || vm.favShiftDaysArray.length == 0 || modeOfPaymentArray.length==0">Valid</button>-->
+                    <!--added by rohini for testing-->
+                  </form>
+
+                </div>
+                <div class="tab-pane" id="tab3">
+                  <form name="tab3From" novalidate>
+                    <p>Please provide your most employment history first. Provide all requested information. If there
+                      is
+                      any information you are unable to provide, you may be required to return with the information at
+                      a
+                      later date.
+                    </p>
+                    <div class="row">
+                      <div class="col-md-8">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label col-md-4">Company Name
+                                <span class="required"> * </span>
+                              </label>
+                              <div class="col-md-8" ng-class="{ 'has-error' : tab3From.companyName.$invalid && !tab3From.companyName.$pristine}">
+                                <input type="text" class="form-control" name="companyName" ng-model="vm.Company_Name"
+                                  minlength="1" ng-maxlength="65" required />
+                                <span class="help-block" ng-messages="tab3From.companyName.$error" ng-if="tab3From.companyName.$dirty && tab3From.companyName.$invalid">
+                                  <span ng-show="tab3From.companyName.$error.required">Company name is required.</span>
+                                  <span ng-show="tab3From.companyName.$error.minlength">Company name is too short.</span>
+                                  <span ng-show="tab3From.companyName.$error.maxlength">Company name is too long.</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label col-md-4">Phone Number
+                                <!--<span class="required"> * </span>-->
+                              </label>
+                              <div class="col-md-8" ng-class="{ 'has-error' : tab3From.phoneNumber.$invalid && !tab3From.phoneNumber.$pristine}">
+                                <input type="text" class="form-control" name="phoneNumber" ng-model="vm.Phone"
+                                  ng-pattern="/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/" minlength="10" ng-maxlength="14" />
+                                <span class="help-block" ng-messages="tab3From.phoneNumber.$error" ng-if="tab3From.phoneNumber.$dirty && tab3From.phoneNumber.$invalid">
+                                  <span ng-show="tab3From.phoneNumber.$error.required">Phone Number is required.</span>
+                                  <span ng-show="tab3From.phoneNumber.$error.maxlength">Phone Number is too long.</span>
+                                  <span ng-show="tab3From.phoneNumber.$error.pattern">Invalid Phone Number.</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label col-md-4">Address 1
+                                <!--<span class="required"> * </span>-->
+                              </label>
+                              <div class="col-md-8" ng-class="{ 'has-error' : tab3From.address1.$invalid && !tab3From.address1.$pristine}">
+                                <input type="text" class="form-control" name="address1" ng-model="vm.Address_1"
+                                  ng-pattern="/^[a-zA-Z0-9\s,'#@/()-.]*$/" />
+                                <span class="help-block" ng-messages="tab3From.phoneNumber.$error" ng-if="tab3From.address1.$dirty && tab3From.address1.$invalid">
+                                  <span ng-show="tab3From.address1.$error.required">Address1 is required.</span>
+                                  <span ng-show="tab3From.address1.$error.pattern">Address1 is Invalid.</span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label col-md-4">Address 2
+                                <!--<span class="required"> * </span>-->
+                              </label>
+                              <div class="col-md-8" ng-class="{ 'has-error' : tab3From.address2.$invalid && !tab3From.address2.$pristine}">
+                                <input type="text" class="form-control" name="address2" ng-model="vm.Address_2"
+                                  ng-pattern="/^[a-zA-Z0-9\s,'#@/()-.]*$/" />
+                                <span class="help-block" ng-messages="tab3From.address2.$error" ng-if="tab3From.address2.$dirty && tab3From.address2.$invalid">
+                                  <span ng-show="tab3From.address2.$error.required">Address2 is required.</span>
+                                  <span ng-show="tab3From.address2.$error.pattern">Address2 is Invalid.</span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label col-md-4">Country
+                                <!--<span class="required"> * </span>-->
+                              </label>
+                              <div class="col-md-8" ng-class="{ 'has-error' : tab3From.country.$invalid && !tab3From.country.$pristine}">
+                                <select class="form-control" name="country" ng-options="Country.Name for Country in vm.countryList"
+                                  ng-model="vm.Country" ng-change="vm.getStateByCountryId(vm.Country)">
+                                  <option value="" selected disabled hidden>Select</option>
+                                  <!--<option ng-repeat="Country in vm.countryList" ng-value="Country">{{Country.Name}}</option>-->
+                                </select>
+
+                                <span class="help-block" ng-messages="tab3From.country.$error" ng-if="tab3From.country.$dirty && tab3From.country.$invalid">
+                                  <span ng-show="tab3From.country.$error.required">Country is required.</span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label col-md-4">State
+                                <!--<span class="required"> * </span>-->
+                              </label>
+                              <div class="col-md-8" ng-class="{ 'has-error' : tab3From.state.$invalid && !tab3From.state.$pristine}">
+                                <select class="form-control" name="state" ng-options="state.Name for state in vm.stateListByCountryId"
+                                  ng-model="vm.State" ng-change="vm.getHistoryCity(vm.State.id)">
+                                  <option value="" selected disabled hidden>Select</option>
+                                  <!--<option ng-repeat="state in vm.stateListByCountryId" ng-value="state">{{state.Name}}</option>-->
+                                </select>
+                                <span class="help-block" ng-messages="tab3From.state.$error" ng-if="tab3From.state.$dirty && tab3From.state.$invalid">
+                                  <span ng-show="tab3From.state.$error.required">State is required.</span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label col-md-4">City
+                                <!--<span class="required"> * </span>-->
+                              </label>
+                              <div class="col-md-8" ng-class="{ 'has-error' : tab3From.city.$invalid && !tab3From.city.$pristine}">
+                                <select class="form-control" name="city" ng-options="City.Name for City in vm.historyCityList"
+                                  ng-model="vm.City">
+                                  <option value="" selected disabled hidden>Select</option>
+                                  <!--<option ng-repeat="City in vm.historyCityList" ng-value="City">{{City.Name}}</option>-->
+                                </select>
+                                <span class="help-block" ng-messages="tab3From.city.$error" ng-if="tab3From.city.$dirty && tab3From.city.$invalid">
+                                  <span ng-show="tab3From.city.$error.required">City is required.</span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label col-md-4">Zip Code
+                                <!--<span class="required"> * </span>-->
+                              </label>
+                              <div class="col-md-8" ng-class="{ 'has-error' : tab3From.zipCode.$invalid && !tab3From.zipCode.$pristine}">
+                                <input type="text" class="form-control" name="zipCode" ng-model="vm.ZIP" />
+                                <span class="help-block" ng-messages="tab3From.zipCode.$error" ng-if="tab3From.zipCode.$dirty && tab3From.zipCode.$invalid">
+                                  <span ng-show="tab3From.zipCode.$error.required">Zip code is required.</span>
+                                  <span ng-show="tab3From.zipCode.$error.pattern">Invalid Zip Code.</span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label col-md-4">Start Date
+                                <span class="required"> * </span>
+                              </label>
+                              <div class="col-md-8" ng-class="{ 'has-error' : tab3From.startDate.$invalid && !tab3From.startDate.$pristine}">
+                                <div class='input-group date' id='datetimepicker6'>
+                                  <input type='text' class="form-control" name="startDate" ng-model="vm.Start_Date"
+                                    ng-required="true" />
+                                  <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                  </span>
+                                </div>
+                                <span class="help-block" ng-messages="tab3From.startDate.$error" ng-if="tab3From.startDate.$dirty && tab3From.startDate.$invalid">
+                                  <span ng-show="tab3From.startDate.$error.required">Start date is required.</span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label col-md-4">End Date
+                                <span class="required"> * </span>
+                              </label>
+                              <div class="col-md-8" ng-class="{ 'has-error' : tab3From.endDate.$invalid && !tab3From.endDate.$pristine}">
+                                <div class='input-group date' id='datetimepicker7'>
+                                  <input type='text' class="form-control" name="endDate" ng-model="vm.End_Date"
+                                    ng-required="true" />
+                                  <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                  </span>
+                                </div>
+                                <span class="help-block" ng-messages="tab3From.endDate.$error" ng-if="tab3From.endDate.$dirty && tab3From.endDate.$invalid">
+                                  <span ng-show="tab3From.endDate.$error.required">End date is required.</span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-12">
+                            <div class="form-group">
+                              <label class="control-label col-md-2">Salary
+                                <span class="required"> * </span>
+                              </label>
+                              <div class="col-md-8">
+                                <div class="mt-radio-inline">
+                                  <label class="mt-radio" ng-repeat="salary in vm.salary">
+                                    <input type="radio" name="Salary" ng-value=true ng-model="salary.selected" ng-click="vm.validatesalary($event,salary)"
+                                      ng-required="vm.salaryArray.length==0">
+                                    {{salary.salaryType}}
+                                    <span></span>
+                                  </label>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+
+                        <!--<div class="row">
+													<div class="col-md-12">
+														<div class="form-group">
+															<label class="control-label col-md-2">Salary
+																<span class="required"> * </span>
+															</label>
+															<div class="col-md-8">
+																<div class="mt-radio-inline">
+																	<label class="mt-radio">
+																		<input type="radio" name="" id=""> Annual Salary
+																		<span></span>
+																	</label>
+																	<label class="mt-radio">
+																		<input type="radio" name="" id=""> Hourly Wage
+																		<span></span>
+																	</label>
+																</div>
+															</div>
+														</div>-->
+                        <!-- <div class="form-group">
+															<label class="control-label col-md-4">Start Salary
+																<span class="required"> * </span>
+															</label>
+															<div class="col-md-8" ng-class="{ 'has-error' : tab3From.startingSalary.$invalid && !tab3From.startingSalary.$pristine || vm.Starting_Salary === 0}">
+																<input type="text" class="form-control" name="startingSalary" ng-model="vm.Starting_Salary" ng-pattern="/^[0-9]*$/" required/>
+																<span class="help-block" ng-messages="tab3From.startingSalary.$error" ng-if="tab3From.startingSalary.$dirty && tab3From.startingSalary.$invalid || vm.Starting_Salary === 0">
+																	<span ng-show="vm.Starting_Salary == 0">Start Salary should not zero.</span>
+																	<span ng-show="tab3From.startingSalary.$error">Invalid Start Salary.</span>
+																</span>
+															</div>
+														</div> -->
+                        <!--</div>-->
+                        <!-- <div class="col-md-6">
+														 <div class="form-group">
+															<label class="control-label col-md-4">End Salary
+																<span class="required"> * </span>
+															</label>
+															<div class="col-md-8" ng-class="{ 'has-error' : tab3From.endingSalary.$invalid && !tab3From.endingSalary.$pristine || vm.Ending_Salary === 0}">
+																<input type="text" class="form-control" name="endingSalary" ng-model="vm.Ending_Salary" ng-pattern="/^[0-9]*$/" required/>
+																<span class="help-block" ng-messages="tab3From.endingSalary.$error" ng-if="tab3From.endingSalary.$dirty && tab3From.endingSalary.$invalid || vm.Ending_Salary === 0">
+																	<span ng-show="vm.Ending_Salary == 0">End Salary should not zero.</span>
+																	<span ng-show="tab3From.endingSalary.$error">Invalid End Salary.</span>
+																</span>
+															</div>
+														</div> 
+													</div>-->
+                        <!--</div>-->
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label col-md-4">Start Position
+                                <span class="required"> * </span>
+                              </label>
+                              <div class="col-md-8" ng-class="{ 'has-error' : tab2From.position.$invalid && !tab2From.position.$pristine}">
+                                <select ng-model="vm.Starting_Position" ng-options="option as option.Profile_Name for option in vm.Allpositions"
+                                  class="form-control" name="position" ng-change="vm.otherFieldInput(vm.Starting_Position)"
+                                  required>
+                                  <option value="" selected disabled hidden>Select</option>
+                                  <!--<option ng-repeat="positions in vm.positionsApplying" ng-value="positions.id">{{positions.name}}</option>-->
+                                </select>
+                                <span class="help-block" ng-messages="tab2From.position.$error" ng-if="tab2From.position.$dirty && tab2From.position.$invalid">
+                                  <span ng-show="tab2From.position.$error.required">Start Position is required.</span>
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6" ng-if="vm.showOtherField">
+                            <div class="form-group">
+                              <label class="control-label col-md-4">Other Position
+                                <span class="required"> * </span>
+                              </label>
+                              <div class="col-md-8" ng-class="{ 'has-error' : tab3From.otherPosition.$invalid && !tab3From.otherPosition.$pristine}">
+                                <input type="text" class="form-control" name="otherPosition" ng-model="vm.OtherProfilePosition"
+                                  minlength="1" ng-maxlength="65" required />
+                                <span class="help-block" ng-messages="tab3From.otherPosition.$error" ng-if="tab3From.otherPosition.$dirty && tab3From.otherPosition.$invalid">
+                                  <span ng-show="tab3From.otherPosition.$error.required">Other Position name is
+                                    required.</span>
+                                  <span ng-show="tab3From.otherPosition.$error.minlength">Other Position name is too
+                                    short.</span>
+                                  <span ng-show="tab3From.otherPosition.$error.maxlength">Other Position name is too
+                                    long.</span>
+                              </div>
+                            </div>
+                          </div>
+                          <!--<div class="col-md-6">
+														<div class="form-group">
+															<label class="control-label col-md-4">End Position
+																<span class="required"> * </span>
+															</label>
+															<div class="col-md-8" ng-class="{ 'has-error' : tab3From.endingPosition.$invalid && !tab3From.endingPosition.$pristine}">
+																<input type="text" class="form-control" name="endingPosition" ng-model="vm.Ending_Position" minlength="1" ng-maxlength="65"
+																/>
+																<span class="help-block" ng-messages="tab3From.endingPosition.$error" ng-if="tab3From.endingPosition.$dirty && tab3From.endingPosition.$invalid">
+																	<span ng-show="tab3From.endingPosition.$error.required">End Position is required.</span>
+																	<span ng-show="tab3From.endingPosition.$error.minlength">End Position is too short.</span>
+																	<span ng-show="tab3From.endingPosition.$error.maxlength">End Position is too long.</span>
+															</div>
+														</div>
+													</div>-->
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label col-md-4">Supervisor's Name
+                                <!--<span class="required"> * </span>-->
+                              </label>
+                              <div class="col-md-8" ng-class="{ 'has-error' : tab3From.supervisorName.$invalid && !tab3From.supervisorName.$pristine}">
+                                <input type="text" class="form-control" name="supervisorName" ng-model="vm.Supervisor_Name"
+                                  minlength="1" ng-maxlength="65" />
+                                <span class="help-block" ng-messages="tab3From.supervisorName.$error" ng-if="tab3From.supervisorName.$dirty && tab3From.supervisorName.$invalid">
+                                  <span ng-show="tab3From.supervisorName.$error.required">Supervisor Name is required.</span>
+                                  <span ng-show="tab3From.supervisorName.$error.minlength">Supervisor Name is too
+                                    short.</span>
+                                  <span ng-show="tab3From.supervisorName.$error.maxlength">Supervisor Name is too long.</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label col-md-4">Supervisor Title
+                                <!--<span class="required"> * </span>-->
+                              </label>
+                              <div class="col-md-8" ng-class="{ 'has-error' : tab3From.supervisorTitle.$invalid && !tab3From.supervisorTitle.$pristine}">
+                                <input type="text" class="form-control" name="supervisorTitle" ng-model="vm.Supervisor_Title"
+                                  minlength="1" ng-maxlength="65" />
+                                <span class="help-block" ng-messages="tab3From.supervisorTitle.$error" ng-if="tab3From.supervisorTitle.$dirty && tab3From.supervisorTitle.$invalid">
+                                  <span ng-show="tab3From.supervisorTitle.$error.required">Supervisor Title is
+                                    required.</span>
+                                  <span ng-show="tab3From.supervisorTitle.$error.minlength">Supervisor Title is too
+                                    short.</span>
+                                  <span ng-show="tab3From.supervisorTitle.$error.maxlength">Supervisor Title is too
+                                    long.</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label col-md-4">Description Of Duties
+                                <!--<span class="required"> * </span>-->
+                              </label>
+                              <div class="col-md-8" ng-class="{ 'has-error' : tab3From.jobDescription.$invalid && !tab3From.jobDescription.$pristine}">
+                                <textarea class="form-control" rows="2" name="jobDescription" ng-model="vm.Job_Description"
+                                  ng-maxlength="200"></textarea>
+                                <span class="help-block" ng-messages="tab3From.jobDescription.$error" ng-if="tab3From.jobDescription.$dirty && tab3From.jobDescription.$invalid">
+                                  <span ng-show="tab3From.jobDescription.$error.required">Description Of Duties is
+                                    required.</span>
+                                  <span ng-show="tab3From.jobDescription.$error.maxlength">Description Of Duties is too
+                                    long.</span>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label class="control-label col-md-4">Reason for leaving
+                                <!--<span class="required"> * </span>-->
+                              </label>
+                              <div class="col-md-8" ng-class="{ 'has-error' : tab3From.reasonForLeaving.$invalid && !tab3From.reasonForLeaving.$pristine}">
+                                <textarea class="form-control" rows="2" name="reasonForLeaving" ng-model="vm.Reason_For_Leaving"
+                                  ng-maxlength="200"></textarea>
+                                <span class="help-block" ng-messages="tab3From.reasonForLeaving.$error" ng-if="tab3From.reasonForLeaving.$dirty && tab3From.reasonForLeaving.$invalid">
+                                  <span ng-show="tab3From.reasonForLeaving.$error.required">Reason for leaving is
+                                    required.</span>
+                                  <span ng-show="tab3From.reasonForLeaving.$error.maxlength">Reason for leaving is too
+                                    long.</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-12 action-control">
+                            <div class="text-right">
+                              <a href="" class="btn btn-primary btn-xs" ng-disabled="tab3From.$invalid" ng-hide="vm.emHistoryAddMoreButton"
+                                ng-click="vm.addEmploymentHistory()">
+                                Add</a>
+                            </div>
+                            <div class="text-right">
+                              <ul class="button-list">
+                                <li>
+                                  <a href="" class="btn btn-default btn-xs " ng-hide="vm.emHistoryCancelButton"
+                                    ng-click="vm.clearEmploymentHistoryForm()">
+                                    Cancel</a>
+                                </li>
+                                <li>
+                                  <a href="" class="btn btn-primary btn-xs" ng-hide="vm.emHistorySaveButton" ng-click="vm.addEmploymentHistory()">
+                                    Save</a>
+                                </li>
+                              </ul>
+                            </div>
+                            <div class="clearfix"></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4" ng-if="vm.EmploymentDetails.length > 0">
+                        <div class="port_scroll">
+                          <div class="portlet box blue-hoki" ng-repeat="ed in vm.EmploymentDetails track by $index">
+                            <div class="portlet-title">
+                              <div class="caption">
+                                <i class="fa fa-gift"></i>Job {{$index + 1}} </div>
+                              <div class="actions">
+                                <a href="javascript:;" class="btn btn-default btn-sm" ng-click="vm.editEmploymentHistory($index)">
+                                  <i class="fa fa-pencil"></i>
+                                </a>
+                                <a href="javascript:;" class="btn btn-default btn-sm" ng-click="vm.removeEmploymentHistory($index)">
+                                  <i class="fa fa-trash"></i>
+                                </a>
+                              </div>
+                            </div>
+                            <div class="portlet-body">
+                              <div class="scroller" data-rail-visible="1" data-rail-color="yellow" data-handle-color="#a1b2bd">
+                                <strong>{{ed.Company_Name}}</strong>
+                                <!--<p class="font-10">
+																	One Tiffany Pointe,
+																	<br/> Suite 108 | Bloomingdale,
+																	<br/> IL 60108
+																</p>-->
+                                <p class="font-10">
+                                  <strong> From </strong>
+                                  <i class="fa fa-calender"></i> {{ed.Start_Date.split('T')[0] |date : "MM/dd/yyyy"}}
+                                  <strong>To </strong>
+                                  <i class="fa fa-calender"></i> {{ed.End_Date.split('T')[0] |date : "MM/dd/yyyy"}} </p>
+                                <!--<p class="font-10">
+																	<strong>Salary: </strong> $ {{}}
+																</p>-->
+                                <p class="font-10">
+                                  <strong>Position: </strong> {{ed.Starting_Position.Profile_Name}}
+                                  <i ng-if="ed.Other_Position != ''">
+                                    <strong> - </strong> {{ed.Other_Position}}
+                                  </i>
+                                </p>
+                                <!--<p class="font-10">
+																	<strong>Superviser: </strong> John Doe
+																	<span> Manager </span>
+																</p>-->
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </form>
+                </div>
+                <div class="tab-pane  application_print" id="tab4">
+                  <form name="tab4From" ng-submit="submitForm(tab4From.$valid)">
+                    <h3 class="margin-top-15">Personal Details
+                    </h3>
+                    <div class="row">
+                      <div class="col-md-4 col-xs-4">
+                        <h2 class="">
+                          Name :
+                        </h2>{{vm.personalDetails.firstName}} {{vm.personalDetails.middleName}}
+                        {{vm.personalDetails.lastName}}
+                        <div class="disp-block">
+                          <p class="">
+                            <strong>Email : </strong>{{vm.personalDetails.email}}
+                          </p>
+                        </div>
+                        <div class="disp-block">
+                          <p class="">
+                            <strong>Mobile :</strong> {{vm.personalDetails.mobileNumber}}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-xs-4">
+                        <h2 class="">Address :</h2>
+                        <address class="">{{vm.personalDetails.currAddress1}}
+                          <br />{{vm.personalDetails.currAddress2}}
+                          <br />{{vm.filterState(vm.personalDetails.currState)}} ,
+                          {{vm.filterCity(vm.personalDetails.currCity)}}
+                        </address>
+                      </div>
+                      <div class="col-md-4 col-xs-4">
+                        <h2 class="">Remark</h2>
+                        <p>
+                          {{vm.personalDetails.remark}}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row margin-top-15">
+                      <div class="col-md-4 col-xs-4">
+                        <h2 class="">How did you hear about Trucadence?</h2>
+                        <div class="disp-block">
+                          <p ng-repeat="media in vm.refChannelMedia" ng-if="media.selected == true">{{media.mediaName}}</p>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-xs-4">
+                        <h2 class="">Have you ever filled this form?</h2>
+                        <div class="disp-block">
+                          <p ng-if="vm.employmentDetails.isAppliedBefore == true">Yes in
+                            {{vm.employmentDetails.preApplicationMonth}}
+                          </p>
+                          <p ng-if="vm.employmentDetails.isAppliedBefore != true">No</p>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-xs-4">
+                        <h2 class="">Have you ever employed here?</h2>
+                        <div class="disp-block">
+                          <p ng-if="vm.employmentDetails.exTruecadenceEmployee == true">Yes,
+                            {{vm.employmentDetails.exTruecadenceEmployeePlace}}
+                            in {{vm.employmentDetails.exTruecadenceEmployeeYear}} as
+                            {{vm.employmentDetails.exTruecadenceEmployeePosition}}
+                          </p>
+                          <p ng-if="vm.employmentDetails.exTruecadenceEmployee != true">No</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row margin-top-15">
+                      <div class="col-md-4 col-xs-4">
+                        <h2 class="">Are you 18 years of age or older?</h2>
+                        <div class="disp-block">
+                          <p ng-if="vm.employmentDetails.isAdult == true">Yes</p>
+                          <p ng-if="vm.employmentDetails.isAdult != true">No</p>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-xs-4" ng-if="vm.employmentDetails.isAdult != true">
+                        <h2 class="">If not, can you furnish work permit?</h2>
+                        <div class="disp-block">
+                          <p ng-if="vm.employmentDetails.underAgeWorkPermit == true">Yes</p>
+                          <p ng-if="vm.employmentDetails.underAgeWorkPermit != true">No</p>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-xs-4">
+                        <h2 class="">Education level :</h2>
+                        <p ng-repeat="eduLevel in vm.educationLevel" ng-if="eduLevel.selected == true">{{eduLevel.educationName}}</p>
+                      </div>
+                      <div class="col-md-4 col-xs-4">
+                        <h2 class="">US work eligibility?</h2>
+                        <div class="disp-block">
+                          <p ng-if="vm.employmentDetails.isUSWorkPermit">Yes</p>
+                          <p ng-if="!vm.employmentDetails.isUSWorkPermit">No</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row margin-top-15">
+                      <div class="col-md-4 col-xs-4">
+                        <h2 class="">What areas are you willing to work?</h2>
+                        <div class="disp-block">
+                          <p>{{vm.employmentDetails.areaOfWork}}</p>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-xs-4">
+                        <h2 class="">What position you are applying for?</h2>
+                        <div class="disp-block">
+                          <p>{{vm.employmentDetails.positionsInterested.Profile_Name}}</p>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-xs-4">
+                        <h2 class="">What shifts are you willing to work?</h2>
+                        <div class="disp-block">
+                          Shifts:
+                          <span ng-repeat="shift in vm.favourableShifts" ng-if="shift.selected">{{shift.shiftTypeName}}
+                          </span>
+                          <br />
+                          Days:
+                          <span ng-repeat="day in vm.favourableDays" ng-if="day.selected">{{day.shiftTypeName}}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row margin-top-15">
+                      <div class="col-md-4 col-xs-4">
+                        <h2 class="">Working hours :</h2>
+                        <p ng-repeat="workingHour in vm.workingHours" ng-if="workingHour.selected">{{workingHour.workType}}</p>
+                      </div>
+                      <div class="col-md-4 col-xs-4">
+                        <h2 class="">If hired how will you like to receive payment each week?</h2>
+                        <div class="disp-block">
+                          <p ng-repeat="payments in vm.modeOfPayments" ng-if="payments.selected">{{payments.paymentType}}</p>
+                        </div>
+                      </div>
+                      <div class="col-md-4 col-xs-4">
+                        <h2 class="">Do you have access to reliable transportation?</h2>
+                        <div class="disp-block">
+                          <p ng-if="vm.employmentDetails.isTransportationAvailable">Yes</p>
+                          <p ng-if="!vm.employmentDetails.isTransportationAvailable">No</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row margin-top-15">
+                      <div class="col-md-4 col-xs-4">
+                        <h2 class="">Have you ever been suspended / discharged from service?</h2>
+                        <div class="disp-block">
+                          <p ng-if="vm.employmentDetails.isSuspended">Yes</p>
+                          <p ng-if="!vm.employmentDetails.isSuspended">No</p>
+                        </div>
+                      </div>
+                      <div class="col-md-8 col-xs-8" ng-if="vm.employmentDetails.isSuspended">
+                        <h2 class="">If Yes</h2>
+                        <p>Reason: {{vm.employmentDetails.descriptionForSuspention}}</p>
+                      </div>
+                    </div>
+                    <div ng-if="vm.EmploymentDetails.length > 0">
+                      <h2 class="margin-top-15">Employment history : </h2>
+                      <div ng-repeat="ed in vm.EmploymentDetails track by $index">
+                        <div class="row">
+                          <div class="col-md-4 col-xs-4">
+                            <h2 class="uppercase">Company Name :</h2>
+                            <p>
+                              <strong>{{ed.Company_Name}}</strong>
+                            </p><br />
+                            <p ng-if="ed.ed.Address_1 != ''">
+                              <h2> Address : </h2> {{ed.Address_1}}
+                              <br /> {{ed.Address_2}}
+                              <br /> {{ed.Country.Name}} {{ed.State.Name}} {{ed.City.Name}} {{ed.ZIP}}
+                              <br />
+                              <h2>Phone : </h2> {{ed.Phone}}
+                            </p>
+                          </div>
+                          <div class="col-md-4 col-xs-4">
+                            <h2 class="uppercase">Start Date</h2>
+                            <p>{{ed.Start_Date.split('T')[0] |date : "MM/dd/yyyy"}}</p>
+                          </div>
+                          <div class="col-md-4 col-xs-4">
+                            <h2 class="uppercase">End Date</h2>
+                            <p>{{ed.End_Date.split('T')[0] |date : "MM/dd/yyyy"}}</p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-3 col-xs-3">
+                            <h2 class="uppercase">Salary</h2>
+                            <p ng-repeat="salary in ed.Starting_SalaryArray" ng-if="salary.selected">{{salary.salaryType}}</p>
+                          </div>
+                          <!--<div class="col-md-3 col-xs-3">
+																<h2 class="uppercase">End Salary</h2>
+																<p>${{ed.Ending_Salary}}</p>
+															</div>-->
+                          <div class="col-md-3 col-xs-3">
+                            <h2 class="uppercase">Start Position</h2>
+                            <p>{{ed.Starting_Position.Profile_Name}}
+                              <i ng-if="ed.Other_Position != ''">
+                                <strong> - </strong> {{ed.Other_Position}}
+                              </i>
+                            </p>
+                          </div>
+                          <!--<div class="col-md-3 col-xs-3" ng-if="ed.Ending_Position !=''">
+																<h2 class="uppercase">End Position</h2>
+																<p>{{ed.Ending_Position}}</p>
+															</div>-->
+                        </div>
+
+                        <div class="row">
+                          <div class="col-md-4 col-xs-4" ng-if="ed.Supervisor_Name !=''">
+                            <h2 class="uppercase">Supervisor's name</h2>
+                            <p>{{ed.Supervisor_Name}}</p>
+                          </div>
+                          <div class="col-md-4 col-xs-4" ng-if="ed.Supervisor_Title !=''">
+                            <h2 class="uppercase">Supervisor Title</h2>
+                            <p>{{ed.Supervisor_Title}}</p>
+                          </div>
+                        </div>
+                        <div class="row">
+                          <div class="col-md-6 col-xs-6" ng-if="ed.Job_Description !=''">
+                            <h2 class="uppercase">Description of duties?</h2>
+                            <p>{{ed.Job_Description}}</p>
+                          </div>
+                          <div class="col-md-6 col-xs-6" ng-if="ed.Reason_For_Leaving !=''">
+                            <h2 class="uppercase">Reason for leaving?</h2>
+                            <p>{{ed.Reason_For_Leaving}}</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <h2 class="margin-top-15">CERTIFICATION STATEMENT AND SIGNATURE: </h2>
+                    <p>
+                      I certify that all of the information furnished on the application is true, complete and
+                      correct. I understand and agree
+                      that any falsification, misrepresentation, misleading statement, or omission of fact on either
+                      the
+                      application or during the pre-hire or posthire process will be sufficient reason for (1) my not
+                      being
+                      offered employment; or (2) dismissal at any time if I am employed. I authorize Trucadence to
+                      release
+                      the information contained in the background investigation to other firms or persons upon
+                      request.
+                      I release Trucadence and any employer, school or individual from any liability as a result of
+                      such
+                      contact. I understand that if employed, my employment will not be for any fixed period of time
+                      and
+                      may be terminated by the company at any time. I understand that my failure to report to work
+                      will
+                      indicate that I have quit.
+                    </p> <br><br>
+                    <div class="row text-center">
+                      <h2> ATTENDANCE POLICY </h2>
+                    </div>
+                    <p>Punctuality and reliable attendance are important to your success on any assignment. If you must
+                      be absent or late because of an illness or an emergency, contact your Trucadence office at
+                      <strong>(630) 394-4707</strong>&nbsp;prior to your shift start time. If necessary, leave a voice
+                      message including your name and assignment location. &nbsp;Trucadence has a strict attendance
+                      policy for all assignments. &nbsp;If you have one (<strong>1) unapproved attendance incident in
+                        the first 30-day period, your assignment will be ended. </strong>This includes any and all
+                      tardiness, leaving early and/or unapproved absences. &nbsp;If you know in advance that you will
+                      need time off, please contact Trucadence immediately to make the necessary arrangements.</p>
+                    <p>Additionally, I agree to the following company policies:</p>
+                    <ol>
+                      <li>Adhere to all company policies, including but not limited to safety, while on assignment</li>
+                      <li>Follow the working schedule and complete the assigned shifts/hours</li>
+                      <li>Communication <br />
+                        <ul>
+                          <li>In the event the assignment is ended, I will contact Trucadence, twice per week, for
+                            other available assignments</li>
+                          <li>Contact us if you cannot begin the assignment, arrive on time, or complete the job</li>
+                          <li>Contact us if you are injured while on the job</li>
+                          <li>Contact us if you require assistance while on the job</li>
+                          <li>Contact us if the client asks you to return or offers you a full-time position</li>
+                          <li>Contact us if a client asks you to work overtime</li>
+                          <li>Contact us if you change your name, phone number, or address</li>
+                        </ul>
+                      </li>
+                    </ol>
+                    <div class="row">
+                      <div class="col-md-6 col-xs-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4"><strong>Signature</strong>
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <div class="" style="min-height: 150px;" ng-style="{'max-width': boundingBox.width + 'px', 'max-height': boundingBox.height + 'px'}">
+                              <signature-pad class="signature_box" ng-class="{disabled: vm.signPadDisable}" style="min-height: 150px;"
+                                accept="accept" clear="clear" height="220" width="568" dataurl="dataurl" ng-model="vm.signature.dataUrl"
+                                ng-required="true"></signature-pad>
+                              <div class="buttons text-right">
+                                <button class="btn btn-xs btn-default" ng-click="vm.clear()">Clear</button>
+                                <!--<button class="btn btn-xs btn-primary" ng-click="dataurl = vm.signature.dataUrl" ng-disabled="!vm.signature">Reset</button>-->
+                                <button class="btn btn-xs btn-success" ng-click="vm.signature = accept();vm.signaturePadDisabled();">Sign</button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-6 col-xs-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-6"><strong>Date : {{vm.AssignedDate | date}}</strong></label>
+                          <!--<div class="col-md-8">
+														<div class="input-group date">
+															<input type="text" class="form-control datepicker" data-date-format="mm/dd/yyyy">
+															<span class="input-group-addon">
+																<i class="glyphicon glyphicon-th"></i>
+															</span>
+														</div>
+													</div>-->
+                        </div>
+                      </div>
+                    </div>
+                    <!--<button class="btn green uppercase" ng-disabled="tab4From.$invalid">Valid</button>-->
+                    <!--added by rohini for testing-->
+                  </form>
+                </div>
+
+                <ul class="pager wizard">
+                  <li class="previous first" style="display:none;">
+                    <a href="#">First</a>
+                  </li>
+                  <li class="previous">
+                    <a>Previous</a>
+                  </li>
+                  <!--<li class="next last" style="display:none;">
+										<a href="#">Last</a>
+									</li>-->
+                  <li class="next">
+                    <a>Next</a>
+                  </li>
+                  <li class="finish pull-right">
+                    <a>Finish</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  /* $(document).ready(function () { href="javascript:;"
+																																														$('.datepicker').datepicker();
+																																														$('.js-example-basic-single').select2({
+																																															theme: "bootstrap"
+																																														});
+																																													});
+
+																																													$('.date-own').datepicker({
+																																														minViewMode: 2,
+																																														format: 'yyyy'
+																																													}); */
+</script>

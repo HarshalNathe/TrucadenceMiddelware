@@ -1,0 +1,938 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="row hidden-print">
+  <div class="col-md-6">
+    <h1 class="page-title">I-9</h1>
+  </div>
+  <!-- <div class="col-md-6">
+    <div class="page-bar">
+      <ul class="page-breadcrumb">
+        <li>
+          <i class="icon-home"></i>
+          <a href="">Home</a>
+          <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+          <a href="">Candidate Dashboard</a>
+          <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+          <a href="">
+            <span>i 9</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </div> -->
+</div>
+<!-- END PAGE HEADER-->
+
+<div class="row" cg-busy="vm.promise">
+  <div class="col-md-12">
+
+    <div class="portlet light portlet-fit ">
+      <div class="portlet-title">
+        <div class="caption text-center">
+          <i class=" icon-layers font-green"></i>
+          <span class="caption-subject font-green bold uppercase">Employment Eligibility Verification USCIS Form I-9</span>
+        </div>
+        <button class="btn btn-primary hidden-print pull-right btn-xs" ng-click="vm.edit()" ng-hide="!vm.isEdit">
+          <i class="fa fa-edit"></i> Edit</button>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-md-12">
+            <P>
+              <strong>► START HERE:</strong> Read instructions carefully before completing this form. The instructions
+              must
+              be available, either in paper or electronically, during completion of this form. Employers are liable for
+              errors
+              in the completion of this form.
+            </P>
+            <P>
+              <strong> ANTI-DISCRIMINATION NOTICE:</strong> It is illegal to discriminate against work-authorized
+              individuals.
+              Employers CANNOT specify which document(s) an employee may present to establish employment authorization
+              and
+              identity. The refusal to hire or continue to employ an individual because the documentation presented has
+              a
+              future expiration date may also constitute illegal discrimination.
+            </P>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <div class="inine_box">
+              <div class="gray_bg">
+                <p>
+                  <strong> 1. Employee Information and Attestation </strong> (Employees must complete and sign Section
+                  1
+                  of Form I-9 no later than the first day of employment, but not before accepting a job offer.)</p>
+              </div>
+              <div class="row">
+                <div class="col-xs-3 col-md-3 border_right">
+                  <P>
+                    <strong>Last Name</strong>
+                    <br /> {{vm.candidatDetails.Last_Name}}
+                  </P>
+                </div>
+                <div class="col-xs-3 col-md-3 border_right">
+                  <P>
+                    <strong>First Name</strong>
+                    <br /> {{vm.candidatDetails.First_Name}}
+                  </P>
+                </div>
+                <div class="col-xs-3 col-md-3 border_right">
+                  <P>
+                    <strong>Middle Name</strong>
+                    <br /> {{vm.candidatDetails.Middle_Name}}
+                  </P>
+                </div>
+                <div class="col-xs-3 col-md-3 ">
+                  <P>
+                    <strong>Other Last Name Used (if any)</strong>
+                    <br /> {{vm.candidatDetails.Other_Last_Name}}
+                  </P>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-xs-3 col-md-3 border_right">
+                  <P>
+                    <strong>Address</strong>
+                    <br /> {{vm.candidatDetails.Address_1}}, {{vm.candidatDetails.Address_2}}
+                  </P>
+                </div>
+                <div class="col-xs-1 col-md-1 border_right">
+                  <P>
+                    <strong>Apt No.</strong>
+                    <br /> {{vm.candidatDetails.Apt_No}}
+                  </P>
+                </div>
+                <div class="col-xs-2 col-md-3 border_right">
+                  <P>
+                    <strong>City or Town</strong>
+                    <br /> {{vm.candidatDetails.city.Name}}
+                  </P>
+                </div>
+                <div class="col-xs-1 col-md-1  border_right">
+                  <P>
+                    <strong>State</strong>
+                    <br /> {{vm.candidatDetails.state.Name}}
+                  </P>
+                </div>
+                <div class="col-xs-2 col-md-2">
+                  <P>
+                    <strong>Zip Code</strong>
+                    <br /> {{vm.candidatDetails.ZIP}}
+                  </P>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-xs-3 col-md-3 border_right">
+                  <P>
+                    <strong>Date of Birth</strong>
+                    <br /> {{vm.candidatDetails.DOB.split('T')[0] |date : "mediumDate"}}
+                  </P>
+                </div>
+                <div class="col-xs-3 col-md-3 border_right">
+                  <P>
+                    <strong>U.S. Social Security Number</strong>
+                    <br /> XXX-XX-{{vm.candidatDetails.Social_Security_Number.slice(-4);}}
+                    <a href="" class="margin-left-16 btn btn-xs hidden-print btn-primary" data-toggle="modal"
+                      data-target="#basic">
+                      <i class="fa fa-eye"></i>
+                    </a>
+                  </P>
+                </div>
+                <div class="col-xs-3 col-md-3 border_right">
+                  <P>
+                    <strong>Employee's Email Address</strong>
+                    <br /> {{vm.candidatDetails.Email_ID}}
+                  </P>
+                </div>
+                <div class="col-xs-3 col-md-3 ">
+                  <P>
+                    <strong>Employee's Telephone Number</strong>
+                    <br /> {{vm.candidatDetails.Cell_Phone}}
+                  </P>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <p>
+              <strong>I am aware that federal law provides for imprisonment and/or fines for false statements or use of
+                false
+                documents in connection with the completion of this form.</strong>
+            </p>
+            <p>
+              <strong>I attest, under penalty of perjury, that I am (check one of the following boxes.)</strong>
+            </p>
+          </div>
+        </div>
+
+        <form name="iNineForm" class="form-horizontal" novalidate>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="inine_box">
+
+                <div class="row">
+                  <div class="col-xs-12 col-md-12">
+                    <div class="mt-radio-list margin-left-16">
+                      <label class="mt-radio">
+                        <input type="radio" name="optionsRadios" id="option1" ng-model="vm.IS_Citizen_US" ng-disabled="vm.isEdit"
+                          value="1" ng-required="!vm.IS_Citizen_US"> 1.
+                        A citizen of the the United States
+                        <span></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-xs-12 col-md-12">
+                    <div class="mt-radio-list  margin-left-16">
+                      <label class="mt-radio">
+                        <input type="radio" name="optionsRadios" id="option2" ng-model="vm.IS_Citizen_US" ng-disabled="vm.isEdit"
+                          value="2" ng-required="!vm.IS_Citizen_US"> 2.
+                        A noncitizen national of the United States
+                        <!--<a href="" data-toggle="modal" data-target="#inine">
+                        (See Instruction)
+                      </a>-->
+                        <span></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-xs-8 col-md-8">
+                    <div class="mt-radio-list  margin-left-16">
+                      <label class="mt-radio">
+                        <input type="radio" name="optionsRadios" id="option3" ng-model="vm.IS_Citizen_US" ng-disabled="vm.isEdit"
+                          value="3" ng-required="!vm.IS_Citizen_US"> 3.
+                        A lawful permanent resident (Alien Registration Number / USCIS Number):
+                        <span></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-xs-3 col-md-3" ng-if="vm.IS_Citizen_US === '3'" ng-class="{ 'has-error' : iNineForm.alienRegNo.$invalid && !iNineForm.alienRegNo.$pristine}">
+                    <input class="form-control input-sm margin-top-10" name="alienRegNo" ng-disabled="vm.isEdit"
+                      ng-model="vm.Alien_Reg_No" placeholder="" ng-pattern="/^\d{3}-?\d{3}-?\d{3}$/" ng-required="vm.IS_Citizen_US === '3'" />
+                    <span class="help-block" ng-messages="iNineForm.alienRegNo.$error" ng-if="iNineForm.alienRegNo.$dirty && iNineForm.alienRegNo.$invalid">
+                      <span ng-show="iNineForm.alienRegNo.$error.required">Please enter Alien Registration Number /
+                        USCIS
+                        Number.
+                      </span>
+                      <span ng-show="iNineForm.alienRegNo.$error.pattern">Please enter valid Alien Registration Number
+                        /
+                        USCIS Number.</span>
+                    </span>
+                  </div>
+                </div>
+                <hr />
+                <div class="row">
+                  <div class="col-xs-8 col-md-8">
+                    <div class="mt-radio-list margin-left-16">
+                      <label class="mt-radio">
+                        <input type="radio" name="optionsRadios" id="option4" ng-model="vm.IS_Citizen_US" ng-disabled="vm.isEdit"
+                          value="4" ng-required="!vm.IS_Citizen_US"> 4.
+                        An alien authorized to work untill (expiration date, if applicable, mm/dd/yyyy):
+                        <br /> Some aliens may write "N/A" in the expiration date field.
+
+                        <span></span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-xs-3 col-md-3" ng-if="vm.IS_Citizen_US === '4'">
+                    <input class="form-control input-sm margin-top-10" ng-disabled="vm.isEdit" ng-model="vm.AlienWork_Expiry_Date"
+                      placeholder="" ng-required="vm.IS_Citizen_US === '4'" />
+                  </div>
+                </div>
+                <div ng-if="vm.IS_Citizen_US === '4'">
+                  <div class="row">
+                    <div class="col-md-9 margin-left-16">
+                      <p>Aliens authorized to work must provide only one of the following document numbers to complete
+                        Form
+                        I-p.
+                        <br /> An Alien Registration Number / USCIS Number OR Form I-94 Admission Number OR Foreign
+                        Passport
+                        Number.
+                      </p>
+                    </div>
+                  </div>
+                  <div class="form-group row margin-left-16">
+                    <label class="control-label col-md-5">1. Alien Regitration Number/USCIS Number: </label>
+                    <div class="col-md-3" ng-class="{ 'has-error' : iNineForm.alienRegNopoint4.$invalid && !iNineForm.alienRegNopoint4.$pristine}">
+                      <input class="form-control input-sm" name="alienRegNopoint4" ng-disabled="vm.isEdit" ng-model="vm.Alien_Reg_No_point4"
+                        ng-pattern="/^\d{3}-?\d{3}-?\d{3}$/" ng-required="vm.IS_Citizen_US === '4' && !vm.FormI94_Admission_No && !vm.Foreign_Passport_No" />
+                      <span class="help-block" ng-messages="iNineForm.alienRegNo.$error" ng-if="iNineForm.alienRegNopoint4.$dirty && iNineForm.alienRegNopoint4.$invalid">
+                        <span ng-show="iNineForm.alienRegNopoint4.$error.required">Please enter Alien Registration
+                          Number
+                          / USCIS Number.</span>
+                        <span ng-show="iNineForm.alienRegNopoint4.$error.pattern">Please enter valid Alien Registration
+                          Number
+                          / USCIS Number.</span>
+                      </span>
+                    </div>
+                  </div>
+                  <hr class="hr-text" data-content="OR" />
+                  <div class="form-group row margin-left-16">
+                    <label class="control-label col-md-5">2. Form I-94 Admission Number: </label>
+                    <div class="col-md-3">
+                      <input class="form-control input-sm" ng-disabled="vm.isEdit" ng-model="vm.FormI94_Admission_No"
+                        ng-required="vm.IS_Citizen_US === '4' && !vm.Alien_Reg_No_point4 && !vm.Foreign_Passport_No" />
+                    </div>
+                  </div>
+                  <hr class="hr-text" data-content="OR" />
+                  <div class="form-group row margin-left-16">
+                    <label class="control-label col-md-5">3. Foreign Passport Number: </label>
+                    <div class="col-md-3" ng-class="{ 'has-error' : iNineForm.foreignPassportNo.$invalid && !iNineForm.foreignPassportNo.$pristine}">
+                      <input class="form-control input-sm" name="foreignPassportNo" ng-disabled="vm.isEdit" ng-model="vm.Foreign_Passport_No"
+                        ng-pattern="/^(?!^0+$)[a-zA-Z0-9]{3,20}$/" ng-required="vm.IS_Citizen_US === '4' && !vm.FormI94_Admission_No && !vm.Alien_Reg_No_point4" />
+                      <span class="help-block" ng-messages="iNineForm.foreignPassportNo.$error" ng-if="iNineForm.foreignPassportNo.$dirty && iNineForm.foreignPassportNo.$invalid">
+                        <span ng-show="iNineForm.foreignPassportNo.$error.required">Passport is required.</span>
+                        <span ng-show="iNineForm.foreignPassportNo.$error.pattern">Please enter valid Passport number.</span>
+                      </span>
+                    </div>
+                  </div>
+                  <div class="form-group row margin-left-16">
+                    <label class="control-label col-md-5"> Conutry of Issuance: </label>
+                    <div class="col-md-3" ng-class="{ 'has-error' : iNineForm.issuanceCountry.$invalid && !iNineForm.issuanceCountry.$pristine}">
+                      <input class="form-control input-sm" name="issuanceCountry" ng-disabled="vm.isEdit" ng-model="vm.Issuance_Country"
+                        ng-required="vm.IS_Citizen_US === '4' && !vm.FormI94_Admission_No && !vm.Alien_Reg_No_point4  && vm.Foreign_Passport_No"
+                        ng-pattern="/^([a-zA-Z' ]+)$/" />
+                      <span class="help-block" ng-messages="iNineForm.issuanceCountry.$error" ng-if="iNineForm.issuanceCountry.$dirty && iNineForm.issuanceCountry.$invalid">
+                        <span ng-show="iNineForm.issuanceCountry.$error.required">Conutry of Issuance is required.</span>
+                        <span ng-show="iNineForm.issuanceCountry.$error.pattern">Please enter valid Conutry of
+                          Issuance.</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" ng-hide="vm.isEdit">
+            <span>Employees may present one selection from List A or a combination of one selection from List B and one
+              selection
+              from List C</span>
+            <div class="col-xs-8 col-md-8">
+              <div class="mt-radio-list  margin-left-16">
+                <label class="mt-radio">
+                  <input type="radio" name="listOptionsRadios" id="option" ng-model="vm.listValue" ng-disabled="vm.isEdit"
+                    value="A" ng-required="!vm.listValue" ng-change="vm.selectList(vm.listValue)"> List A
+                  <span></span>
+                </label>
+              </div>
+              <hr class="hr-text" data-content="OR" />
+              <div class="mt-radio-list  margin-left-16">
+                <label class="mt-radio">
+                  <input type="radio" name="listOptionsRadios" id="option11" ng-model="vm.listValue" ng-disabled="vm.isEdit"
+                    value="B" ng-required="!vm.listValue" ng-change="vm.selectList(vm.listValue)"> List B & List C
+                  <span></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-12">
+              <!--<form name="documentsection" class="form-horizontal" novalidate>-->
+              <div ng-hide="vm.isEdit">
+                <div ng-show="vm.listADiplay">
+                  <div class="row margin-top-20">
+                    <div class="col-md-12">
+                      <P>
+                        <strong>List A: Identity and Employment Authorization</strong>
+                      </P>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label col-md-4 ">Document Type
+                          <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-8">
+                          <select ng-model="vm.listA_Document_Id" class="form-control" ng-required="vm.listValue == 'A'"
+                            ng-options="option.id as option.Abbreviations for option in vm.documentList | filter:{List_Type : 'A'}">
+                            <option value="" selected disabled hidden>Select</option>
+                            <!-- <option ng-repeat="document in vm.documentList | filter:{List_Type : 'A'}" ng-value="document.id">{{document.Abbreviations}}</option> -->
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <div class="col-md-9">
+                          <input type="file" id="exampleInputFileA" ng-model="vm.fileA" name="fileA" maxnum="1"
+                            multiple maxsize="500" ng-change="vm.uploadImageA(this)" base-sixty-four-input
+                            do-not-parse-if-oversize ng-required="vm.listValue == 'A'">
+                          <span>(Max. 500 KB)</span>
+                          <span ng-show="iNineForm.fileA.$error.maxsize">Files must not exceed 500 KB</span>
+                          <span ng-show="iNineForm.fileA.$error.maxnum">Only 1 file is allowed</span>
+                          <label> {{ vm.fileA_Name }}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <a href="" data-toggle="modal" data-target="#inine">
+                        (See Instruction)
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group row margin-left-16">
+                        <label class="control-label col-md-6"> Document Title:
+                          <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-6" ng-class="{ 'has-error' : iNineForm.listADocumentTitle.$invalid && !iNineForm.listADocumentTitle.$pristine}">
+                          <input ng-model="vm.listA_Document_Title" class="form-control input-sm" name="listADocumentTitle"
+                            ng-required="vm.listValue == 'A'" />
+                          <span class="help-block" ng-messages="iNineForm.listADocumentTitle.$error" ng-if="iNineForm.listADocumentTitle.$dirty && iNineForm.listADocumentTitle.$invalid">
+                            <span ng-show="iNineForm.listADocumentTitle.$error.required">Document Title is required.</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group row margin-left-16">
+                        <label class="control-label col-md-6"> Issuing Authority:
+                          <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-6" ng-class="{ 'has-error' : iNineForm.listAIssuingAuthority.$invalid && !iNineForm.listAIssuingAuthority.$pristine}">
+                          <input ng-model="vm.listA_Issuing_Authority" name="listAIssuingAuthority" class="form-control input-sm"
+                            ng-required="vm.listValue == 'A'" />
+                          <span class="help-block" ng-messages="iNineForm.listAIssuingAuthority.$error" ng-if="iNineForm.listAIssuingAuthority.$dirty && iNineForm.listAIssuingAuthority.$invalid">
+                            <span ng-show="iNineForm.listAIssuingAuthority.$error.required">Issuing Authority is
+                              required.</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group row margin-left-16">
+                        <label class="control-label col-md-6"> Document Number:
+                          <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-6" ng-class="{ 'has-error' : iNineForm.listADocumentNumber.$invalid && !iNineForm.listADocumentNumber.$pristine}">
+                          <input ng-model="vm.listA_Document_Number" class="form-control input-sm" name="listADocumentNumber"
+                            ng-required="vm.listValue == 'A'" ng-pattern="/^([a-zA-Z0-9]+)$/" />
+                          <span class="help-block" ng-messages="iNineForm.listADocumentNumber.$error" ng-if="iNineForm.listADocumentNumber.$dirty && iNineForm.listADocumentNumber.$invalid">
+                            <span ng-show="iNineForm.listADocumentNumber.$error.required">Document Number is required.</span>
+                            <span ng-show="iNineForm.listADocumentNumber.$error.pattern">Please enter valid Document
+                              Number.</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group row margin-left-16">
+                        <label class="control-label col-md-6"> Expiration Date:
+                          <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-6">
+                          <div class="input-group date" id="listAExpirationDate">
+                            <input type="text" ng-model="vm.listA_Expiration_Date" class="form-control" ng-required="vm.listValue == 'A'" />
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                            <span class="help-block" ng-messages="iNineForm.listA_Expiration_Date.$error" ng-if="iNineForm.listA_Expiration_Date.$dirty && iNineForm.listA_Expiration_Date.$invalid">
+                              <span ng-show="iNineForm.listA_Expiration_Date.$error.required">Expiration_Date is
+                                required.</span>
+                              <span ng-show="iNineForm.listA_Expiration_Date.$error.pattern">Please enter valid
+                                Expiration_Date.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div ng-show="vm.listBCDiplay">
+                  <div class="row margin-top-20">
+                    <div class="col-md-12">
+                      <P>
+                        <strong>List B: Identity </strong>
+                      </P>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <div class="form-group">
+                        <label class="control-label col-md-4 ">Document Type
+                          <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-8">
+                          <select ng-model="vm.listB_Document_Id" class="form-control" ng-required="vm.listValue == 'B'"
+                            ng-options="option.id as option.Abbreviations for option in vm.documentList | filter:{List_Type : 'B'}">
+                            <option value="" selected disabled hidden>Select</option>
+                            <!-- <option ng-repeat="document in vm.documentList | filter:{List_Type : 'B'}" ng-value="document.id">{{document.Abbreviations}}</option> -->
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                      <div class="form-group">
+                        <div class="col-md-9">
+                          <input type="file" id="exampleInputFileB" ng-model="vm.fileB" name="fileB" maxnum="1"
+                            multiple maxsize="500" ng-change="vm.uploadImageB(this)" base-sixty-four-input
+                            do-not-parse-if-oversize ng-required="vm.listValue == 'B'">
+                          <span>(Max. 500 KB)</span>
+                          <span ng-show="iNineForm.fileB.$error.maxsize">Files must not exceed 500 KB</span>
+                          <span ng-show="iNineForm.fileB.$error.maxnum">Only 1 file is allowed</span>
+                          <label> {{ vm.fileB_Name }}</label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-2">
+                      <a href="" data-toggle="modal" data-target="#inine">
+                        (See Instruction)
+                      </a>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group row margin-left-16">
+                        <label class="control-label col-md-6"> Document Title:
+                          <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-6" ng-class="{ 'has-error' : iNineForm.listBDocumentTitle.$invalid && !iNineForm.listBDocumentTitle.$pristine}">
+                          <input ng-model="vm.listB_Document_Title" name="listBDocumentTitle" class="form-control input-sm"
+                            ng-required="vm.listValue == 'B'" />
+                          <span class="help-block" ng-messages="iNineForm.listBDocumentTitle.$error" ng-if="iNineForm.listBDocumentTitle.$dirty && iNineForm.listBDocumentTitle.$invalid">
+                            <span ng-show="iNineForm.listBDocumentTitle.$error.required">Document Title is required.</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group row margin-left-16">
+                        <label class="control-label col-md-6"> Issuing Authority:
+                          <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-6" ng-class="{ 'has-error' : iNineForm.listBIssuingAuthority.$invalid && !iNineForm.listBIssuingAuthority.$pristine}">
+                          <input ng-model="vm.listB_Issuing_Authority" name="listBIssuingAuthority" class="form-control input-sm"
+                            ng-required="vm.listValue == 'B'" />
+                          <span class="help-block" ng-messages="iNineForm.listBIssuingAuthority.$error" ng-if="iNineForm.listBIssuingAuthority.$dirty && iNineForm.listBIssuingAuthority.$invalid">
+                            <span ng-show="iNineForm.listBIssuingAuthority.$error.required">Issuing Authority is
+                              required.</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <div class="form-group row margin-left-16">
+                        <label class="control-label col-md-6"> Document Number:
+                          <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-6" ng-class="{ 'has-error' : iNineForm.listBDocumentNumber.$invalid && !iNineForm.listBDocumentNumber.$pristine}">
+                          <input ng-model="vm.listB_Document_Number" name="listBDocumentNumber" class="form-control input-sm"
+                            ng-required="vm.listValue == 'B'" ng-pattern="/^([a-zA-Z0-9]+)$/" />
+                          <span class="help-block" ng-messages="iNineForm.listBDocumentNumber.$error" ng-if="iNineForm.listBDocumentNumber.$dirty && iNineForm.listBDocumentNumber.$invalid">
+                            <span ng-show="iNineForm.listBDocumentNumber.$error.required">Document Number is required.</span>
+                            <span ng-show="iNineForm.listBDocumentNumber.$error.pattern">Please enter valid Document
+                              Number.</span>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="form-group row margin-left-16">
+                        <label class="control-label col-md-6"> Expiration Date:
+                          <span class="required"> * </span>
+                        </label>
+                        <div class="col-md-6">
+                          <div class="input-group date" id="listBExpirationDate">
+                            <input ng-model="vm.listB_Expiration_Date" class="form-control" ng-required="vm.listValue == 'B'" />
+                            <span class="input-group-addon">
+                              <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                            <span class="help-block" ng-messages="iNineForm.listB_Expiration_Date.$error" ng-if="iNineForm.listB_Expiration_Date.$dirty && iNineForm.listB_Expiration_Date.$invalid">
+                              <span ng-show="iNineForm.listB_Expiration_Date.$error.required">Expiration_Date is
+                                required.</span>
+                              <span ng-show="iNineForm.listB_Expiration_Date.$error.pattern">Please enter valid
+                                Expiration_Date.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row margin-top-20">
+                      <div class="col-md-12">
+                        <P>
+                          <strong>List C: Employment Authorization </strong>
+                        </P>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label class="control-label col-md-4 ">Document Type
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-8">
+                            <select ng-model="vm.listC_Document_Id" class="form-control" ng-change="vm.hideExpirationDate(vm.listC_Document_Id)"
+                              ng-required="vm.listValue == 'B'" ng-options="option.id as option.Abbreviations for option in vm.documentList | filter:{List_Type : 'C'}">
+                              <option value="" selected disabled hidden>Select</option>
+                              <!-- <option ng-repeat="document in vm.documentList | filter:{List_Type : 'C'}" ng-value="document.id">{{document.Abbreviations}}</option> -->
+                            </select>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="form-group">
+                          <div class="col-md-9">
+                            <input type="file" id="exampleInputFileC" ng-model="vm.fileC" name="fileC" maxnum="1"
+                              multiple maxsize="500" ng-change="vm.uploadImageC(this)" base-sixty-four-input
+                              do-not-parse-if-oversize ng-required="vm.listValue == 'B'">
+                            <span>(Max. 500 KB)</span>
+                            <span ng-show="iNineForm.fileC.$error.maxsize">Files must not exceed 500 KB</span>
+                            <span ng-show="iNineForm.fileC.$error.maxnum">Only 1 file is allowed</span>
+                            <label> {{ vm.fileC_Name }}</label>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-2">
+                        <a href="" data-toggle="modal" data-target="#inine">
+                          (See Instruction)
+                        </a>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group row margin-left-16">
+                          <label class="control-label col-md-6"> Document Title:
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-6" ng-class="{ 'has-error' : iNineForm.listCDocumentTitle.$invalid && !iNineForm.listCDocumentTitle.$pristine}">
+                            <input ng-model="vm.listC_Document_Title" name="listCDocumentTitle" class="form-control input-sm"
+                              ng-required="vm.listValue == 'B'" />
+                            <span class="help-block" ng-messages="iNineForm.listCDocumentTitle.$error" ng-if="iNineForm.listCDocumentTitle.$dirty && iNineForm.listCDocumentTitle.$invalid">
+                              <span ng-show="iNineForm.listCDocumentTitle.$error.required">Document Title is required.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4">
+                        <div class="form-group row margin-left-16">
+                          <label class="control-label col-md-6"> Issuing Authority:
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-6" ng-class="{ 'has-error' : iNineForm.listCIssuingAuthority.$invalid && !iNineForm.listCIssuingAuthority.$pristine}">
+                            <input ng-model="vm.listC_Issuing_Authority" name="listCIssuingAuthority" class="form-control input-sm"
+                              ng-required="vm.listValue == 'B'" />
+                            <span class="help-block" ng-messages="iNineForm.listCIssuingAuthority.$error" ng-if="iNineForm.listCIssuingAuthority.$dirty && iNineForm.listCIssuingAuthority.$invalid">
+                              <span ng-show="iNineForm.listCIssuingAuthority.$error.required">Issuing Authority is
+                                required.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-4">
+                        <div class="form-group row margin-left-16">
+                          <label class="control-label col-md-6"> Document Number:
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-6" ng-class="{ 'has-error' : iNineForm.listCDocumentNumber.$invalid && !iNineForm.listCDocumentNumber.$pristine}">
+                            <input ng-model="vm.listC_Document_Number" name="listCDocumentNumber" class="form-control input-sm"
+                              ng-required="vm.listValue == 'B'" ng-pattern="/^([a-zA-Z0-9]+)$/" />
+                            <span class="help-block" ng-messages="iNineForm.listCDocumentNumber.$error" ng-if="iNineForm.listCDocumentNumber.$dirty && iNineForm.listCDocumentNumber.$invalid">
+                              <span ng-show="iNineForm.listCDocumentNumber.$error.required">Document Number is
+                                required.</span>
+                              <span ng-show="iNineForm.listCDocumentNumber.$error.pattern">Please enter valid Document
+                                Number.</span>
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-4" ng-show="vm.hideDate">
+                        <div class="form-group row margin-left-16">
+                          <label class="control-label col-md-6"> Expiration Date:
+                            <span class="required"> * </span>
+                          </label>
+                          <div class="col-md-6">
+                            <div class="input-group date" id="listCExpirationDate">
+                              <input ng-model="vm.listC_Expiration_Date" class="form-control" ng-required="vm.listValue == 'B'&& vm.hideDate" />
+                              <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                              </span>
+                              <span class="help-block" ng-messages="iNineForm.listC_Expiration_Date.$error" ng-if="iNineForm.listC_Expiration_Date.$dirty && iNineForm.listC_Expiration_Date.$invalid">
+                                <span ng-show="iNineForm.listC_Expiration_Date.$error.required">Expiration_Date is
+                                  required.</span>
+                                <span ng-show="iNineForm.listC_Expiration_Date.$error.pattern">Please enter valid
+                                  Expiration_Date.</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row margin-bottom-20 margin-top-30" ng-if="vm.isEdit">
+                <div class="col-md-8 col-xs-12 col-sm-12 col-md-offset-2">
+                  <table class="table table-bordered table-striped">
+                    <thead>
+                      <tr>
+                        <th>Document Title</th>
+                        <th>Issuing Authority</th>
+                        <th>Document Number</th>
+                        <th>Expiration Date</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr ng-repeat="file in vm.inineDetails.CandidateAttachments">
+                        <td>{{file.Document_Title}}</td>
+                        <td>{{file.Issuing_Authority}}</td>
+                        <td>{{file.Document_Number}}</td>
+                        <td>{{file.Expiration_Date}}</td>
+                        <td>
+                          <a class="" ng-click="vm.download(file)">
+                            <i class="fa fa-download"></i> Download</a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="row  margin-top-40" ng-if="vm.showAdministratorSignature">
+                <div class="col-md-8 col-xs-8">
+                  <div class="form-group">
+                    <label class="control-label col-md-3">Signature
+                      <span class="required"> * </span>
+                    </label>
+                    <div class="col-md-6">
+                      <div class="" ng-hide="vm.isEdit" style="min-height: 150px;" ng-style="{'max-width': boundingBox.width + 'px', 'max-height': boundingBox.height + 'px'}">
+                        <signature-pad id="canvas" class="signature_box" ng-class="{disabled: vm.signPadDisable}" style="min-height: 150px;"
+                          accept="accept" clear="clear" height="220" width="568" dataurl="dataurl" disabled="vm.isEdit"
+                          ng-model="vm.signature.dataUrl" required></signature-pad>
+                        <div class="buttons text-right">
+                          <button class="btn btn-xs btn-default" ng-click="vm.clear()" ng-hide="vm.isEdit">Clear</button>
+                          <button class="btn btn-xs btn-success" ng-click="vm.signature = accept();vm.signaturePadDisabled();">Sign</button>
+                        </div>
+                      </div>
+                      <img class="img-responsive signature_img" data-ng-src="{{vm.getImage()}}" ng-if="vm.isEdit" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                  <div class="form-group">
+                    <label class="control-label col-md-6">Date: {{vm.AssignedDate | date}}</label>
+                    <!--<div class="col-md-8">
+                      <input type="text" class="form-control" disabled name="" />
+                    </div>-->
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="text-right">
+                    <ul class="button-list">
+                      <li><button class="btn hidden-print" ng-click="vm.cancel()">Cancel</button></li>
+                      <li><button class="btn btn-primary pull-right" ng-click="vm.submit()" ng-hide="vm.isEdit || vm.showUpdateButton"
+                          ng-disabled="iNineForm.$invalid">Submit</button></li>
+                      <li><button class="btn btn-primary pull-right" ng-click="vm.update()" ng-hide="!vm.showUpdateButton"
+                          ng-disabled="iNineForm.$invalid">Update</button></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <!--</form>-->
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade " id="inine" tabindex="-1" role="inine" aria-hidden="true">
+  <div class="modal-dialog  modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+        <h4 class="modal-title">LISTS OF ACCEPTABLE DOCUMENTS
+        </h4>
+      </div>
+      <div class="modal-body">
+        <div class="box_i9">
+          <div class="row inine_header">
+            <div class="col-md-12 text-center">
+              <p>
+                <strong> All documents must be UNEXPIRED </strong>
+              </p>
+
+              <p>Employees may present one selection from List A or a combination of one selection from List B and one
+                selection
+                from List C</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-4 border_right">
+              <div class="text-center">
+                <p>
+                  <strong>
+                    List A
+                    <br /> Documents that Establish Both Identity and Employment Authorization
+                  </strong>
+                </p>
+              </div>
+              <ol class="inine">
+                <li>U.S. Passport or U.S. Passport Card [USPASS]</li>
+                <li> Permanent Resident Card or Alien Registration Receipt Card (Form I-551) [PRC/ARRC]
+                </li>
+                <li>Foreign passport that contains a temporary I-551 stamp or temporary I-551 printed notation on a
+                  machinereadable
+                  immigrant visa[FPASS]
+                </li>
+                <li>Employment Authorization Document that contains a photograph (Form I-766)[EAD]</li>
+                <li>For a nonimmigrant alien authorized to work for a specific employer because of his or her
+                  status[NIAA]:
+                  <ul>
+                    <li>a. Foreign passport; and</li>
+                    <li>b. Form I-94 or Form I-94A that has the following:
+                      <ol>
+                        <li>The same name as the passport; and</li>
+                        <li> An endorsement of the alien's nonimmigrant status as long as that period of endorsement
+                          has
+                          not yet expired and the proposed employment is not in conflict with any restrictions or
+                          limitations
+                          identified on the form.</li>
+                      </ol>
+                    </li>
+                  </ul>
+                </li>
+                <li>Passport from the Federated States of Micronesia (FSM) or the Republic of the Marshall Islands
+                  (RMI)
+                  with Form I-94 or Form I-94A indicating nonimmigrant admission under the Compact of Free Association
+                  Between
+                  the United States and the FSM or RMI[FSM/RMI]</li>
+            </div>
+            <div class="col-md-4 border_right">
+              <div class="text-center">
+                <p>
+                  <strong>LIST B
+                    <br /> Documents that Establish Identity</strong>
+                </p>
+              </div>
+              <ol class="inine">
+                <li>
+                  Driver's license or ID card issued by a State or outlying possession of the United States provided it
+                  contains a photograph
+                  or information such as name, date of birth, gender, height, eye color, and address[DRL/ID]
+                </li>
+                <li>ID card issued by federal, state or local government agencies or entities, provided it contains a
+                  photograph
+                  or information such as name, date of birth, gender, height, eye color, and address[ID]</li>
+                <li> School ID card with a photograph[SID]</li>
+                <li>Voter's registration card[VRC]</li>
+                <li>U.S. Military card or draft record[USMC/DR]</li>
+                <li>Military dependent's ID card[MDID]</li>
+                <li>U.S. Coast Guard Merchant Mariner Card[USCGMMC]</li>
+                <li>Native American tribal document[NATD]</li>
+                <li>Driver's license issued by a Canadian government authority[DRLCGA]</li>
+                <p class="text-center">
+                  <strong> For persons under age 18 who are unable to present a document listed above:
+                  </strong>
+                </p>
+
+                <li> School record or report card[SR/RC]</li>
+                <li>Clinic, doctor, or hospital record[CL/DR/HOSR]</li>
+                <li>Day-care or nursery school record[DC/NSR]</li>
+              </ol>
+            </div>
+            <div class="col-md-4">
+              <div class="text-center">
+                <p>
+                  <strong>LIST C
+                    <br /> Documents that Establish Employment Authorization</strong>
+                </p>
+              </div>
+              <ol class="inine">
+                <li>A Social Security Account Number card, unless the card includes one of the following
+                  restrictions:[SSANC]
+                  <ol>
+                    <li>NOT VALID FOR EMPLOYMENT</li>
+                    <li>VALID FOR WORK ONLY WITH INS AUTHORIZATION </li>
+                    <li>VALID FOR WORK ONLY WITH DHS AUTHORIZATION </li>
+                  </ol>
+                </li>
+                <li>Certification of report of birth issued by the Department of State (Forms DS-1350, FS-545,
+                  FS-240)[Birth
+                  Certificate of State]</li>
+                <li>Original or certified copy of birth certificate issued by a State, county, municipal authority, or
+                  territory
+                  of the United States bearing an official seal[Certified copy of birth certificate]</li>
+                <li>Native American tribal document[NATD]</li>
+                <li>U.S. Citizen ID Card (Form I-197)[U.S. Citizen ID Card]</li>
+                <li> Identification Card for Use of Resident Citizen in the United States (Form I-179)[Resident Citizen
+                  U.
+                  S. Card]
+                </li>
+                <li>Employment authorization document issued by the Department of Homeland Security[Employment
+                  authorization
+                  document]
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+
+<div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div ng-hide="vm.hidePopUp">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">Enter Secure password</h4>
+        </div>
+        <div class="modal-body">
+          <input type="password" autocomplete="off" placeholder="Password" name="password" ng-model="vm.securePassword"
+            data-toggle="tooltip" data-placement="top" required />
+        </div>
+      </div>
+      <div class="modal-body" ng-hide="!vm.hidePopUp">
+        <h4 class="modal-title">SSN is :
+          <strong>{{vm.ssn}} </strong>
+        </h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn dark btn-outline" data-dismiss="modal" ng-click="vm.close()">Close</button>
+        <button type="button" class="btn green" ng-hide="vm.hidePopUp" ng-click="vm.getSecurePassword()">Validate</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

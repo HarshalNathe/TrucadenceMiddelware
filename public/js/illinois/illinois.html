@@ -1,0 +1,607 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="row hidden-print" cg-busy="vm.promise">
+  <div class="col-md-6">
+    <h1 class="page-title">Illinois Withholding Allowance Worksheet</h1>
+  </div>
+  <!-- <div class="col-md-6">
+    <div class="page-bar">
+      <ul class="page-breadcrumb">
+        <li>
+          <i class="icon-home"></i>
+          <a href="" ui-sref="app.home">Home</a>
+          <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+          <a href="" ng-click="vm.goToCandidateDetail()">Candidate Dashboard</a>
+          <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+          <a href="">
+            <span>BSA Disclosure</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </div> -->
+</div>
+<!-- END PAGE HEADER-->
+
+<!-- END PAGE HEADER-->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light portlet-fit ">
+      <div class="portlet-title">
+        <div class="caption text-center">
+          <i class=" icon-layers font-green"></i>
+          <span class="caption-subject font-green bold uppercase">Illinois Withholding Allowance Worksheet</span>
+        </div>
+        <button class="btn btn-primary pull-right btn-xs hidden-print" ng-click="vm.edit()" ng-hide="!vm.isEdit">
+          <i class="fa fa-edit"></i> Edit</button>
+      </div>
+      <div class="portlet-body">
+        <div class="row small_cnt font-10">
+          <div class="col-md-6 col-xs-6">
+            <p>
+              Use this worksheet as a guide to fgure your total withholding allowances you may enter on your Form
+              IL-W-4.
+              <br /> Complete Step 1.
+              <br /> Complete Step 2 if
+            </p>
+            <ul>
+              <li>you (or your spouse) are age 65 or older or legally blind, or</li>
+              <li>you wrote an amount on Line of the Deductions and Adjustments Worksheet for federal Form W-4</li>
+            </ul>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <p>If you have more than one job or your spouse works, your withholding usually will be more accurate if
+              you
+              claim all of your allowances on the Form IL-W-4 for the highest-paying job and claim zero on all of your
+              other
+              IL-W-4 forms.
+            </p>
+            <p>You may reduce the number of allowances or request that your employer withhold an additional amount from
+              your
+              pay, which may help avoid having too little tax withheld.</p>
+          </div>
+
+        </div>
+        <hr>
+        <form name="illinoisFrom" novalidate>
+          <div class="row">
+            <div class="col-md-12 col-xs-12">
+              <p>
+                <strong>Step 1: Figure your basic personal allowances (including allowances for dependents)
+                </strong>
+              </p>
+
+              <div class="form-group">
+                <label>Check all that apply:</label>
+                <div class="mt-checkbox-inline">
+                  <label class="mt-checkbox">
+                    <input type="checkbox" id="inlineCheckbox1" ng-disabled="vm.isEdit" ng-value="isDependent" ng-model="vm.illinoisDetails.isDependent"
+                      ng-change="vm.dependentSelected(vm.illinoisDetails.isDependent)"> No one else can
+                    claim me as a dependent
+                    <span></span>
+                  </label>
+                  <label class="mt-checkbox">
+                    <input type="checkbox" id="inlineCheckbox2" ng-disabled="vm.isEdit" ng-value="isSpouseDependent"
+                      ng-model="vm.illinoisDetails.isSpouseDependent" ng-change="vm.dependentSelected(vm.illinoisDetails.isSpouseDependent)">
+                    I can claim
+                    my spouse as a dependent.
+                    <span></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group row font-10">
+                <label class="control-lable col-md-8 col-xs-8" for="number of dependent">
+                  <strong>1. </strong> The total number of boxes you checked above.
+                </label>
+                <div class="col-xs-2 col-md-2" ng-class="{ 'has-error' : illinoisFrom.noOfdependentSelected.$invalid && !illinoisFrom.noOfdependentSelected.$pristine}">
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon1">@</span>
+                    <input type="number" name="noOfdependentSelected" ng-disabled="vm.isEdit" class="form-control"
+                      placeholder="" aria-describedby="sizing-addon1" ng-model="vm.illinoisDetails.oneValue" ng-pattern="/^[0-2]{1}$/"
+                      readonly>
+                  </div>
+                  <span class="help-block" ng-messages="illinoisFrom.noOfdependentSelected.$error" ng-if="illinoisFrom.noOfdependentSelected.$dirty && illinoisFrom.noOfdependentSelected.$invalid">
+                    <span ng-show="illinoisFrom.noOfdependentSelected.$error.pattern">Number should be either 0, 1 or
+                      2.</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group row font-10">
+                <label class="control-lable col-md-8 col-xs-8" for="number of dependent">
+                  <strong>2. </strong> Enter the number of dependents (other than you or your spouse) you will claim on
+                  your
+                  tax return
+                </label>
+                <div class="col-xs-2 col-md-2" ng-class="{ 'has-error' : illinoisFrom.noOfDependent.$invalid && !illinoisFrom.noOfDependent.$pristine}">
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon1">@</span>
+                    <input type="number" name="noOfDependent" ng-disabled="vm.isEdit" class="form-control" placeholder=""
+                      aria-describedby="sizing-addon1" min="0" max="{{vm.maxValue}}" ng-model="vm.illinoisDetails.twoValue"
+                      ng-change="vm.persovalAllowanceValue()">
+                  </div>
+                  <span class="help-block" ng-messages="illinoisFrom.noOfDependent.$error" ng-if="illinoisFrom.noOfDependent.$dirty && illinoisFrom.noOfDependent.$invalid">
+                    <span ng-show="illinoisFrom.noOfDependent.$error">Invalid number.</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group row font-10">
+                <label class="control-lable col-md-8 col-xs-8" for="number of dependent">
+                  <strong>3. </strong> Add Lines 1 and 2. Enter the result. This is the total number of basic personal
+                  allowances
+                  to which you are entitled. You are not required to claim these allowances. The number of basic
+                  personal
+                  allowances that you choose to claim will determine how much money is withheld from your pay. See Line
+                  4
+                  for more information.
+                </label>
+                <div class="col-xs-2 col-md-2" ng-class="{ 'has-error' : illinoisFrom.personalAllowances.$invalid && !illinoisFrom.personalAllowances.$pristine}">
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon1">@</span>
+                    <input type="number" name="personalAllowances" ng-disabled="vm.isEdit" class="form-control"
+                      placeholder="" aria-describedby="sizing-addon1" ng-model="vm.illinoisDetails.threeValue" readonly>
+                  </div>
+                  <span class="help-block" ng-messages="illinoisFrom.personalAllowances.$error" ng-if="illinoisFrom.personalAllowances.$dirty && illinoisFrom.personalAllowances.$invalid">
+                    <span ng-show="illinoisFrom.personalAllowances.$error">Enter digits only.</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group row font-10">
+                <label class="control-lable col-md-8 col-xs-8" for="number of dependent">
+                  <strong>4. </strong> Enter the total number of basic personal allowances you choose to claim on this
+                  line
+                  and Line 1 of Form IL-W-4 below. This number may not exceed the amount on Line 3 above, however you
+                  can
+                  claim as few as zero. Entering lower numbers here will result in more money being withheld(deducted)
+                  from
+                  your pay.
+                </label>
+                <div class="col-xs-2 col-md-2" ng-class="{ 'has-error' : illinoisFrom.allowanceToClaim.$invalid && !illinoisFrom.allowanceToClaim.$pristine || vm.illinoisDetails.fourValue > vm.illinoisDetails.threeValue}">
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon1">@</span>
+                    <input type="number" name="allowanceToClaim" ng-disabled="vm.isEdit" class="form-control"
+                      placeholder="" aria-describedby="sizing-addon1" ng-model="vm.illinoisDetails.fourValue" ng-change="vm.line4Changed()"
+                      ng-pattern="/^[0-9]*$/" ng-max="vm.illinoisDetails.threeValue">
+                  </div>
+                  <span class="help-block" ng-messages="illinoisFrom.allowanceToClaim.$error" ng-if="illinoisFrom.allowanceToClaim.$dirty && illinoisFrom.allowanceToClaim.$invalid || vm.illinoisDetails.fourValue > vm.illinoisDetails.threeValue">
+                    <span ng-show="illinoisFrom.allowanceToClaim.$error && !(vm.illinoisDetails.fourValue > vm.illinoisDetails.threeValue)">Invalid
+                      number.
+                    </span>
+                    <span ng-show="vm.illinoisDetails.fourValue > vm.illinoisDetails.threeValue">This field should not
+                      greater
+                      than line 3.</span>
+                  </span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <hr>
+          <div class="row">
+            <div class="col-md-12 col-xs-12">
+              <p>
+                <strong>Step 1: Figure your additional allowances
+                </strong>
+              </p>
+
+              <div class="form-group">
+                <label>Check all that apply:</label>
+                <div class="mt-checkbox-inline">
+                  <label class="mt-checkbox">
+                    <input type="checkbox" id="inlineCheckbox3" ng-disabled="vm.isEdit" ng-value="isSixtyFive" ng-model="vm.illinoisDetails.isSixtyFive"
+                      ng-change="vm.additionalAllowanceSelected(vm.illinoisDetails.isSixtyFive)"> I am
+                    65 or older.
+                    <span></span>
+                  </label>
+                  <label class="mt-checkbox">
+                    <input type="checkbox" id="inlineCheckbox4" ng-disabled="vm.isEdit" ng-value="isSpouseSixtyFive"
+                      ng-model="vm.illinoisDetails.isSpouseSixtyFive" ng-change="vm.additionalAllowanceSelected(vm.illinoisDetails.isSpouseSixtyFive)">
+                    My
+                    spouse is 65 or older.
+                    <span></span>
+                  </label>
+                  <label class="mt-checkbox">
+                    <input type="checkbox" id="inlinecheckbox5" ng-disabled="vm.isEdit" ng-value="isBlind" ng-model="vm.illinoisDetails.isBlind"
+                      ng-change="vm.additionalAllowanceSelected(vm.illinoisDetails.isBlind)"> I am legally
+                    blind.
+                    <span></span>
+                  </label>
+                  <label class="mt-checkbox">
+                    <input type="checkbox" id="inlinecheckbox6" ng-disabled="vm.isEdit" ng-value="isSpouseBlind"
+                      ng-model="vm.illinoisDetails.isSpouseBlind" ng-change="vm.additionalAllowanceSelected(vm.illinoisDetails.isSpouseBlind)">
+                    My
+                    spouse is legally blind.
+                    <span></span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group row font-10">
+                <label class="control-lable col-md-8 col-xs-8" for="number of dependent">
+                  <strong>5. </strong> The total number of boxes you checked above
+                </label>
+                <div class="col-xs-2 col-md-2" ng-class="{ 'has-error' : illinoisFrom.line5.$invalid && !illinoisFrom.line5.$pristine}">
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon1">@</span>
+                    <input type="number" name="line5" ng-disabled="vm.isEdit" class="form-control" placeholder=""
+                      aria-describedby="sizing-addon1" ng-model="vm.illinoisDetails.fiveValue" ng-pattern="/^[0-4]{1}$/"
+                      readonly>
+                  </div>
+                  <span class="help-block" ng-messages="illinoisFrom.line5.$error" ng-if="illinoisFrom.line5.$dirty && illinoisFrom.line5.$invalid">
+                    <span ng-show="illinoisFrom.line5.$error.pattern">Number should be either within 0 to 4.</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group row font-10">
+                <label class="control-lable col-md-8 col-xs-8" for="number of dependent">
+                  <strong>6. </strong> Enter any amount that you reported on Line 4 of the Deductions and Adjustments
+                  Worksheet
+                  for federal Form W-4 plus any additional Illinois subtractions or deductions
+                </label>
+                <div class="col-xs-2 col-md-2" ng-class="{ 'has-error' : illinoisFrom.line6.$invalid && !illinoisFrom.line6.$pristine}">
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon1">@</span>
+                    <input type="number" name="line6" ng-disabled="vm.isEdit" class="form-control" placeholder=""
+                      aria-describedby="sizing-addon1" ng-model="vm.illinoisDetails.sixValue" ng-change="vm.line7Value();"
+                      ng-pattern="/^[0-9]*$/">
+                  </div>
+                  <span class="help-block" ng-messages="illinoisFrom.line6.$error" ng-if="illinoisFrom.line6.$dirty && illinoisFrom.line6.$invalid">
+                    <span ng-show="illinoisFrom.line6.$error">Invalid number.</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group row font-10">
+                <label class="control-lable col-md-8 col-xs-8" for="number of dependent">
+                  <strong>7. </strong> Divide Line 6 by 1,000. Round to the nearest whole number. Enter the result on
+                  Line
+                  7.
+                </label>
+                <div class="col-xs-2 col-md-2" ng-class="{ 'has-error' : illinoisFrom.line7.$invalid && !illinoisFrom.line7.$pristine}">
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon1">@</span>
+                    <input type="number" name="line7" ng-disabled="vm.isEdit" class="form-control" placeholder=""
+                      aria-describedby="sizing-addon1" ng-model="vm.illinoisDetails.sevenValue" readonly>
+                  </div>
+                  <span class="help-block" ng-messages="illinoisFrom.line7.$error" ng-if="illinoisFrom.line7.$dirty && illinoisFrom.line7.$invalid">
+                    <span ng-show="illinoisFrom.line7.$error">Enter digits only.</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group row font-10">
+                <label class="control-lable col-md-8 col-xs-8" for="number of dependent">
+                  <strong>8. </strong> Add Lines 5 and 7. Enter the result. This is the total number of additional
+                  allowances
+                  to which you are entitled. You are not required to claim these allowances. The number of additional
+                  allowances
+                  that you choose to claim will determine how much money is withheld from your pay
+                </label>
+                <div class="col-xs-2 col-md-2" ng-class="{ 'has-error' : illinoisFrom.line8.$invalid && !illinoisFrom.line8.$pristine}">
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon1">@</span>
+                    <input type="number" name="line8" ng-disabled="vm.isEdit" class="form-control" placeholder=""
+                      aria-describedby="sizing-addon1" ng-model="vm.illinoisDetails.eightValue" readonly>
+                  </div>
+                  <span class="help-block" ng-messages="illinoisFrom.line8.$error" ng-if="illinoisFrom.line8.$dirty && illinoisFrom.line8.$invalid">
+                    <span ng-show="illinoisFrom.line8.$error">Enter digits only.</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group row font-10">
+                <label class="control-lable col-md-8 col-xs-8" for="number of dependent">
+                  <strong>9. </strong> Enter the total number of additional allowances you elect to claim on Line 2 of
+                  Form
+                  IL-W-4, below. This number may not exceed the amount on Line 8 above, however you can claim as few as
+                  zero.
+                  Entering lower numbers here will result in more money being withheld(deducted) from your pay.
+                </label>
+                <div class="col-xs-2 col-md-2" ng-class="{ 'has-error' : illinoisFrom.line9.$invalid && !illinoisFrom.line9.$pristine || vm.illinoisDetails.nineValue > vm.illinoisDetails.eightValue}">
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon1">@</span>
+                    <input type="number" name="line9" ng-disabled="vm.isEdit" class="form-control" placeholder=""
+                      aria-describedby="sizing-addon1" ng-model="vm.illinoisDetails.nineValue" ng-change="vm.line9Changed()"
+                      ng-pattern="/^[0-9]*$/">
+                  </div>
+                  <span class="help-block" ng-messages="illinoisFrom.line9.$error" ng-if="illinoisFrom.line9.$dirty && illinoisFrom.line9.$invalid || vm.illinoisDetails.nineValue > vm.illinoisDetails.eightValue">
+                    <span ng-show="illinoisFrom.line9.$error && !(vm.illinoisDetails.nineValue > vm.illinoisDetails.eightValue)">Invalid
+                      number.
+                    </span>
+                    <span ng-show="vm.illinoisDetails.nineValue > vm.illinoisDetails.eightValue">This field should not
+                      greater
+                      than line 8.</span>
+                  </span>
+                </div>
+              </div>
+
+              <p class="font-10">
+                <strong> IMPORTANT:</strong> If you want to have additional amounts withheld from your pay, you may
+                enter
+                a dollar amount on Line 3 of Form IL-W-4 below. This amount will be deducted from your pay in addition
+                to
+                the amounts that are withheld as a result of the allowances you have claimed.</p>
+
+
+            </div>
+          </div>
+
+
+
+          <div class="row">
+            <div class="col-md-12 col-xs-12">
+              <p>
+                <strong>Illinois Department of Revenue
+                  <br /> IL-W-4 Employee’s Illinois Withholding Allowance Certifcate</strong>
+              </p>
+            </div>
+          </div>
+          <hr />
+
+          <div class="row">
+            <div class="col-md-6 col-xs-6">
+              <p>
+                <strong>Social Security number XXX-XX-{{vm.candidatDetails.Social_Security_Number.slice(-4);}}</strong>
+                <a href="" class="margin-left-16 btn btn-xs hidden-print btn-primary" data-toggle="modal" data-target="#basic">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </p>
+
+              <p>
+                <strong>{{vm.candidatDetails.First_Name}} {{vm.candidatDetails.Middle_Name}}
+                  {{vm.candidatDetails.Last_Name}}</strong>
+              </p>
+
+              <p>
+                {{vm.candidatDetails.Address_1}}, {{vm.candidatDetails.Address_2}}
+              </p>
+
+              <p>
+                {{vm.candidatDetails.state.Name}}, {{vm.candidatDetails.city.Name}}, {{vm.candidatDetails.ZIP}}
+              </p>
+              <div class="form-group">
+                <div class="mt-checkbox-inline">
+                  <label class="mt-checkbox">
+                    <input type="checkbox" id="inlineCheckbox" ng-disabled="vm.isEdit" ng-value="isExempt" ng-model="vm.illinoisDetails.isExempt"
+                      ng-change="vm.showExemptPopUP(vm.illinoisDetails.isExempt);">
+                    Check
+                    the box if you are exempt from federal and Illinois Income Tax withholding and sign and date the
+                    certificate
+                    <span></span>
+                  </label>
+                </div>
+              </div>
+
+            </div>
+
+            <div class="col-md-6 col-xs-6">
+              <div class="form-group row font-10">
+                <label class="control-lable col-md-8 col-xs-8" for="number of dependent">
+                  <strong>1. </strong>The total number of basic allowances that you are claiming (Step 1, Line 4, of
+                  the
+                  worksheet).
+                </label>
+                <div class="col-xs-3 col-md-3" ng-class="{ 'has-error' : illinoisFrom.totalBasicAllowances.$invalid && !illinoisFrom.totalBasicAllowances.$pristine}">
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon1">@</span>
+                    <input type="number" name="totalBasicAllowances" ng-disabled="vm.isEdit" class="form-control"
+                      placeholder="" aria-describedby="sizing-addon1" ng-model="vm.illinoisDetails.totalBasicAllowances"
+                      readonly>
+                  </div>
+                  <span class="help-block" ng-messages="illinoisFrom.totalBasicAllowances.$error" ng-if="illinoisFrom.totalBasicAllowances.$dirty && illinoisFrom.totalBasicAllowances.$invalid">
+                    <span ng-show="illinoisFrom.totalBasicAllowances.$error">Enter digits only.</span>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group row font-10">
+                <label class="control-lable col-md-8 col-xs-8" for="number of dependent">
+                  <strong>2. </strong>The total number of additional allowances that you are claiming (Step 2, Line 9,
+                  of
+                  the worksheet).
+                </label>
+                <div class="col-xs-3 col-md-3" ng-class="{ 'has-error' : illinoisFrom.additionalAllowance.$invalid && !illinoisFrom.additionalAllowance.$pristine}">
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon1">@</span>
+                    <input type="number" name="additionalAllowance" ng-disabled="vm.isEdit" class="form-control"
+                      placeholder="" aria-describedby="sizing-addon1" ng-model="vm.illinoisDetails.additionalAllowance"
+                      readonly>
+                  </div>
+                  <span class="help-block" ng-messages="illinoisFrom.additionalAllowance.$error" ng-if="illinoisFrom.additionalAllowance.$dirty && illinoisFrom.additionalAllowance.$invalid">
+                    <span ng-show="illinoisFrom.additionalAllowance.$error">Enter digits only.</span>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group row font-10">
+                <label class="control-lable col-md-8 col-xs-8" for="number of dependent">
+                  <strong>3. </strong>Enter the additional amount you want withheld (deducted) from each pay
+                </label>
+                <div class="col-xs-3 col-md-3" ng-class="{ 'has-error' : illinoisFrom.additionalAmount.$invalid && !illinoisFrom.additionalAmount.$pristine}">
+                  <div class="input-group input-group-sm">
+                    <span class="input-group-addon" id="sizing-addon1">@</span>
+                    <input type="number" name="additionalAmount" ng-disabled="vm.isEdit" class="form-control"
+                      placeholder="" aria-describedby="sizing-addon1" ng-model="vm.illinoisDetails.additionalAmount"
+                      ng-pattern="/^[0-9]*$/">
+                  </div>
+                  <span class="help-block" ng-messages="illinoisFrom.additionalAmount.$error" ng-if="illinoisFrom.additionalAmount.$dirty && illinoisFrom.additionalAmount.$invalid">
+                    <span ng-show="illinoisFrom.additionalAmount.$error">Invalid number.</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <hr />
+              <p class="font-10 margin-top-10">
+                <strong> I certify that I am entitled to the number of withholding allowances claimed on this
+                  certifcate.
+                </strong>
+              </p>
+
+
+            </div>
+          </div>
+          <!--<div class="row  margin-top-10">
+						<div class="col-md-8 col-xs-8">
+
+							<div class="form-group">
+								<label class="control-label col-md-3">Signature
+									<span class="required"> * </span>
+								</label>
+
+								<div class="col-md-6">
+									<div class="" style="min-height: 150px;" ng-style="{'max-width': boundingBox.width + 'px', 'max-height': boundingBox.height + 'px'}">
+										<signature-pad class="signature_box" style="min-height: 150px;" accept="accept" clear="clear" height="220" width="568" dataurl="dataurl"
+										    ng-model="vm.signature.dataUrl" ng-required="true"></signature-pad>
+										<div class="buttons">
+											<button class="btn btn-xs btn-default" ng-click="vm.clear()">Clear</button>
+											<button class="btn btn-xs btn-primary" ng-click="dataurl = vm.signature.dataUrl" ng-disabled="!vm.signature">Reset</button>
+											<button class="btn btn-xs btn-success" ng-click="vm.signature = accept()">Sign</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4 col-xs-4">
+							<div class="form-group">
+								<label class="control-label col-md-4">Date: </label>
+								<div class="col-md-8">
+									<input type="text" class="form-control" disabled name="" />
+								</div>
+							</div>
+						</div>
+					</div>-->
+
+          <div class="row" ng-hide="vm.isEdit">
+            <div class="col-md-12">
+              <div class="mt-checkbox-inline">
+                <label class="mt-checkbox">
+                  <input type="checkbox" ng-change="vm.usePreviousSign()" ng-model="vm.isPreviousSign" id="inlineCheckbox23"
+                    ng-hide="vm.isEdit" ng-value="option1"> Use Previous Signature ?
+                  <span></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="row  margin-top-10">
+            <div class="col-md-8 col-xs-8">
+              <div class="form-group">
+                <label class="control-label col-md-3">Signature
+                  <span class="required"> * </span>
+                </label>
+
+                <div class="col-md-6">
+                  <div class="" ng-hide="vm.isEdit || vm.isPreviousSign" style="min-height: 150px;" ng-style="{'max-width': boundingBox.width + 'px', 'max-height': boundingBox.height + 'px'}">
+                    <signature-pad id="canvas" class="signature_box" ng-class="{disabled: vm.signPadDisable}" style="min-height: 150px;"
+                      accept="accept" clear="clear" height="220" width="568" dataurl="dataurl" disabled="vm.isEdit"
+                      ng-model="vm.signature.dataUrl" ng-required="true"></signature-pad>
+                    <div class="buttons text-right">
+                      <button class="btn btn-xs btn-default" ng-click="vm.clear()" ng-hide="vm.isEdit">Clear</button>
+                      <button class="btn btn-xs btn-success" ng-click="vm.signature = accept();vm.signaturePadDisabled();">Sign</button>
+                    </div>
+                  </div>
+                  <img class="img-responsive signature_img" data-ng-src="{{vm.getImage()}}" ng-if="vm.isEdit || vm.isPreviousSign" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-xs-4">
+              <div class="form-group">
+                <label class="control-label col-md-6">Date: {{vm.AssignedDate | date}}</label>
+                <!--<div class="col-md-8">
+									<input type="text" class="form-control" disabled name="" />
+								</div>-->
+              </div>
+            </div>
+          </div>
+
+
+
+          <div class="row margin-top-40">
+            <div class="col-md-6">
+              <p class="font-10">
+                <strong> Employer:</strong> Keep this certifcate with your records. If you have referred the employee’s
+                federal
+                certifcate to the IRS and the IRS has notifed you to disregard it, you may also be required to
+                disregard
+                this certifcate. Even if you are not required to refer the employee’s federal certifcate to the IRS,
+                you
+                still may be required to refer this certifcate to the Illinois Department of Revenue for inspection.
+                See
+                Illinois Income Tax Regulations 86 Ill. Adm. Code 100.7110.
+              </p>
+            </div>
+            <div class="col-md-6">
+              <p class="text-right">IL-W-4 (R-08/17)</p>
+              <p> This form is authorized under the Illinois Income Tax Act. Disclosure of this information is
+                required.
+                Failure to provide information may result in this form not being processed and may result in a penalty
+              </p>
+            </div>
+          </div>
+          <!--<div class="row">
+						<div class="col-md-12">
+							<button class="btn btn-primary">Cancel</button>
+							<button class="btn btn-primary pull-right" ng-disabled="illinoisFrom.$invalid || vm.illinoisDetails.fourValue > vm.illinoisDetails.threeValue || vm.illinoisDetails.nineValue > vm.illinoisDetails.eightValue">Submit</button>
+						</div>
+					</div>-->
+          <div class="row">
+            <div class="col-md-12">
+              <div class="text-right">
+                <ul class="button-list">
+                  <li><button class="btn hidden-print" ng-click="vm.cancel()">Cancel</button></li>
+                  <li><button class="btn btn-primary pull-right" ng-disabled="illinoisFrom.$invalid" ng-click="vm.submit()"
+                      ng-hide="vm.isEdit || vm.showUpdateButton">Submit</button></li>
+                  <li><button class="btn btn-primary pull-right" ng-disabled="illinoisFrom.$invalid" ng-click="vm.update()"
+                      ng-hide="!vm.showUpdateButton">Update</button></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </form>
+      </div>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div ng-hide="vm.hidePopUp">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+          <h4 class="modal-title">Enter Secure password</h4>
+        </div>
+        <div class="modal-body">
+          <input type="password" autocomplete="off" placeholder="Password" name="password" ng-model="vm.securePassword"
+            data-toggle="tooltip" data-placement="top" required />
+        </div>
+      </div>
+      <div class="modal-body" ng-hide="!vm.hidePopUp">
+        <h4 class="modal-title">SSN is :
+          <strong>{{vm.ssn}} </strong>
+        </h4>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn dark btn-outline" data-dismiss="modal" ng-click="vm.close()">Close</button>
+        <button type="button" class="btn green" ng-hide="vm.hidePopUp" ng-click="vm.getSecurePassword()">Validate</button>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>

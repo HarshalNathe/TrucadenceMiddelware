@@ -1,0 +1,32 @@
+type: object
+properties:
+  id:
+    type: string
+  Alien_Reg_No:
+    type: string
+  Apt_No:
+    type: string
+  Candidate_ID:
+    type: string
+  Is_Citizen_US:
+    type: string
+  Is_NonCitizen_US:
+    type: string
+  Is_LPR_Alien:
+    type: string
+  US_CIS_No:
+    type: string
+  Is_Alien_Authorized_Work:
+    type: string
+  AlienWork_Expiry_Date:
+    type: string
+  FormI94_Admission_No:
+    type: string
+  Foreign_Passport_No:
+    type: string
+  Issuance_Country:
+    type: string
+  CandidateAttachments:
+    type: array
+    items:
+      $ref: ./candidate-attachments.yaml

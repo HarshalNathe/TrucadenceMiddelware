@@ -1,0 +1,37 @@
+x-swagger-router-controller: login-controller
+get:
+  operationId: getLogin
+  description: "get dynamic form from db"
+  tags:
+    - "/users"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/Response"
+    "403":
+      description: "Access Denied"
+      schema:
+        $ref: "#/definitions/Error"
+post:
+  operationId: postLogin
+  tags:
+    - "/users"
+  description: "User login."
+  summary: "User login."
+  parameters:
+    - name: user
+      in: body
+      description: "Login Info."
+      required: false
+      schema:
+        $ref: "#/definitions/Login"
+  responses:
+    200:
+      description: "Successfully Login."
+      schema:
+        $ref: "#/definitions/Token"
+    default:
+      description: "Invalid request."
+      schema:
+        $ref: "#/definitions/Error"

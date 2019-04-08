@@ -1,0 +1,24 @@
+x-swagger-router-controller: attachment-type-controller
+get:
+  operationId: attachmentTypesGet
+  description: "List of attachment type"
+  summary: "Get Details of attachment type"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: attachmentType_Name
+      in: query
+      description: "Provide attachmentType name"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/AttachmentTypes"
+    "403":
+      description: "Wrong attachment name"
+      schema:
+        $ref: "#/definitions/Error"

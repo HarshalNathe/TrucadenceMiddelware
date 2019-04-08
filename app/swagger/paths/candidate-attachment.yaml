@@ -1,0 +1,87 @@
+x-swagger-router-controller: candidate-attachments-controller
+get:
+  operationId: candidateAttachmentsGet
+  description: "List of candidate attachments"
+  summary: "Gets list of candidate attachments"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: candidateId
+      in: query
+      description: "Provide candidate id"
+      required: true
+      type: string
+    - name: AttachmentTypeID
+      in: query
+      description: "Provide attachment type id"
+      required: true
+      type: string
+    - name: FormMasterID
+      in: query
+      description: "Provide form master id"
+      required: true
+      type: string
+    - name: DocumentListID
+      in: query
+      description: "Provide document list id"
+      required: false
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/CandidateAttachments"
+    "403":
+      description: "Wrong Tenant Id"
+      schema:
+        $ref: "#/definitions/Error"
+post:
+  operationId: candidateAttachmentsPost
+  description: "Create new candidate attachments"
+  summary: "Create new candidate attachments"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: candidateAttachmentsPost
+      in: body
+      description: "Fill candidateAttachmentsPost details "
+      required: false
+      schema:
+        $ref: "#/definitions/CandidateAttachments"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/CandidateAttachments"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+put:
+  operationId: candidateAttachmentsEdit
+  description: "Update Candidate Attachment"
+  summary: "Update Candidate Attachment"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: candidateAttachmentsEdit
+      in: body
+      description: "Provide Candidate Attachment details"
+      required: false
+      schema:
+        $ref: "#/definitions/CandidateAttachments"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/CandidateAttachments"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"

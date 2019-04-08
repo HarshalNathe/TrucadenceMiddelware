@@ -1,0 +1,48 @@
+{
+  "development": {
+    "swaggerHost": "localhost"
+  },
+  "DataPower": {
+    "baseUrl": "https://lexicon-oauth2-provider-dot-elated-embassy-234521.appspot.com/oauth",
+    "client_id": "d0fa992a-33a0-4c14-8957-73fd3e3d77fd",
+    "client_secret": "R4bL7hC8tS4lC2fD5bN8mP1wX6mD7qY2tQ3iU2nH2bA6vR5bL4",
+    "url": "https://trucadence-dot-elated-embassy-234521.appspot.com/api/v1/",
+    "Models": {
+      "candidate": "candidateMasters",
+      "employmentDetails": "employmentDetails",
+      "candidateAttachment": "candidateAttachments",
+      "bSADisclosureRelease": "bSADisclosureReleases",
+      "country": "countries",
+      "state": "states",
+      "city": "cities",
+      "users": "users",
+      "eeoSelfIdentification": "EEOSelfIdentifications",
+      "illinoisAllowancesWorksheet": "illinoisAllowancesWorksheets",
+      "personalAllowancesWorksheet": "personalAllowancesWorksheets",
+      "documentList": "documentLists",
+      "formMaster": "formMasters",
+      "attachmentType": "attachmentTypes",
+      "employmentEligibilityVerification": "employmentEligibilityVerifications",
+      "formStatus": "formStatuses",
+      "jobProfile": "jobProfiles",
+      "employer": "employers",
+      "employersEmployee":"employersEmployees",
+      "timeSheet":"timeSheets",
+      "memberApplication":"memberApplications"
+    }
+  },
+  "MongoDB": {
+    "url": "mongodb://Trucadence:TrucadenceAdmin@169.53.13.73:27019/Trucadence",
+    "credentials": {
+      "user": "Trucadence",
+      "pass": "TrucadenceAdmin"
+    }
+  },
+  "EmailCredentials": {
+    "userName": "lexiconnetworksinc@gmail.com",
+    "password": "qEX-tSt-tF2-das",
+    "host": "smtp.gmail.com",
+    "port": 465,
+    "from": "lexiconnetworksinc@gmail.com"
+  }
+}

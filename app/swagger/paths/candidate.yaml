@@ -1,0 +1,92 @@
+x-swagger-router-controller: candidate-master-controller
+get:
+  operationId: candidateGet
+  description: "List of candidate"
+  summary: "Gets list of candidate"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: ID
+      in: query
+      description: "Candidate ID"
+      required: false
+      type: string
+    - name: limit
+      in: query
+      description: "List limit"
+      required: true
+      type: number
+    - name: skip
+      in: query
+      description: "Skip count"
+      required: true
+      type: number
+    - name: role
+      in: query
+      description: "id of role"
+      required: true
+      type: number
+    - name: userId
+      in: query
+      description: "id of user"
+      required: false
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/Candidate"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+post:
+  operationId: candidatePost
+  description: "Create new candidate"
+  summary: "Create new candidate"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: candidate
+      in: body
+      description: "Candidate details"
+      required: false
+      schema:
+        $ref: "#/definitions/CandidateDetails"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/CandidateDetails"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+put:
+  operationId: candidateEdit
+  description: "Update candidate"
+  summary: "Update candidate"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: candidate
+      in: body
+      description: "candidate details"
+      required: false
+      schema:
+        $ref: "#/definitions/CandidateDetails"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/CandidateDetails"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"

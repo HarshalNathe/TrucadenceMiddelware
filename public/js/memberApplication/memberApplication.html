@@ -1,0 +1,842 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="row hidden-print" cg-busy="vm.promise">
+  <div class="col-md-6">
+    <h1 class="page-title">Member Application</h1>
+  </div>
+  <!-- <div class="col-md-6">
+    <div class="page-bar">
+      <ul class="page-breadcrumb">
+        <li>
+          <i class="icon-home"></i>
+          <a href="">Home</a>
+          <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+          <a href="">
+            <span>Member Application</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+</div>
+<!-- END PAGE HEADER-->
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light portlet-fit ">
+      <div class="portlet-title mb0">
+        <div class="caption text-center">
+          <i class=" icon-layers font-green"></i>
+          <span class="caption-subject font-green bold uppercase">Federal Form Member Application</span>
+        </div>
+        <div class="tools">
+          <button class="btn btn-primary  btn-xs hidden-print" ng-hide="!vm.isEdit">
+            <i class="fa fa-print"></i>
+          </button>
+          <button class="btn btn-primary hidden-print btn-xs" ng-click="vm.edit()" ng-hide="!vm.isEdit">
+            <i class="fa fa-edit"></i> Edit</button>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row">
+          <div class="col-sm-8 col-xs-8">
+            <h4 class="display-inline">Member Application</h4>(EverydayCARE™)
+          </div>
+          <div class="col-sm-4 col-xs-4 text-right">
+            <h4 class="display-inline"><img src="../dist/img/memberapplogo.png">
+              Redirect Health<sub><i class="far fa-registered"></i></sub></h4>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 mg-btm5">
+            <h5 class="display-inline">Member Information</h5>(all information must be completed to ensure coverage)</p>
+          </div>
+        </div>
+        <form name="MemberApplicationForm" novalidate>
+        <div class="row border-top border-left border-right mg-lr0">
+          <div class="col-xs-6 border-right no-padding">
+            <div class="col-xs-4 col-lg-3">
+              <label for="" class="mb-0">Employer Name:</label>
+            </div>
+            <div class="col-xs-8 col-lg-9">
+                {{vm.Employer_Name}}
+            </div>
+          </div>
+          <div class="col-xs-3 border-right no-padding">
+            <div class="col-xs-7 col-lg-5">
+              <label for="" class="mb-0">Date Employed:</label>
+            </div>
+            <div class="col-xs-5 col-lg-7">
+              {{vm.Date_Employed}}
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <label class="mb0"><input type="checkbox" class="custom-checkbox" ng-model="vm.workingHours[1].selected" disabled><span
+                class="color-black">Part-Time</span></label>
+            <label class="mb0"><input type="checkbox" class="custom-checkbox" ng-model="vm.workingHours[0].selected" disabled> <span
+                class="color-black">Full-Time</span></label>
+          </div>
+        </div>
+        <div class="row border-top border-left border-right mg-lr0">
+          <div class="col-xs-5 border-right pd-left2">
+            <div class="col-xs-4 col-lg-3">
+              <label for="" class="mg-btm0">Last Name:</label>
+            </div>
+            <div class="col-xs-8 col-lg-9">
+              {{vm.candidatDetails.Last_Name}}
+            </div>
+          </div>
+          <div class="col-xs-5 border-right">
+            <div class="col-xs-4 col-lg-3">
+              <label for="" class="mg-btm0">First Name:</label>
+            </div>
+            <div class="col-xs-8 col-lg-9">
+              {{vm.candidatDetails.First_Name}}
+            </div>
+          </div>
+          <div class="col-xs-2">
+            <div class="col-xs-3">
+              <label for="" class="mg-btm0">MI:</label>
+            </div>
+            <div class="col-xs-9">
+              <input type="number" class="w100 custom-input" ng-model="vm.MI">
+            </div>
+          </div>
+        </div>
+        <div class="row border-top border-left border-right mg-lr0">
+          <div class="col-xs-3 border-right pd-left2">
+            <div class="col-xs-7 col-lg-5">
+              <label for="">Date of Birth:</label>
+            </div>
+            <div class="col-xs-5 col-lg-7">
+              {{vm.candidatDetails.DOB.split('T')[0] |date : "mediumDate"}}
+            </div>
+          </div>
+          <div class="col-xs-3 border-right">
+            <div class="col-xs-6 col-lg-2">
+              <label for="">Gender:</label>
+            </div>
+            <div class="col-xs-6 col-lg-10">
+              {{vm.candidatDetails.Gender}}
+            </div>
+          </div>
+          <div class="col-xs-3 border-right">
+            <div class="col-xs-6 col-lg-2">
+              <label for="">Height:</label>
+            </div>
+            <div class="col-xs-6 col-lg-10">
+              <input type="number" class="w100 custom-input" ng-model="vm.Height">
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="col-xs-6 col-lg-2">
+              <label for="">Weight:</label>
+            </div>
+            <div class="col-xs-6 col-lg-10">
+              <input type="number" class="w100 custom-input" ng-model="vm.Weight">
+            </div>
+          </div>
+        </div>
+        <div class="row border-top border-left border-right mg-lr0">
+          <div class="col-xs-6 border-right pd-left2">
+            <div class="col-xs-6 col-lg-4">
+              <label for="">Social Security Number:</label>
+            </div>
+            <div class="col-xs-6 col-lg-8">
+              XXX-XX-{{vm.candidatDetails.Social_Security_Number.slice(-4);}}
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="col-xs-6 col-lg-3">
+              <label for="">Marital Status:</label>
+            </div>
+            <div class="col-xs-6 col-lg-9">
+                <select ng-model="vm.MaritalStatus" ng-disabled="vm.isEdit">
+                    <option value="" selected disabled hidden>Select</option>
+                    <option value="Married">Married</option>
+                    <option value="Single">Single</option>
+                    <option value="Separated">Separated</option>
+                    <option value="Divorced">Divorced</option>
+                    <option value="Widowed">Widowed</option>
+                </select>
+            </div>
+          </div>
+        </div>
+        <div class="row border-top border-left border-right mg-lr0">
+          <div class="col-xs-12 pd-left2">
+            <div class="col-xs-6 col-lg-1">
+              <label for="">Address:</label>
+            </div>
+            <div class="col-xs-6 col-lg-11">
+              {{vm.candidatDetails.Address_1}}
+            </div>
+          </div>
+        </div>
+        <div class="row border-top border-right border-left mg-lr0">
+          <div class="col-xs-6 border-right pd-left2">
+            <div class="col-xs-6 col-lg-1">
+              <label for="">City:</label>
+            </div>
+            <div class="col-xs-6 col-lg-11">
+              {{vm.candidatDetails.city.Name}}
+            </div>
+          </div>
+          <div class="col-xs-3 border-right">
+            <div class="col-xs-6 col-lg-2">
+              <label for="">State:</label>
+            </div>
+            <div class="col-xs-6 col-lg-10">
+              {{vm.candidatDetails.state.Name}}
+            </div>
+          </div>
+          <div class="col-xs-3">
+            <div class="col-xs-6 col-lg-2">
+              <label for="">Zip:</label>
+            </div>
+            <div class="col-xs-6 col-lg-10">
+              {{vm.candidatDetails.ZIP}}
+            </div>
+          </div>
+        </div>
+        <div class="row border-top border_btm border-left border-right mg-lr0">
+          <div class="col-xs-4 border-right pd-left2">
+            <div class="col-xs-6 col-lg-2">
+              <label for="">Phone:</label>
+            </div>
+            <div class="col-xs-6 col-lg-10">
+              {{vm.candidatDetails.Cell_Phone}}
+            </div>
+          </div>
+          <div class="col-xs-8">
+            <div class="col-xs-6 col-lg-1">
+              <label for="">Email:</label>
+            </div>
+            <div class="col-xs-6 col-lg-10">
+              {{vm.candidatDetails.Email_ID}}
+            </div>
+          </div>
+        </div>
+        <div class="row mt10 mg-btm5">
+          <div class="col-xs-8">
+            <h5 class="display-inline">Choose Your Plan</h5>
+          </div>
+          <div class="col-xs-4">
+            <h5 class="display-inline">Choose Your Coverage</h5>
+          </div>
+        </div>
+        <div class="row border-top border-left border-right border_btm mg-lr0">
+          <div class="col-xs-6 col-lg-4">
+            <label for="" class="mg0"><input type="checkbox" class="custom-checkbox" ng-model="vm.Plan[0].selected"
+                ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">EverydayCARE™ (no hospitalization
+                with plan)</span></label>
+          </div>
+          <div class="col-xs-6 col-lg-8">
+            <div class="row">
+              <div class="col-xs-6 col-lg-6 border-right">
+                <label for="" class="mg0"><input type="checkbox" class="custom-checkbox" ng-model="vm.Plan[1].selected"
+                    ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit">
+                  <span class="color-black">EverydayCARE™ Plus 30</span></label>
+              </div>
+              <div class="col-xs-6 col-lg-6">
+                <label for="" class="mg0"><input type="checkbox" class="custom-checkbox"
+                    ng-model="vm.Coverage[0].selected" ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit">
+                  <span class="color-black">Individual only</span></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-lg-6 border-right">
+                <label for="" class="mg0"><input type="checkbox" class="custom-checkbox" ng-model="vm.Plan[2].selected"
+                    ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">EverydayCARE™ Plus
+                    50</span></label>
+              </div>
+              <div class="col-xs-6 col-lg-6">
+                <label for="" class="mg0"><input type="checkbox" class="custom-checkbox"
+                    ng-model="vm.Coverage[1].selected" ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit"><span
+                    class="color-black">Individual & child(ren)</span></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-lg-6 border-right">
+                <label for="" class="mg0"><input type="checkbox" class="custom-checkbox" ng-model="vm.Plan[3].selected"
+                    ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">EverydayCARE™ Plus
+                    125</span></label>
+              </div>
+              <div class="col-xs-6 col-lg-6">
+                <label for="" class="mg0"><input type="checkbox" class="custom-checkbox"
+                    ng-model="vm.Coverage[2].selected" ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit"><span
+                    class="color-black">Individual & spouse</span></label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6 col-lg-6 border-right">
+                <label for="" class="mg0"><input type="checkbox" class="custom-checkbox" ng-model="vm.Plan[4].selected"
+                    ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">EverydayCARE™ Plus
+                    200</span></label>
+              </div>
+              <div class="col-xs-6 col-lg-6">
+                <label for="" class="mg0"><input type="checkbox" class="custom-checkbox"
+                    ng-model="vm.Coverage[3].selected" ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit"><span
+                    class="color-black">Family</span></label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row mt10 mg-btm5">
+          <div class="col-xs-12">
+            <h5 class="display-inline">Family Information</h5>(if choosing individual & child(ren), individual & spouse,
+            or
+            family plan)
+          </div>
+        </div>
+
+        <table class="table table-bordered table-custom mb5">
+          <thead>
+            <tr>
+              <th class="col-lg-3 col-xs-4">First Name & Middle Initial (Last Name if Different)</th>
+              <th class="col-lg-2 col-xs-1">Date of Birth</th>
+              <th class="col-lg-1 col-xs-1">Gender</th>
+              <th class="col-lg-1 col-xs-1">Height</th>
+              <th class="col-lg-1 col-xs-1">Weight</th>
+              <th class="col-lg-2 col-xs-2">Social Security#</th>
+              <th class="col-lg-2 col-xs-2" colspan="2">Full Time Student</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Spouse:<input type="text" class="w76 custom-input mg-left5"
+                  ng-model="vm.Family_Information[0].fullName" ng-disabled="vm.isEdit"></td>
+              <td>
+                  <div class="input-group date" id="birthdate">
+                      <input type="text" name="dateOfBirth" ng-model="vm.Family_Information[0].dateOfBirth" class="form-control"
+                       ng-disabled="vm.isEdit">
+                      <span class="input-group-addon hidden-print">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                      </span>
+                    </div>
+              </td>
+              <td>
+                <select ng-model="vm.Family_Information[0].gender" ng-disabled="vm.isEdit">
+                    <option value="" selected disabled hidden>Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+              </td>
+              <td>
+                <input type="number" class="w80 custom-input" ng-model="vm.Family_Information[0].height" ng-disabled="vm.isEdit">
+              </td>
+              <td>
+                <input type="number" class="w80 custom-input" ng-model="vm.Family_Information[0].weight" ng-disabled="vm.isEdit">
+              </td>
+              <td>
+                <input type="text" class="w80 custom-input" ng-model="vm.Family_Information[0].socialSecurityNumber"
+                ng-pattern="/^\d{3}-?\d{2}-?\d{4}$/" ssn-input ng-disabled="vm.isEdit">
+              </td>
+              <td>
+                <input type="checkbox" class="custom-checkbox" class="mg0"
+                  ng-model="vm.Family_Information[0].isFullTimeStudent" ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit">
+                <span class="color-black">Yes</span>
+              </td>
+              <td>
+                <input type="checkbox" class="custom-checkbox" class="mg0"
+                  ng-model="vm.Family_Information[0].isFullTimeStudent" ng-true-value="false"
+                  ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">No</span>
+                </td>
+            </tr>
+            <tr>
+              <td>Child:<input type="text" class="w76 custom-input mg-left5"
+                  ng-model="vm.Family_Information[1].fullName" ng-disabled="vm.isEdit"></td>
+              <td>
+                <div class="input-group date" id="birthdate1">
+                    <input type="text" name="dateOfBirth" ng-model="vm.Family_Information[1].dateOfBirth" class="form-control"
+                     ng-disabled="vm.isEdit">
+                    <span class="input-group-addon hidden-print">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                  </div>
+              </td>
+              <td>
+                <select ng-model="vm.Family_Information[1].gender" ng-disabled="vm.isEdit">
+                    <option value="" selected disabled hidden>Select</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+              </td>
+              <td>
+                <input type="number" class="w80 custom-input" ng-model="vm.Family_Information[1].height" ng-disabled="vm.isEdit">
+              </td>
+              <td>
+                <input type="number" class="w80 custom-input" ng-model="vm.Family_Information[1].weight" ng-disabled="vm.isEdit">
+              </td>
+              <td>
+                <input type="text" class="w80 custom-input" ng-model="vm.Family_Information[1].socialSecurityNumber"
+                ng-pattern="/^\d{3}-?\d{2}-?\d{4}$/" ssn-input ng-disabled="vm.isEdit">
+              </td>
+              <td>
+                <input type="checkbox" class="custom-checkbox" class="mg0"
+                  ng-model="vm.Family_Information[1].isFullTimeStudent" ng-true-value="true"
+                  ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">Yes</span>
+              </td>
+              <td>
+                <input type="checkbox" class="custom-checkbox" class="mg0"
+                  ng-model="vm.Family_Information[1].isFullTimeStudent" ng-true-value="false"
+                  ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">No</span>
+                </td>
+            </tr>
+            <tr>
+              <td>Child:<input type="text" class="w76 custom-input mg-left5"
+                  ng-model="vm.Family_Information[2].fullName" ng-disabled="vm.isEdit"></td>
+              <td>
+                <div class="input-group date" id="birthdate2">
+                  <input type="text" name="dateOfBirth" ng-model="vm.Family_Information[2].dateOfBirth" class="form-control"
+                   ng-disabled="vm.isEdit">
+                  <span class="input-group-addon hidden-print">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                  </span>
+                </div>
+              </td>
+              <td>
+                  <select ng-model="vm.Family_Information[2].gender" ng-disabled="vm.isEdit">
+                      <option value="" selected disabled hidden>Select</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                  </select>
+              </td>
+              <td>
+                <input type="number" class="w80 custom-input" ng-model="vm.Family_Information[2].height" ng-disabled="vm.isEdit">
+              </td>
+              <td>
+                <input type="number" class="w80 custom-input" ng-model="vm.Family_Information[2].weight" ng-disabled="vm.isEdit">
+              </td>
+              <td>
+                <input type="text" class="w80 custom-input" ng-model="vm.Family_Information[2].socialSecurityNumber"
+                ng-pattern="/^\d{3}-?\d{2}-?\d{4}$/" ssn-input ng-disabled="vm.isEdit">
+              </td>
+              <td>
+                <input type="checkbox" class="custom-checkbox" class="mg0"
+                  ng-model="vm.Family_Information[2].isFullTimeStudent" ng-true-value="true"
+                  ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">Yes</span>
+              </td>
+              <td><input type="checkbox" class="custom-checkbox" class="mg0"
+                  ng-model="vm.Family_Information[2].isFullTimeStudent" ng-true-value="false"
+                  ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">No</span>
+                </td>
+            </tr>
+            <tr>
+              <td>Child:<input type="text" class="w76 custom-input mg-left5"
+                  ng-model="vm.Family_Information[3].fullName" ng-disabled="vm.isEdit"></td>
+                  <td>
+                      <div class="input-group date" id="birthdate3">
+                        <input type="text" name="dateOfBirth" ng-model="vm.Family_Information[3].dateOfBirth" class="form-control"
+                         ng-disabled="vm.isEdit">
+                        <span class="input-group-addon hidden-print">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                      </div>
+                    </td>
+              <td>
+                  <select ng-model="vm.Family_Information[3].gender" ng-disabled="vm.isEdit">
+                      <option value="" selected disabled hidden>Select</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                  </select>
+              </td>
+              <td>
+                <input type="number" class="w80 custom-input" ng-model="vm.Family_Information[3].height" ng-disabled="vm.isEdit">
+              </td>
+              <td>
+                <input type="number" class="w80 custom-input" ng-model="vm.Family_Information[3].weight" ng-disabled="vm.isEdit">
+              </td>
+              <td>
+                <input type="text" class="w80 custom-input" ng-model="vm.Family_Information[3].socialSecurityNumber"
+                ng-pattern="/^\d{3}-?\d{2}-?\d{4}$/" ssn-input ng-disabled="vm.isEdit">
+              </td>
+              <td>
+                <input type="checkbox" class="custom-checkbox" class="mg0"
+                  ng-model="vm.Family_Information[3].isFullTimeStudent" ng-true-value="true"
+                  ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">Yes</span>
+              </td>
+              <td>
+                <input type="checkbox" class="custom-checkbox" class="mg0"
+                  ng-model="vm.Family_Information[3].isFullTimeStudent" ng-true-value="false"
+                  ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">No</span>
+              </td>
+            </tr>
+            <tr>
+              <td>Child:<input type="text" class="w76 custom-input mg-left5"
+                  ng-model="vm.Family_Information[4].fullName" ng-disabled="vm.isEdit"></td>
+                  <td>
+                      <div class="input-group date" id="birthdate4">
+                        <input type="text" name="dateOfBirth" ng-model="vm.Family_Information[4].dateOfBirth" class="form-control"
+                         ng-disabled="vm.isEdit">
+                        <span class="input-group-addon hidden-print">
+                          <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                      </div>
+                    </td>
+              <td>
+                  <select ng-model="vm.Family_Information[4].gender" ng-disabled="vm.isEdit">
+                      <option value="" selected disabled hidden>Select</option>
+                      <option value="Male">Male</option>
+                      <option value="Female">Female</option>
+                  </select>
+              </td>
+              <td>
+                <input type="number" class="w80 custom-input" ng-model="vm.Family_Information[4].height" ng-disabled="vm.isEdit">
+              </td>
+              <td>
+                <input type="number" class="w80 custom-input" ng-model="vm.Family_Information[4].weight" ng-disabled="vm.isEdit">
+              </td>
+              <td>
+                <input type="text" class="w80 custom-input" ng-model="vm.Family_Information[4].socialSecurityNumber"
+                ng-pattern="/^\d{3}-?\d{2}-?\d{4}$/" ssn-input ng-disabled="vm.isEdit">
+              </td>
+              <td>
+                <input type="checkbox" class="custom-checkbox" class="mg0"
+                  ng-model="vm.Family_Information[4].isFullTimeStudent" ng-true-value="true"
+                  ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">Yes</span>
+              </td>
+              <td>
+                <input type="checkbox" class="custom-checkbox" class="mg0"
+                  ng-model="vm.Family_Information[4].isFullTimeStudent" ng-true-value="false"
+                  ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">No</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="row mg-btm5">
+          <div class="col-xs-12">
+            <h5 class="display-inline">Beneficiary Information</h5>(person who receives benefits in the case of your
+            death
+            -
+            you are the
+            beneficiary for dependents)
+          </div>
+        </div>
+        <div class="row border-left border-right border-top mg-lr0">
+          <div class="col-xs-6 border-right pd-left2">
+            <label for="" class="mb0">Last Name:</label>
+            <input type="text" class="custom-input" ng-model="vm.Beneficiary_Information[0].lastName" ng-disabled="vm.isEdit">
+          </div>
+          <div class="col-xs-4 border-right">
+            <label for="" class="mb0">First Name:</label>
+            <input type="text" class="custom-input" ng-model="vm.Beneficiary_Information[0].firstName" ng-disabled="vm.isEdit">
+          </div>
+          <div class="col-xs-2">
+            <label for="" class="mb0">MI:</label>
+            <input type="number" class="w30 custom-input" ng-model="vm.Beneficiary_Information[0].MI" ng-disabled="vm.isEdit">
+          </div>
+        </div>
+        <div class="row border-top border-left border-right border_btm mg-lr0">
+          <div class="col-xs-4 border-right pd-left2">
+            <label for="">Gender:</label>
+            <select ng-model="vm.Beneficiary_Information[0].gender" ng-disabled="vm.isEdit">
+              <option value="" selected disabled hidden>Select</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+          </select>
+          </div>
+          <div class="col-xs-8">
+            <label for="">Relationship to You:</label>
+            <input type="text" class="custom-input" ng-model="vm.Beneficiary_Information[0].relationshipToYou" ng-disabled="vm.isEdit">
+          </div>
+        </div>
+        <div class="row mt10 mg-btm5">
+          <div class="col-xs-12">
+            <h5 class="display-inline">Make Changes to Your Current Plan</h5>
+          </div>
+        </div>
+        <div class="row border-left border-right border-top mg-lr0">
+          <div class="col-xs-2 pd-left2">
+            <label for="" class="mg0">If changing plans, indicate
+              qualifying event:</label>
+          </div>
+          <div class="col-xs-10">
+            <div class="row mg-lr0">
+              <div class="col-xs-4 border-right">
+                <label><input type="checkbox" class="custom-checkbox" ng-model="vm.Current_Plan[0].selected"
+                    ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">Marriage</span></label>
+              </div>
+              <div class="col-xs-4 border-right">
+                <label><input type="checkbox" class="custom-checkbox" ng-model="vm.Current_Plan[1].selected"
+                    ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">Divorce</span></label>
+              </div>
+              <div class="col-xs-4">
+                <label><input type="checkbox" class="custom-checkbox" ng-model="vm.Current_Plan[2].selected"
+                    ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">Returning to School
+                    Full-Time</span></label>
+              </div>
+            </div>
+            <div class="row mg-lr0">
+              <div class="col-xs-4 border-right">
+                <label><input type="checkbox" class="custom-checkbox" ng-model="vm.Current_Plan[3].selected"
+                    ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">Adoption</span></label>
+              </div>
+              <div class="col-xs-4 border-right">
+                <label><input type="checkbox" class="custom-checkbox" ng-model="vm.Current_Plan[4].selected"
+                    ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">Court
+                    Order</span></label>
+              </div>
+              <div class="col-xs-4">
+                <label><input type="checkbox" class="custom-checkbox" ng-model="vm.Current_Plan[5].selected"
+                    ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">Other
+                    (Specify):</span></label>
+                <span ng-if="vm.Current_Plan[5].selected">
+                  <input type="text"  ng-model="vm.Specify_Other_Name" ng-disabled="vm.isEdit">
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row border-left border-right border-top border_btm mg-lr0">
+          <div class="col-xs-6 border-right pd-left2">
+            <label for="">Date of Qualifying Event:</label>
+            {{vm.Date_Of_Event | date}}
+          </div>
+          <div class="col-xs-6 text-center">
+            <label for="">You may be required to provide proof of event</label>
+          </div>
+        </div>
+        <div class="row mt10 mg-btm5">
+          <div class="col-xs-12">
+            <h5 class="display-inline">Member Agreement</h5>(signature required)
+          </div>
+        </div>
+        <div class="row border-left border-right border-top mg-lr0">
+          <div class="col-xs-12 pd-left2">
+            <p class="mg0 font11">I authorize my employer to deduct the necessary contributions toward the benefits I
+              have
+              selected on
+              a pre-tax
+              basis from my pay. I understand that I cannot
+              change the benefits I have selected or revoke this pay deduction authorization before the beginning of the
+              next
+              plan year unless that change or revocation is made
+              on account of, and corresponds with, a change in status, a special enrollment event, or any other event
+              that
+              permits a mid-year change or revocation of elections
+              under the terms of my employer’s Section 125 cafeteria plan.</p>
+            <p class="mg0 font11"><b>Fraud Warning Notices:</b> Any person who, knowingly and with intent to defraud any
+              insurance
+              company or
+              other person,
+              files an application for insurance containing
+              any false information, or conceals for the purpose of misleading, information concerning any material fact
+              thereto,
+              commits a fraudulent insurance act, which
+              is a crime. Penalties include imprisonment and/or fines. In addition, an insurer may deny insurance
+              benefits
+              if
+              false information materially related to a claim was
+              provided by the enrollee or Insured Person.</p>
+          </div>
+        </div>
+        <div class="row border-left border-right border-top mg-lr0">
+          <div class="col-xs-8 border-right pd-left2">
+            <div class="form-group">
+              <label class="control-label col-md-3">Employee Signature: 
+                <span class="required"> * </span>
+              </label>
+            <div class="col-md-6">
+              <div class="" ng-hide="vm.isEdit" style="min-height: 150px;" ng-style="{'max-width': boundingBox.width + 'px', 'max-height': boundingBox.height + 'px'}">
+                <signature-pad id="canvas" class="signature_box" ng-class="{disabled: vm.signPadDisable}" style="min-height: 150px;"
+                  accept="accept" clear="clear" height="220" width="568" dataurl="dataurl" disabled="vm.isEdit"
+                  ng-model="vm.signature.dataUrl" required></signature-pad>
+                <div class="buttons text-right">
+                  <button class="btn btn-xs btn-default" ng-click="vm.clear()" ng-hide="vm.isEdit">Clear</button>
+                  <button class="btn btn-xs btn-success" ng-click="vm.signature = accept();vm.signaturePadDisabled();">Sign</button>
+                </div>
+              </div>
+              <img class="img-responsive signature_img" data-ng-src="{{vm.getImage()}}" ng-if="vm.isEdit" />
+            </div>
+            </div>
+          </div>
+          <div class="col-xs-4">
+            <label for="">Date:</label>
+            {{vm.Attachment_Date | date}}
+          </div>
+        </div>
+        <div class="row border-left border-right border-top border_btm mg-lr0 mg-btm5">
+          <div class="col-xs-12 pd-left2">
+            <p class="font11">If signed by a representative of enrollee, please indicate the representative’s authority
+              to
+              act
+              on behalf of
+              enrollee</p>
+          </div>
+        </div>
+        <div class="page-break mt10">
+          <div class="row margin-top11 mg-btm5">
+            <div class="col-xs-12">
+              <h5 class="display-inline">Waiver</h5>(only complete this section if you are waiving all coverage)
+            </div>
+          </div>
+          <div class="row border-left border-right border-top mg-lr0">
+            <div class="col-xs-12 pd-left2">
+              <p class="mg0 font11">I am declining coverage for (check all that apply):
+                <input type="checkbox" class="custom-checkbox" ng-model="vm.WaiverCoverage[0].selected"
+                  ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit"> <span class="color-black">Individual</span>
+                <input type="checkbox" class="custom-checkbox" ng-model="vm.WaiverCoverage[1].selected"
+                  ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit"> <span class="color-black">Spouse</span>
+                <input type="checkbox" class="custom-checkbox" ng-model="vm.WaiverCoverage[2].selected"
+                  ng-true-value="true" ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">Child(ren)</span></p>
+            </div>
+          </div>
+
+          <div class="row border-left border-right border-top mg-lr0">
+            <div class="col-xs-12 pd-left2">
+              <p class="mg0 font11">I am declining coverage for the following reason(s):</p>
+              <div class="font-italic">
+                <p class="mg0 font11">(Check all that apply and note that if you are declining coverage because you have
+                  other
+                  coverage, you must
+                  indicate that on this form. Failure to do so may result
+                  in you not being able to exercise special enrollment rights if you lose other coverage)</p>
+              </div>
+              <div class="row">
+                <div class="col-xs-4">
+                  <label for=""><input type="checkbox" class="custom-checkbox"
+                      ng-model="vm.Coverage_Decline_Reason[0].selected" ng-true-value="true"
+                      ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">Covered by a
+                      spouse’s group health plan</span></label>
+                </div>
+                <div class="col-xs-3">
+                  <label><input type="checkbox" class="custom-checkbox"
+                      ng-model="vm.Coverage_Decline_Reason[1].selected" ng-true-value="true"
+                      ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">Individual medical
+                      plan</span></label>
+                </div>
+                <div class="col-xs-2">
+                  <label for=""><input type="checkbox" class="custom-checkbox"
+                      ng-model="vm.Coverage_Decline_Reason[2].selected" ng-true-value="true"
+                      ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">Not
+                      affordable</span></label>
+                </div>
+                <div class="col-xs-3">
+                  <label for=""><input type="checkbox" class="custom-checkbox"
+                      ng-model="vm.Coverage_Decline_Reason[3].selected" ng-true-value="true"
+                      ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">COBRA/State
+                      Continuation</span></label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <label for=""><input type="checkbox" class="custom-checkbox"
+                      ng-model="vm.Coverage_Decline_Reason[4].selected" ng-true-value="true"
+                      ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">Government Plan
+                      (please specify plan name):</span></label>
+                  <span ng-if="vm.Coverage_Decline_Reason[4].selected">
+                    <input type="text" ng-model="vm.WaiverAgreement.Government_Plan_Name" ng-disabled="vm.isEdit">
+                  </span>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <label for=""><input type="checkbox" class="custom-checkbox"
+                      ng-model="vm.Coverage_Decline_Reason[5].selected" ng-true-value="true"
+                      ng-false-value="false" ng-disabled="vm.isEdit"><span class="color-black">Other
+                      reason:</span></label>
+                  <span ng-if="vm.Coverage_Decline_Reason[5].selected">
+                    <input type="text" ng-model="vm.WaiverAgreement.Other_Reason_data" ng-disabled="vm.isEdit">
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row border-left border-right border-top mg-lr0">
+            <div class="col-xs-12 pd-left2">
+              <p class="mg0 font11"><b>I understand that this waiver is reported to IRS informing them I have declined
+                  the
+                  Employer-provided healthcare plan and this may result in fines and
+                  repayment of any federal subsidies when selecting insurance through the online network. </b>If I have
+                waived
+                coverage for myself and/or my dependents (including
+                my spouse) because of other health insurance coverage, I may in the future be able to enroll myself
+                and/or
+                my
+                dependents in the coverage, provided that I request
+                enrollment within 31 days (60 days for losses of Medicaid or state Children’s Health Insurance Program
+                (CHIP)
+                coverage) after my other coverage ends because of
+                involuntary loss of eligibility (such as divorce, death, legal separation, termination of employment,
+                reduction
+                in number of hours of employment, or exhaustion of
+                the full COBRA coverage period). In addition, if I have a new dependent as a result of marriage, birth,
+                adoption,
+                or placement for adoption, I may be able to enroll
+                my dependents, provided that I request enrollment within 31 days after the date of the event. In
+                addition,
+                if
+                I
+                or my dependents become eligible for state premium
+                assistance subsidies through Medicaid or state CHIP coverage, I may in the future be able to enroll
+                myself
+                and/or
+                my dependents in the coverage, provided that I
+                request enrollment within 60 days after such eligibility is determined.</p>
+            </div>
+          </div>
+          <div class="row border-left border-right border-top mg-lr0">
+            <div class="col-xs-8 pd-left2">
+              <div class="form-group">
+                <label class="control-label col-md-3">Employee Signature:
+                  <!-- <span class="required"> * </span> -->
+                </label>
+              <div class="col-md-6">
+                <div class="" ng-hide="vm.isEdit" style="min-height: 150px;" ng-style="{'max-width': boundingBox.width + 'px', 'max-height': boundingBox.height + 'px'}">
+                  <signature-pad id="canvas1" class="signature_box" ng-class="{disabled: vm.signPadDisable1}" style="min-height: 150px;"
+                    accept="accept1" clear="clear" height="220" width="568" dataurl="dataurl1" disabled="vm.isEdit"
+                    ng-model="vm.signature1.dataUrl"></signature-pad>
+                  <div class="buttons text-right">
+                    <button class="btn btn-xs btn-default" ng-click="vm.clear1()" ng-hide="vm.isEdit">Clear</button>
+                    <button class="btn btn-xs btn-success" ng-click="vm.signature1 = accept1();vm.signaturePadDisabled1();">Sign</button>
+                  </div>
+                </div>
+                <img class="img-responsive signature_img" data-ng-src="{{vm.getImage1()}}" ng-if="vm.isEdit" />
+              </div>
+              </div>
+            </div>
+            <div class="col-xs-4">
+              <label for="">Date:</label>
+              {{vm.Attachment_Date | date}}
+            </div>
+          </div>
+          <div class="row border-left border-right border-top border_btm mg-lr0">
+            <div class="col-xs-12 pd-left2">
+              <p class="mg0 font11">If signed by a representative of enrollee, please indicate the representative’s
+                authority
+                to
+                act on behalf of enrollee</p>
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="text-right">
+                <ul class="button-list">
+                  <li><button class="btn hidden-print" ng-click="vm.cancel()">Cancel</button></li>
+                  <li><button class="btn btn-primary pull-right hidden-print"
+                      ng-click="vm.submit()" ng-hide="vm.isEdit || vm.showUpdateButton"
+                      ng-disabled="MemberApplicationForm.$invalid">Submit</button></li>
+                  <li><button class="btn btn-primary pull-right hidden-print"
+                      ng-click="vm.update()" ng-hide="!vm.showUpdateButton"
+                      ng-disabled="MemberApplicationForm.$invalid">Update</button></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+      </div>
+    </div>
+  </div>
+</div>
+<style type="text/css" media="print">
+  @page {
+    size: auto;
+    /* auto is the initial value */
+    margin: 0 3px;
+    /* this affects the margin in the printer settings */
+  }
+</style>

@@ -1,0 +1,24 @@
+x-swagger-router-controller: city-controller
+get:
+  operationId: cityGet
+  description: "List city by id"
+  summary: "Gets city by id"
+  security:
+    - OAuth2: []
+  tags:
+    - "/city"
+  parameters:
+    - name: cityId
+      in: query
+      description: "city Id"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/Cities"
+    "403":
+      description: "Wrong Tenant Id"
+      schema:
+        $ref: "#/definitions/Error"

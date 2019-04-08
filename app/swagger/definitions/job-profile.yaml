@@ -1,0 +1,15 @@
+type: object
+properties:
+  id:
+    type: string
+  Profile_Name:
+    type: string
+  Profile_Code:
+    type: string
+  Profile_Description:
+    type: string
+  Is_Active:
+    type: boolean
+
+
+

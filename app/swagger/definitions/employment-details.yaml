@@ -1,0 +1,44 @@
+type: object
+properties:
+  id:
+    type: string
+  Candidate_ID:
+    type: string
+  Company_Name:
+    type: string
+  Phone:
+    type: string
+  Address_1:
+    type: string
+  Address_2:
+    type: string
+  City:
+    type: string
+  State:
+    type: string
+  Country:
+    type: string
+  ZIP:
+    type: string
+  Start_Date:
+    type: string
+  End_Date:
+    type: string
+  Starting_Salary:
+    type: array
+    items:
+      type: object
+  Ending_Salary:
+    type: number
+  Starting_Position:
+    type: string
+  Ending_Position:
+    type: string
+  Supervisor_Name:
+    type: string
+  Supervisor_Title:
+    type: string
+  Job_Description:
+    type: string
+  Reason_For_Leaving:
+    type: string

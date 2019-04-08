@@ -1,0 +1,111 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="row hidden-print">
+  <div class="col-md-6">
+    <h1 class="page-title">User Profile</h1>
+  </div>
+  <!-- <div class="col-md-6">
+    <div class="page-bar">
+      <ul class="page-breadcrumb">
+        <li>
+          <i class="icon-home"></i>
+          <a href="">Home</a>
+          <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+          <a href="">
+            <span>User Profile</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+</div>
+<!-- END PAGE HEADER-->
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="portlet box green">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-user"></i>My Profile
+        </div>
+      </div>
+      <div class="portlet-body">
+        <form class="form-horizontal" name="UserProfileForm">
+          <div class="form-group">
+            <label for="" class="col-md-3 control-label">First Name</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" name="fName" ng-model="vm.userFirstName" ng-minlength="1"
+                ng-maxlength="65" ng-pattern='/^[a-zA-Z]+$/' required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-md-3 control-label">Last Name</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" ng-model="vm.userLastName" name="lName" ng-minlength="1"
+                ng-maxlength="65" ng-pattern='/^[a-zA-Z]+$/' required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-md-3 control-label">Email ID</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" ng-model="vm.userEmail" name="email" ng-pattern="/^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/"
+                required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-md-3 control-label">Mobile</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Enter Mobile No." ng-minlength="10" ng-maxlength="14" ng-pattern="/^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/" ng-model="vm.userMobileNo"> </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-md-3 control-label">Address</label>
+            <div class="col-md-6">
+              <input type="text" class="form-control" placeholder="Enter Address" ng-model="vm.userAddress"> </div>
+          </div>
+          <div class="form-actions text-center">
+            <button type="submit" class="btn blue" ng-disabled="UserProfileForm.$invalid" ng-click="vm.updateDetails()">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="portlet box green">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class="icon-user"></i>Change Password
+        </div>
+      </div>
+      <div class="portlet-body minHeight260">
+        <form class="form-horizontal" name="ChangePassword">
+          <!-- <div class="form-group">
+            <label for="" class="col-md-3 control-label">Current Password</label>
+            <div class="col-md-6">
+              <input type="password" class="form-control" ng-model="vm.currentPassword" required>
+            </div>
+          </div> -->
+          <div class="form-group">
+            <label for="" class="col-md-3 control-label">New Password</label>
+            <div class="col-md-6">
+              <input type="password" class="form-control" autocomplete="off" ng-model="vm.newPassword" ng-pattern="/^(?=(.*[a-zA-Z].*))(?=.*[A-Z])(?=.*\d.*)(?=.*\W.*)[a-zA-Z0-9\S]{8,14}$/"
+                data-toggle="tooltip" data-placement="top" title="Password should contain atlest 1 alphabet, 1 number and 1 special character. Length must be 8-14!"
+                required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="" class="col-md-3 control-label">Confirm Password</label>
+            <div class="col-md-6">
+              <input type="password" class="form-control" autocomplete="off" ng-model="vm.confirmPassword" ng-pattern="/^(?=(.*[a-zA-Z].*))(?=.*[A-Z])(?=.*\d.*)(?=.*\W.*)[a-zA-Z0-9\S]{8,14}$/"
+                data-toggle="tooltip" data-placement="top" title="Password should contain atlest 1 alphabet, 1 number and 1 special character. Length must be 8-14!"
+                required>
+            </div>
+          </div>
+          <div class="form-actions text-center">
+            <button type="submit" class="btn blue" ng-disabled="ChangePassword.$invalid" ng-click="vm.updateUserDetails()">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,196 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="row hidden-print" cg-busy="vm.promise">
+  <div class="col-md-6">
+    <h1 class="page-title"> Drug Testing Controller</h1>
+  </div>
+  <!-- <div class="col-md-6">
+    <div class="page-bar">
+      <ul class="page-breadcrumb">
+        <li>
+          <i class="icon-home"></i>
+          <a href="" ui-sref="app.home">Home</a>
+          <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+          <a href="" ng-click="vm.goToCandidateDetail()">Candidate Dashboard</a>
+          <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+          <a href="">
+            <span>BSA Disclosure</span>
+          </a>
+        </li>
+      </ul>
+
+    </div>
+  </div> -->
+</div>
+<!-- END PAGE HEADER-->
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="portlet light portlet-fit ">
+      <div class="portlet-title">
+        <div class="caption text-center">
+          <i class=" icon-layers font-green"></i>
+          <span class="caption-subject font-green bold uppercase">DRUG AND/OR ALCOHOL TESTING CONSENT FORM</span>
+        </div>
+        <button class="btn btn-primary pull-right btn-xs hidden-print" ng-click="vm.edit()" ng-hide="!vm.isEdit"><i
+            class="fa fa-edit"></i> Edit</button>
+      </div>
+      <div class="portlet-body">
+
+        <p>I hereby agree, upon a request made under the drug/alcohol testing policy of Trucadence LLC (the Company),
+          to submit
+          to a drug or alcohol test and to furnish a sample of my urine, breath, saliva and/ blood for analysis. I
+          understand
+          and agree that if I at any time refuse to submit to a drug or alcohol test under company policy, or if I
+          otherwise fail
+          to cooperate with the testing procedures, I will be subject to immediate termination. I further authorize and
+          give full
+          permission to have the Company and/or its company physician analyze on site or send the specimen or specimens
+          so collected
+          to a laboratory for a screening test for the presence of any prohibited substances under the policy, and for
+          the laboratory
+          or other testing facility to release any and all documentation relating to such test to the Company and/or to
+          any governmental
+          entity involved in a legal proceeding or investigation connected with the test. Finally, I authorize the
+          Company to
+          disclose any documentation relating to such test to any governmental entity involved in a legal proceeding or
+          investigation
+          connected with the test.
+        </p>
+
+
+        <p>I understand that only duly-authorized Company officers, employees, human resources representative of the
+          client(s) where
+          I am assigned and agents will have access to information furnished or obtained in connection with the test;
+          that they
+          will maintain and protect the confidentiality of such information to the greatest extent possible; and that
+          they will
+          share such information only to the extent necessary to make employment decisions and to respond to inquiries
+          or notices
+          from government entities.
+        </p>
+
+        <p>I will hold harmless the Company, its company physician, and any testing laboratory the Company might use,
+          meaning that
+          I will not sue or hold responsible such parties for any alleged harm to me that might result from such
+          testing, including
+          loss of employment or any other kind of adverse job action that might arise as a result of the drug or
+          alcohol test,
+          even if a Company or laboratory representative makes an error in the administration or analysis of the test
+          or the reporting
+          of the results. I will further hold harmless the Company, its company physician, and any testing laboratory
+          the Company
+          might use for any alleged harm to me that might result from the release or use of information or
+          documentation relating
+          to the drug or alcohol test, as long as the release or use of the information is within the scope of this
+          policy and
+          the procedures as explained in the paragraph above.</p>
+        <p>This policy and authorization have been explained to me in a language I understand, and I have been told
+          that if I have
+          any questions about the test or the policy, they will be answered.</p>
+        <p>I UNDERSTAND THAT THE COMPANY WILL REQUIRE A DRUG SCREEN AND/OR ALCOHOL TEST UNDER THIS POLICY WHENEVER I AM
+          INVOLVED
+          IN AN ON-THE-JOB ACCIDENT OR INJURY UNDER CIRCUMSTANCES THAT SUGGEST POSSIBLE INVOLVEMENT OR INFLUENCE OF
+          DRUGS OR ALCOHOL
+          IN THE ACCIDENT OR INJURY EVENT, AND I AGREE TO SUBMIT TO ANY SUCH TEST.</p>
+        <form name="drugTestingForm" novalidate>
+
+          <div class="row" ng-hide="vm.isEdit">
+            <div class="col-md-12">
+              <div class="mt-checkbox-inline">
+                <label class="mt-checkbox">
+                  <input type="checkbox" ng-change="vm.usePreviousSign()" ng-model="vm.isPreviousSign" id="inlineCheckbox23"
+                    ng-hide="vm.isEdit" ng-value="option1"> Use Previous Signature ?
+                  <span></span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="row  margin-top-40">
+            <div class="col-md-8 col-xs-8">
+              <div class="form-group">
+                <label class="control-label col-md-3">Signature
+                  <span class="required"> * </span>
+                </label>
+
+                <div class="col-md-6">
+                  <div class="" ng-hide="vm.isEdit || vm.isPreviousSign" style="min-height: 150px;" ng-style="{'max-width': boundingBox.width + 'px', 'max-height': boundingBox.height + 'px'}">
+                    <signature-pad id="canvas" class="signature_box" ng-class="{disabled: vm.signPadDisable}" style="min-height: 150px;"
+                      accept="accept" clear="clear" height="220" width="568" dataurl="dataurl" disabled="vm.isEdit"
+                      ng-model="vm.signature.dataUrl" ng-required="true"></signature-pad>
+                    <div class="buttons text-right">
+                      <button class="btn btn-xs btn-default" ng-click="vm.clear()" ng-hide="vm.isEdit">Clear</button>
+                      <button class="btn btn-xs btn-success" ng-click="vm.signature = accept();vm.signaturePadDisabled();">Sign</button>
+                    </div>
+                  </div>
+                  <img class="img-responsive signature_img" data-ng-src="{{vm.getImage()}}" ng-if="vm.isEdit || vm.isPreviousSign" />
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4 col-xs-4">
+              <div class="form-group">
+                <label class="control-label col-md-6">Date: {{vm.AssignedDate | date}}</label>
+                <!--<div class="col-md-8">
+									<input type="text" class="form-control" disabled name="" />
+								</div>-->
+              </div>
+            </div>
+          </div>
+
+          <div class="row margin-top-20">
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="control-label col-md-4">Employee Name
+                  <span class="required"> * </span>
+                </label>
+                <div class="col-md-8" ng-if="vm.isEdit">{{vm.Employee_Name}}</div>
+                <div class="col-md-8" ng-hide="vm.isEdit" ng-class="{ 'has-error' : drugTestingForm.employeeName.$invalid && !drugTestingForm.employeeName.$pristine}">
+                  <input type="text" class="form-control" name="employeeName" ng-model="vm.Employee_Name" ng-pattern="/^([a-zA-Z' ]+)$/"
+                    ng-minlength="0" ng-maxlength="25" ng-required="true" />
+                  <span class="help-block" ng-messages="drugTestingForm.employeeName.$error" ng-if="drugTestingForm.employeeName.$dirty && drugTestingForm.employeeName.$invalid">
+                    <span ng-show="drugTestingForm.employeeName.$error.pattern">Invalid Employee Name.</span>
+                    <span ng-show="drugTestingForm.employeeName.$error.maxlength">Employee Name is too long.</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <label class="control-label col-md-4">Company Representative Name
+                  <span class="required"> * </span>
+                </label>
+                <div class="col-md-8" ng-if="vm.isEdit">{{vm.Company_Representative_Name}}</div>
+                <div class="col-md-8" ng-hide="vm.isEdit" ng-class="{ 'has-error' : drugTestingForm.compRepName.$invalid && !drugTestingForm.compRepName.$pristine}">
+                  <input type="text" ng-model="vm.Company_Representative_Name" class="form-control" name="compRepName"
+                    ng-pattern="/^([a-zA-Z' ]+)$/" ng-minlength="0" ng-maxlength="25" ng-required="true" />
+                  <span class="help-block" ng-messages="drugTestingForm.compRepName.$error" ng-if="drugTestingForm.compRepName.$dirty && drugTestingForm.compRepName.$invalid">
+                    <span ng-show="drugTestingForm.compRepName.$error.pattern">Invalid Name.</span>
+                    <span ng-show="drugTestingForm.compRepName.$error.maxlength">Name is too long.</span>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row margin-top-20">
+            <div class="col-md-12">
+              <div class="text-right">
+                <ul class="button-list">
+                  <li><button class="btn hidden-print" ng-click="vm.cancel()">Cancel</button></li>
+                  <li><button class="btn btn-primary pull-right" ng-disabled="drugTestingForm.$invalid" ng-click="vm.submit()"
+                      ng-hide="vm.isEdit || vm.showUpdateButton">Submit</button></li>
+                  <li><button class="btn btn-primary pull-right" ng-disabled="drugTestingForm.$invalid" ng-click="vm.update()"
+                      ng-hide="!vm.showUpdateButton">Update</button></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

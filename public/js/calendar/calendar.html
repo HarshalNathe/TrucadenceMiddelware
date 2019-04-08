@@ -1,0 +1,64 @@
+<style type="text/css">
+  .bootstrap-datetimepicker-widget tr:hover {
+    background-color: #808080;
+  }
+
+  .select2-container {
+    width: 100% !important;
+  }
+</style>
+<div class="portlet light portlet-fit application_print">
+  <div class="portlet-title">
+    <div class="caption">
+      <i class=" icon-layers font-green"></i>
+      <span class="caption-subject font-green bold uppercase"> Calender Demo</span>
+    </div>
+  </div>
+  <div class="portlet-body application_print" cg-busy="vm.promise">
+    <form name="TimesheetForm">
+      <div class="row addEmployee-row">
+        <div class="col-md-6">
+          <label class="control-label col-md-4"> Client :
+            <span class="required"> *</span>
+          </label>
+          <div class="col-md-8" ng-class="{ 'has-error' : TimesheetForm.employerName.$invalid && !TimesheetForm.employerName.$pristine}">
+            <select ui-select2 required ng-model="vm.selectedEmployerId" name="employerName" ng-change="setNullEmployerId()">
+              <option value="" selected disabled hidden>Select</option>
+              <option ng-repeat="employer in vm.employerList" value="{{employer}}">{{employer.Employer_Name}}</option>
+            </select>
+            <span class="help-block" ng-messages="TimesheetForm.employerName.$error" ng-if="TimesheetForm.employerName.$dirty && TimesheetForm.employerName.$invalid">
+              <span ng-show="TimesheetForm.employerName.$error.required">Date Range is required.</span>
+            </span>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <label class="control-label col-md-4">Date Range
+            <span class="required"> * </span>
+          </label>
+          <div class="col-md-8" ng-class="{ 'has-error' : TimesheetForm.dateRange.$invalid && !TimesheetForm.dateRange.$pristine}">
+            <div class='input-group date' id='DateRange_datepicker001'>
+              <input type='text' autocomplete="off" class="form-control" ng-model="vm.dateRange" name="dateRange" id="weeklyDatePicker"
+                placeholder="Select Week" required />
+              <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+              </span>
+            </div>
+            <span class="help-block" ng-messages="TimesheetForm.dateRange.$error" ng-if="TimesheetForm.dateRange.$dirty && TimesheetForm.dateRange.$invalid">
+              <span ng-show="TimesheetForm.dateRange.$error">Date Range is required.</span>
+            </span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12 text-center">
+          <button class="btn btn-primary" ng-disabled="TimesheetForm.$invalid" ng-click="vm.getEmployerDetails()">Get Time
+            Sheet</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <!-- ng-change=" -->
+  <div ng-if="selectedEmployer">
+    <calendar selected="vm.dateRange" employer="vm.selectedEmployerId" style="width:100%" candidate="vm.calenderData"></calendar>
+  </div>
+</div>

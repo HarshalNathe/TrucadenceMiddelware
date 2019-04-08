@@ -1,0 +1,49 @@
+x-swagger-router-controller: employer-profile-controller
+get:
+  operationId: employerProfileGet
+  description: "get details of employer profile"
+  summary: "Get details of employer profile"
+  security:
+    - OAuth2: []
+  tags:
+    - "/employer"
+  parameters:
+    - name: employerId
+      in: query
+      description: "Provide employer id"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/EmployersDetail"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+post:
+  operationId: employerProfileUpsert
+  description: "Create new employer profile"
+  summary: "Update an existing model instance or insert a new one into the data
+        source."
+  security:
+    - OAuth2: []
+  tags:
+    - "/employer"
+  parameters:
+    - name: employerProfile
+      in: body
+      description: "Fill employer profile details"
+      required: false
+      schema:
+        $ref: "#/definitions/EmployersDetail"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/EmployersDetail"
+    "403":
+      description: "pass valid input"
+      schema:
+        $ref: "#/definitions/Error"

@@ -1,0 +1,19 @@
+x-swagger-router-controller: dashboard-controller
+get:
+  operationId: candidateStatisticsGet
+  description: "Display total candidate & recently updated"
+  summary: "Display total candidate & recently updated"
+  security:
+    - OAuth2: []
+  tags:
+    - "/dashboard"
+  parameters: []
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/Response"
+    "403":
+      description: "Unable to display"
+      schema:
+        $ref: "#/definitions/Error"

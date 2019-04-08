@@ -1,0 +1,100 @@
+/* here you can put your own css to customize and override the theme */
+
+.signature_box {
+	background: #f7f7f7;
+	border: 1px solid #d3d3d3;
+	margin: 10px 0px;
+	border-radius: 5px;
+	min-height: 150px;
+}
+
+.wprint-heading {
+	font-size: 24px !important;
+	font-weight: 700;
+	border-bottom: 3px solid;
+}
+
+ul.wform li {
+	margin: 2px 0px;
+	font-size: 9px;
+}
+
+.bracket::before {
+	content: '{';
+	font-size: 47px;
+	font-weight: 100;
+	padding: 10px 10px;
+	margin: -25px -23px;
+	position: absolute;
+}
+
+.bracket::after {
+	content: '}';
+	font-size: 47px;
+	font-weight: 100;
+	padding: 10px 10px;
+	margin: -69px 0px;
+	position: absolute;
+	float: right;
+	right: 0px;
+}
+
+.font-eight {
+	font-size: 8px;
+}
+
+.minibracket::before {
+	content: '{';
+	font-size: 50px;
+	font-weight: 100;
+	position: absolute;
+	margin-top: -18px;
+}
+
+.font-nine {
+	font-size: 9px;
+}
+
+.wfourPrint .mt-checkbox.check>input {
+	position: relative;
+	z-index: -1;
+	opacity: 0;
+}
+
+.wfourPrint .mt-checkbox>span:after {
+	left: 3px;
+	top: 0px;
+	width: 5px;
+	height: 9px;
+	border: solid #000000;
+	border-width: 0 2px 2px 0;
+	transform: rotate(45deg);
+}
+
+.margin-0 {
+	margin: 0px !important;
+}
+
+.wpfont {
+	font-size: 10px !important;
+	margin: 0px;
+}
+
+.wpfont.gi {
+	font-size: 12px !important;
+	margin: 0px;
+	font-weight: bold;
+}
+
+.wpIllinois-heading {
+	font-size: 20px !important;
+	font-weight: 700;
+}
+
+.font-twelve {
+	font-size: 12px;
+}
+
+.minHeight260 {
+	min-height: 260px;
+}

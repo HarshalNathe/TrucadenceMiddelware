@@ -1,0 +1,506 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="row hidden-print" cg-busy="vm.promise">
+  <div class="col-md-6">
+    <h1 class="page-title">Candidate Dashboard</h1>
+  </div>
+  <!-- <div class="col-md-6">
+    <div class="page-bar">
+      <ul class="page-breadcrumb">
+        <li>
+          <i class="icon-home"></i>
+          <a href="" ui-sref="app.home">Home</a>
+          <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+          <a href="" ui-sref="app.home">
+            <span>Candidate Dashboard</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div> -->
+</div>
+<!-- END PAGE HEADER-->
+
+<div class="row">
+  <div class="col-md-4 hidden-print">
+    <div class="portlet light portlet-fit ">
+      <div class="mt-element-list">
+        <div class="mt-list-head list-default ext-1 yellow-saffron">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="list-head-title-container">
+                <h3 class="list-title uppercase sbold">Document List</h3>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+        <div class="mt-list-container list-default ext-1">
+          <!--<div class="list-head-summary-container">
+						<div class="row">
+							<div class="col-md-6">
+								<div class="list-pending">
+									<div class="list-count badge badge-danger ">3</div>
+									<div class="list-label">Pending</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="list-done pull-right">
+									<div class="list-count badge badge-success last">2</div>
+									<div class="list-label">Completed</div>
+								</div>
+							</div>
+						</div>
+					</div>-->
+          <ul>
+            <li class="mt-list-item " ng-class="{'done': vm.candidatDetails.formStatuses[0].Is_BSA_Fill}">
+              <div class="list-datetime" ng-hide="! vm.candidatDetails.formStatuses[0].Is_BSA_Fill">
+                <a href="javascript:;" ng-click="vm.goToDisclosureView()" class="btn btn-xs btn-primary">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </div>
+              <div class="list-datetime" ng-hide="vm.candidatDetails.formStatuses[0].Is_BSA_Fill">
+                <a href="javascript:;" ng-click="vm.goToDisclosure()" class="btn btn-xs btn-primary">
+                  <i class="fa fa-plus"></i>
+                </a>
+              </div>
+              <div class="list-item-content">
+                <h3 class="uppercase">
+                  BSA Disclosure
+                </h3>
+                <p>BSA Disclosure & Release Form Employment</p>
+              </div>
+            </li>
+            <li class="mt-list-item" ng-class="{'done': vm.candidatDetails.formStatuses[0].Is_Drug_Testing_Fill}">
+              <div class="list-datetime">
+                <a href="javascript:;" ng-click="vm.goToDrugTestingView()"
+                  ng-hide="!vm.candidatDetails.formStatuses[0].Is_Drug_Testing_Fill" class="btn btn-xs btn-primary">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </div>
+              <div class="list-datetime" ng-hide="vm.candidatDetails.formStatuses[0].Is_Drug_Testing_Fill">
+                <a href="javascript:;" ng-click="vm.goToDrugTesting()" class="btn btn-xs btn-primary">
+                  <i class="fa fa-plus"></i>
+                </a>
+              </div>
+              <div class="list-item-content">
+                <h3 class="uppercase">
+                  Drug Testing
+                </h3>
+                <p>Trucadence Drug Testing Consent Form TC</p>
+              </div>
+            </li>
+
+            <li class="mt-list-item" ng-class="{'done': vm.candidatDetails.formStatuses[0].Is_Safety_Rules_Fill}">
+              <div class="list-datetime">
+                <a href="javascript:;" ng-click="vm.goToSaftyRulesView()"
+                  ng-hide="!vm.candidatDetails.formStatuses[0].Is_Safety_Rules_Fill" class="btn btn-xs btn-primary">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </div>
+              <div class="list-datetime" ng-hide="vm.candidatDetails.formStatuses[0].Is_Safety_Rules_Fill">
+                <a href="javascript:;" ng-click="vm.goToSaftyRules()" class="btn btn-xs btn-primary">
+                  <i class="fa fa-plus"></i>
+                </a>
+              </div>
+              <div class="list-item-content">
+                <h3 class="uppercase">
+                  Safety Rules
+                </h3>
+                <p>Trucadence Safety Rules</p>
+              </div>
+            </li>
+            <li class="mt-list-item" ng-class="{'done': vm.candidatDetails.formStatuses[0].Is_SelfIdentification_Fill}">
+              <div class="list-datetime">
+                <a href="javascript:;" ng-click="vm.goToSelfIdentificationView()"
+                  ng-hide="!vm.candidatDetails.formStatuses[0].Is_SelfIdentification_Fill"
+                  class="btn btn-xs btn-primary">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </div>
+              <div class="list-datetime" ng-hide="vm.candidatDetails.formStatuses[0].Is_SelfIdentification_Fill">
+                <a href="javascript:;" ng-click="vm.goToSelfIdentification()" class="btn btn-xs btn-primary">
+                  <i class="fa fa-plus"></i>
+                </a>
+              </div>
+              <div class="list-item-content">
+                <h3 class="uppercase">
+                  EEO Self-Identification
+                </h3>
+                <p>EEO Self-Identification Form</p>
+              </div>
+            </li>
+
+            <li class="mt-list-item" ng-class="{'done': vm.candidatDetails.formStatuses[0].Is_Illinois_Allowance_Fill}">
+              <div class="list-datetime">
+                <a href="javascript:;" ng-click="vm.goToIllinoisView()"
+                  ng-hide="!vm.candidatDetails.formStatuses[0].Is_Illinois_Allowance_Fill"
+                  class="btn btn-xs btn-primary">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </div>
+              <div class="list-datetime" ng-hide="vm.candidatDetails.formStatuses[0].Is_Illinois_Allowance_Fill">
+                <a href="javascript:;" ng-click="vm.goToIllinois()" class="btn btn-xs btn-primary">
+                  <i class="fa fa-plus"></i>
+                </a>
+              </div>
+              <div class="list-item-content">
+                <h3 class="uppercase">
+                  Illinois W4 form 2019
+                </h3>
+                <p>Illinois W4 form 2019</p>
+              </div>
+            </li>
+
+            <li class="mt-list-item" ng-class="{'done': vm.candidatDetails.formStatuses[0].Is_Personal_Allowance_Fill}">
+              <div class="list-datetime">
+                <a href="javascript:;" ng-click="vm.goToWFourIllinoisView()"
+                  ng-hide="!vm.candidatDetails.formStatuses[0].Is_Personal_Allowance_Fill"
+                  class="btn btn-xs btn-primary">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </div>
+              <div class="list-datetime" ng-hide="vm.candidatDetails.formStatuses[0].Is_Personal_Allowance_Fill">
+                <a href="javascript:;" ng-click="vm.goToWFourIllinois()" class="btn btn-xs btn-primary">
+                  <i class="fa fa-plus"></i>
+                </a>
+              </div>
+              <div class="list-item-content">
+                <h3 class="uppercase">
+                  W4 Form 2018
+                </h3>
+                <p>W4 Form 2018</p>
+              </div>
+            </li>
+
+            <li class="mt-list-item"
+              ng-class="{'done': vm.candidatDetails.formStatuses[0].Is_EmploymentEligibilityVerification_Fill}">
+              <div class="list-datetime">
+                <a href="javascript:;" ng-click="vm.goToInineDocView()"
+                  ng-hide="!vm.candidatDetails.formStatuses[0].Is_EmploymentEligibilityVerification_Fill"
+                  class="btn btn-xs btn-primary">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </div>
+              <div class="list-datetime"
+                ng-hide="vm.candidatDetails.formStatuses[0].Is_EmploymentEligibilityVerification_Fill">
+                <a href="javascript:;" ng-click="vm.goToInineDoc()" class="btn btn-xs btn-primary">
+                  <i class="fa fa-plus"></i>
+                </a>
+              </div>
+              <div class="list-item-content">
+                <h3 class="uppercase">
+                  I9
+                </h3>
+                <p>I9</p>
+              </div>
+            </li>
+            <li class="mt-list-item" ng-class="{'done': vm.candidatDetails.formStatuses[0].Is_MemberApplication_Fill}">
+              <div class="list-datetime">
+                <a href="javascript:;" ng-click="vm.goToMemberApplicationView()"
+                  ng-hide="!vm.candidatDetails.formStatuses[0].Is_MemberApplication_Fill"
+                  class="btn btn-xs btn-primary">
+                  <i class="fa fa-eye"></i>
+                </a>
+              </div>
+              <div class="list-datetime" ng-hide="vm.candidatDetails.formStatuses[0].Is_MemberApplication_Fill">
+                <a href="javascript:;" ng-click="vm.goToMemberApplication()" class="btn btn-xs btn-primary">
+                  <i class="fa fa-plus"></i>
+                </a>
+              </div>
+              <div class="list-item-content">
+                <h3 class="uppercase">
+                  Member Application
+                </h3>
+                <p>Member Application Form</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="portlet light portlet-fit application_print">
+      <div class="portlet-title">
+        <div class="caption">
+          <i class=" icon-layers font-green"></i>
+          <span class="caption-subject font-green bold uppercase"> Candidate Details</span>
+        </div>
+        <a href="" ng-click="vm.goTonewCandidateEdit()" class="hidden-print btn btn-xs btn-primary pull-right">
+          <i class="fa fa-edit"></i> Edit</a>
+      </div>
+      <div class="portlet-body application_print">
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Personal Details </h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-xs-6">
+            <h2 class="">
+              Name :
+            </h2>
+            <span>
+              {{vm.candidatDetails.First_Name}} {{vm.candidatDetails.Middle_Name}} {{vm.candidatDetails.Last_Name}}
+            </span>
+            <div class="margin-top-10">
+              <p class="" ng-if="vm.candidatDetails.Cell_Phone">
+                <strong>Mobile :</strong> {{vm.candidatDetails.Cell_Phone}}
+              </p>
+            </div>
+            <div class="margin-top-10" ng-if="vm.candidatDetails.Ref_Description != ''">
+              <h2 class="">Remark :</h2>
+              <p>
+                {{vm.candidatDetails.Ref_Description}}
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <p class="">
+              <strong>Email : </strong>{{vm.candidatDetails.Email_ID}}
+            </p>
+            <br>
+            <div class="margin-top-10">
+              <h2 class="">Address :</h2>
+              <address class="">{{vm.candidatDetails.Address_1}}<br />
+                {{vm.candidatDetails.Address_2}}
+                {{vm.candidatDetails.state.Name}} ,&nbsp; {{vm.candidatDetails.city.Name}}
+              </address>
+            </div>
+          </div>
+        </div>
+
+        <div class="row margin-top-10">
+          <div class="col-md-6 col-xs-6">
+            <h2 class="">How did you hear about Trucadence?</h2>
+            <div class="disp-block">
+              <p ng-repeat="media in vm.candidatDetails.Ref_Channel_Media" ng-if="media.selected == true">
+                {{media.mediaName}}</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <h2 class="">Have you ever filled this form?</h2>
+            <div class="disp-block">
+              <p ng-if="vm.candidatDetails.Is_Applied_Before == true">Yes in
+                {{vm.candidatDetails.Pre_Application_Month}}
+              </p>
+            </div>
+            <p ng-if="vm.candidatDetails.Is_Applied_Before != true">No</p>
+          </div>
+          <div class="margin-top-10 col-md-6 col-xs-6">
+            <h2 class="">Have you ever employed here?</h2>
+            <div class="disp-block">
+              <p ng-if="vm.candidatDetails.Ex_Trucadence_Employee == true">Yes,
+                {{vm.candidatDetails.Ex_Trucadence_Employee_Place}}
+                in {{vm.candidatDetails.Ex_Trucadence_Employee_Year}} as
+                {{vm.candidatDetails.Ex_Trucadence_Employee_Position}}
+              </p>
+              <p ng-if="vm.candidatDetails.Ex_Trucadence_Employee != true">No</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row margin-top-10">
+          <div class="col-md-6 col-xs-6">
+            <h2 class="">Are you 18 years of age or older?</h2>
+            <div class="disp-block">
+              <p ng-if="vm.candidatDetails.Is_Adult == true">Yes</p>
+              <p ng-if="vm.candidatDetails.Is_Adult != true">No</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <h2 class="">If not, can you furnish work permit?</h2>
+            <div class="disp-block">
+              <p ng-if="vm.candidatDetails.Underage_WorkPermit == true">Yes</p>
+              <p ng-if="vm.candidatDetails.Underage_WorkPermit != true">No</p>
+            </div>
+          </div>
+        </div>
+        <div class="row margin-top-10">
+          <div class="col-md-6 col-xs-6">
+            <h2 class="">Education level :</h2>
+            <p ng-repeat="eduLevel in vm.candidatDetails.Education_Level" ng-if="eduLevel.selected == true">
+              {{eduLevel.educationName}}</p>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <h2 class="">US work eligibility?</h2>
+            <div class="disp-block">
+              <p ng-if="vm.candidatDetails.Is_US_WorkPermit">Yes</p>
+              <p ng-if="!vm.candidatDetails.Is_US_WorkPermit">No</p>
+            </div>
+          </div>
+        </div>
+        <div class="row margin-top-10">
+          <div class="col-md-6 col-xs-6">
+            <h2 class="">What areas are you willing to work?</h2>
+            <div class="disp-block">
+              <p>{{vm.candidatDetails.Area_Of_Work}}</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <h2 class="">What position you are applying for?</h2>
+            <div class="disp-block">
+              <p>{{vm.candidatDetails.positionInterested.Profile_Name}}</p>
+            </div>
+          </div>
+        </div>
+        <div class="row margin-top-10">
+          <div class="col-md-6 col-xs-6">
+            <h2 class="">What shifts are you willing to work?</h2>
+            <div class="clearfix"></div>
+            <div>
+              <strong>
+                <i>Shifts :</i>
+              </strong>
+              <span ng-repeat="shift in vm.candidatDetails.Favourable_Shifts"
+                ng-if="shift.selected">{{shift.shiftTypeName}}
+              </span>
+              <br />
+              <strong>
+                <i>Days :</i>
+              </strong>
+              <span ng-repeat="day in vm.candidatDetails.Favourable_Days" ng-if="day.selected">{{day.shiftTypeName}}
+              </span>
+            </div>
+          </div>
+          <div class="col-md-6 col-xs-6" ng-if="vm.candidatDetails.Part_Time_Hours !== ''">
+            <h2 class="">Working hours :</h2>
+            <p ng-repeat="workingHour in vm.candidatDetails.Part_Time_Hour" ng-if="workingHour.selected">
+              {{workingHour.workType}}</p>
+            <!--<p>{{vm.candidatDetails.Part_Time_Hours}}</p>-->
+          </div>
+        </div>
+        <div class="row margin-top-10">
+          <div class="col-md-6 col-xs-6">
+            <h2 class="">If hired how will you like to receive payment each week?</h2>
+            <div class="disp-block">
+              <p ng-repeat="payments in vm.candidatDetails.Mode_Of_Payment" ng-if="payments.selected">
+                {{payments.paymentType}}</p>
+            </div>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <h2 class="">Do you have access to reliable transportation?</h2>
+            <div class="disp-block">
+              <p ng-if="vm.candidatDetails.Is_Transportation_Available">Yes</p>
+              <p ng-if="!vm.candidatDetails.Is_Transportation_Available">No</p>
+            </div>
+          </div>
+        </div>
+        <div class="row margin-top-10">
+          <div class="col-md-6 col-xs-6">
+            <h2 class="">Have you ever been suspended / discharged from service?</h2>
+            <div class="disp-block">
+              <p ng-if="vm.candidatDetails.Is_Suspended">Yes</p>
+              <p ng-if="!vm.candidatDetails.Is_Suspended">No</p>
+            </div>
+          </div>
+          <div class="col-md-8 col-xs-8" ng-if="vm.candidatDetails.Is_Suspended">
+            <h2 class="">If Yes</h2>
+            <p>Reason: {{vm.candidatDetails.Description_For_Suspension}}</p>
+          </div>
+        </div>
+        <div ng-if="vm.candidatDetails.employmentDetails.length > 0">
+          <h3 class="margin-top-15">Employment history
+            </h2>
+            <div ng-repeat="ed in vm.candidatDetails.employmentDetails track by $index">
+              <div class="row">
+                <div class="col-md-4 col-xs-4">
+                  <h2 class="">Company Name :</h2>
+                  <p>
+                    <strong>{{ed.Company_Name}}</strong>
+                  </p>
+                  <address ng-if="ed.Address_1 != ''">
+                    <h2> Address : </h2> {{ed.Address_1}},
+                    {{ed.Address_2}} <br />
+                    {{ed.country.Name}}, {{ed.state.Name}}, {{ed.city.Name}}, {{ed.ZIP}}<br>
+                    <span ng-if="ed.Phone != ''">
+                      <h2>Phone : </h2> {{ed.Phone}}
+                    </span>
+                  </address>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                  <h2 class="">Start Date :</h2>
+                  <p>{{ed.Start_Date.split('T')[0]}}</p>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                  <h2 class="">End Date :</h2>
+                  <p>{{ed.End_Date.split('T')[0]}}</p>
+                </div>
+              </div>
+              <div class="row margin-top-10">
+                <div class="col-md-6 col-xs-6">
+                  <h2 class="">Salary :</h2>
+                  <p ng-repeat="salary in ed.Starting_SalaryArray" ng-if="salary.selected">{{salary.salaryType}}</p>
+                </div>
+                <!--<div class="col-md-3 col-xs-3">
+									<h2 class="uppercase">End Salary</h2>
+									<p>${{ed.Ending_Salary}}</p>
+								</div>-->
+                <div class="col-md-6 col-xs-6">
+                  <h2 class="">Start Position :</h2>
+                  <p>{{ed.startingPosition.Profile_Name}}
+                    <i ng-if="ed.Other_Position != ''">
+                      <strong> - </strong> {{ed.Other_Position}}
+                    </i>
+                  </p>
+                </div>
+                <!--<div class="col-md-3 col-xs-3" ng-if="ed.Ending_Position !=''">
+									<h2 class="uppercase">End Position</h2>
+									<p>{{ed.Ending_Position}}</p>
+								</div>-->
+              </div>
+              <div class="row margin-top-10">
+                <div class="col-md-6 col-xs-4" ng-if="ed.Supervisor_Name !=''">
+                  <h2 class="">Supervisor's name :</h2>
+                  <p>{{ed.Supervisor_Name}}</p>
+                </div>
+                <div class="col-md-6 col-xs-4" ng-if="ed.Supervisor_Title !=''">
+                  <h2 class="">Supervisor Title :</h2>
+                  <p>{{ed.Supervisor_Title}}</p>
+                </div>
+              </div>
+              <div class="row margin-top-10">
+                <div class="col-md-6 col-xs-6" ng-if="ed.Job_Description !=''">
+                  <h2 class="">Description of duties?</h2>
+                  <div class="disp-block">
+                    <p>{{ed.Job_Description}}</p>
+                  </div>
+                </div>
+                <div class="col-md-6 col-xs-6" ng-if="ed.Reason_For_Leaving !=''">
+                  <h2 class="">Reason for leaving?</h2>
+                  <div class="disp-block">
+                    <p>{{ed.Reason_For_Leaving}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
+
+        <div class="row  margin-top-10">
+          <div class="col-md-6 col-xs-6">
+            <div class="form-group">
+              <label class="control-label col-md-4 no-padding"><strong>Signature</strong>
+                <span class="required"> * </span>
+              </label>
+              <div class="col-md-8">
+                <img class="img-responsive signature_img" data-ng-src="{{vm.getImage()}}" />
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-xs-6">
+            <div class="form-group">
+              <label class="control-label col-md-12 no-padding"><strong>Date :
+                  {{vm.AssignedDate | date}}</label></strong>
+              <!--<div class="col-md-8">
+									<input type="text" class="form-control" disabled name="" />
+								</div>-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

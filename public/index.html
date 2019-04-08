@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <base href="/">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta content="width=device-width, initial-scale=1" name="viewport" />
+
+  <title>Trucadence</title>
+
+  <!-- bower:css -->
+  <link rel="stylesheet" href="libs/bootstrap-switch/dist/css/bootstrap3/bootstrap-switch.css" />
+  <link rel="stylesheet" href="libs/simple-line-icons/css/simple-line-icons.css" />
+  <link rel="stylesheet" href="libs/font-awesome/css/font-awesome.css" />
+  <link rel="stylesheet" href="libs/select2/select2.css" />
+  <link rel="stylesheet" href="libs/select2-bootstrap-theme/dist/select2-bootstrap.min.css" />
+  <link rel="stylesheet" href="libs/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.min.css" />
+  <link rel="stylesheet" href="libs/angular-busy/dist/angular-busy.css" />
+  <link rel="stylesheet" href="libs/snackbar/dist/snackbar.min.css" />
+  <link rel="stylesheet" href="libs/angular-toastr/dist/angular-toastr.css" />
+  <link rel="stylesheet" href="libs/datatables.net-dt/css/jquery.dataTables.css" />
+  <!-- endbower -->
+
+  <style type="text/less">
+    body { font-family:Arial; font-size:14px; }
+			body>span, body>h1 { float:left; width:100%; margin:0; padding:0; margin-bottom:10px; }
+			
+			span { color:#888888;
+                >b { color:black; }
+            }
+            
+            .vertical-centre (@height) { height:@height; line-height:@height !important; display:inline-block; vertical-align:middle; }
+            .border-box { box-sizing:border-box; -moz-box-sizing:border-box; }
+
+            @border-colour:#CCC;
+            calendar { float:left; display:block; .border-box; background:white; width:100%; border:solid 1px @border-colour; margin-bottom:10px;
+                @secondary-colour:#2875C7;
+                @spacing:10px;
+                
+                @icon-width:40px;
+                @header-height:40px;
+                
+                >div.header { float:left; width:100%; background:@secondary-colour; height:@header-height; color:white;
+                    >* { .vertical-centre(@header-height); }
+                    >i { float:left; width:@icon-width; font-size:1.125em; font-weight:bold; position:relative; .border-box; padding:0 @spacing; cursor:pointer; }
+                    >i.fa-angle-left { text-align:left; }
+                    >i.fa-angle-right { text-align:right; margin-left:@icon-width*-1; }
+                    >span { float:left; width:100%; font-weight:bold; text-transform:uppercase; .border-box; padding-left:@icon-width+@spacing; margin-left:@icon-width*-1; text-align:center; padding-right:@icon-width; color:inherit; }
+                }
+                >div.week { float:left; width:100%; border-top:solid 1px @border-colour;
+                    &:first-child { border-top:none; }
+                    >span.day { float:left; width:100%/9; .border-box; border-left:solid 1px @border-colour; font-size:0.75em; text-align:center; .vertical-centre(100px); background:white; cursor:pointer; color:black;
+                        &:first-child { border-left:none; }
+                        &.today { background:#E3F2FF; }
+                        &.different-month { color:#C0C0C0; }
+                        &.selected { background:@secondary-colour; color:white; }
+                    }
+                    &.names>span { color:@secondary-colour; font-weight:bold; }
+                }
+            }
+            
+        </style>
+  <link href="https://fonts.googleapis.com/css?family=Londrina+Outline" rel="stylesheet">
+  <!-- CSS -->
+  <link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+  <link href="dist/css/style.css" rel="stylesheet">
+  <!-- custom styles -->
+
+  <link href="assets/css/components-md.css" rel="stylesheet">
+  <link href="assets/css/plugins-md.css" rel="stylesheet">
+  <link href="assets/css/layout.css" rel="stylesheet">
+  <link href="assets/css/blue.css" rel="stylesheet">
+  <link href="assets/css/custom.css" rel="stylesheet">
+  <!-- <link href="assets/css/login.css" rel="stylesheet"> -->
+
+  <link rel="icon" href="../dist/img/favicon.png" type="image/gif" sizes="16x16">
+</head>
+
+<body ng-app="trucadence" class="page-header-fixed  page-container-bg-solid page-md">
+
+  <!-- BEGIN CONTENT BODY -->
+  <div class="trucade">
+    <!-- <div class="page-content"> -->
+    <div ui-view></div>
+  </div>
+
+  <!-- bower:js -->
+  <script src="libs/jquery/jquery.js"></script>
+  <script src="libs/bootstrap/dist/js/bootstrap.js"></script>
+  <script src="libs/angular/angular.js"></script>
+  <script src="libs/angular-ui-router/release/angular-ui-router.js"></script>
+  <script src="libs/bootstrap-switch/dist/js/bootstrap-switch.js"></script>
+  <script src="libs/twitter-bootstrap-wizard/jquery.bootstrap.wizard.js"></script>
+  <script src="libs/select2/select2.js"></script>
+  <script src="libs/ng-lodash/build/ng-lodash.js"></script>
+  <script src="libs/angular-base64/angular-base64.js"></script>
+  <script src="libs/moment/moment.js"></script>
+  <script src="libs/eonasdan-bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+  <script src="libs/signature_pad/signature_pad.js"></script>
+  <script src="libs/angular-signature/src/signature.js"></script>
+  <script src="libs/angular-animate/angular-animate.js"></script>
+  <script src="libs/angular-busy/dist/angular-busy.js"></script>
+  <script src="libs/snackbar/dist/snackbar.min.js"></script>
+  <script src="libs/angular-toastr/dist/angular-toastr.tpls.js"></script>
+  <script src="libs/datatables.net/js/jquery.dataTables.js"></script>
+  <script src="libs/jquery.maskedinput/dist/jquery.maskedinput.js"></script>
+  <script src="libs/ng-file-upload/ng-file-upload.js"></script>
+  <script src="libs/ng-file-upload-shim/ng-file-upload-shim.js"></script>
+  <script src="libs/angular-base64-upload/src/angular-base64-upload.js"></script>
+  <script src="libs/blob-polyfill/Blob.js"></script>
+  <script src="libs/file-saver.js/FileSaver.js"></script>
+  <script src="libs/angular-file-saver/dist/angular-file-saver.bundle.js"></script>
+  <script src="libs/ng-idle/angular-idle.js"></script>
+  <script src="libs/chart.js/dist/Chart.js"></script>
+  <script src="libs/angular-chart.js/dist/angular-chart.js"></script>
+  <script src="libs/underscore/underscore.js"></script>
+  <script src="libs/less/dist/less.js"></script>
+  <script src="libs/angular-ui-select2/src/select2.js"></script>
+  <!-- endbower -->
+
+
+
+  <!-- ANGULAR CUSTOM -->
+  <script src="dist/js/app.js" defer></script>
+  <script src="dist/html-templates.js"></script>
+
+
+
+</body>
+
+</html>

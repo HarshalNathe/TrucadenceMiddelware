@@ -1,0 +1,48 @@
+type: object
+properties:
+  id:
+    type: string
+  Candidate_ID:
+    type: string
+  Is_Dependent:
+    type: string
+  Is_Spouse_Dependent:
+    type: string
+  Is_SixtyFive:
+    type: string
+  Is_Blind:
+    type: string
+  Is_Spouse_SixtyFive:
+    type: string
+  Is_Spouse_Blind:
+    type: string
+  Is_Exempt:
+    type: string
+  One_Value:
+    type: number
+  Two_Value:
+    type: number
+  Three_Value:
+    type: number
+  Four_Value:
+    type: number
+  Five_Value:
+    type: number
+  Six_Value:
+    type: number
+  Seven_Value:
+    type: number
+  Eight_Value:
+    type: number
+  Nine_Value:
+    type: number
+  Total_Basic_Allowance:
+    type: number
+  Additional_Allowance:
+    type: number
+  Additional_Amount:
+    type: number
+  CandidateAttachments:
+    type: array
+    items:
+      $ref: ./candidate-attachments.yaml

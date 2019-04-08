@@ -1,0 +1,68 @@
+Error:
+  $ref: ./error.yaml
+Response:
+  $ref: ./Response.yaml
+Token:
+  $ref: ./token.yaml
+Error:
+  $ref: ./error.yaml
+Login:
+  $ref: ./login.yaml
+SignUp:
+  $ref: ./signUp.yaml
+Countries:
+  $ref: ./countries.yaml
+States:
+  $ref: ./states.yaml
+Cities:
+  $ref: ./cities.yaml
+Candidate:
+  $ref: ./candidate.yaml
+EmploymentDetails:
+  $ref: ./employment-details.yaml
+CandidateDetails:
+  $ref: ./candidate-details.yaml
+CandidateAttachments:
+  $ref: ./candidate-attachments.yaml
+BSADisclosureReleases:
+  $ref: ./bsaDisclosureReleases.yaml
+EEOSelfIdentifications:
+  $ref: ./eeoSelfIdentifications.yaml
+DrugTesting:
+  $ref: ./drug-testing.yaml
+IllinoisAllowancesWorksheet:
+  $ref: ./illinois-allowances-worksheet.yaml
+PersonalAllowancesWorksheet:
+  $ref: ./personal-allowances-worksheet.yaml
+MemberApplication:
+  $ref: ./member-application.yaml
+EmploymentDetails:
+  $ref: ./employment-details.yaml
+DocumentLists:
+  $ref: ./document-list.yaml
+FormMaster:
+  $ref: ./form-master.yaml
+AttachmentTypes:
+  $ref: ./attachment-type.yaml
+EmploymentEligibilityVerification:
+  $ref: ./employment-eligibility-verification.yaml
+FormStatus:
+  $ref: ./form-status.yaml
+Users:
+  $ref: ./user.yaml
+JobProfiles:
+  $ref: ./job-profile.yaml
+GlobalSearching:
+  $ref: ./global-search.yaml
+Employers:
+  $ref: ./employer.yaml
+EmployersDetail:
+  $ref: ./employer-detail.yaml
+EmployersEmployee:
+  $ref: ./employers-employee.yaml
+EmployersEmployeeDetail:
+  $ref: ./employers-employee-detail.yaml
+TimeSheet:
+  $ref: ./timesheet.yaml
+
+

@@ -1,0 +1,24 @@
+x-swagger-router-controller: form-master-controller
+get:
+  operationId: formMasterGet
+  description: "List of form Master"
+  summary: "Get Details of form Master"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: formMaster_Name
+      in: query
+      description: "Provide formMaster name"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/FormMaster"
+    "403":
+      description: "Wrong form name"
+      schema:
+        $ref: "#/definitions/Error"

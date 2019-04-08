@@ -1,0 +1,26 @@
+x-swagger-router-controller: form-status-controller
+put:
+  operationId: formStatusPut
+  description: "Update particular form status"
+  summary: "Update particular form status"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: formStatus
+      in: body
+      description: "Provide form status details"
+      required: false
+      schema:
+        $ref: "#/definitions/FormStatus"
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/FormStatus"
+    "403":
+      description: "Wrong Id"
+      schema:
+        $ref: "#/definitions/Error"
+

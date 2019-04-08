@@ -1,0 +1,892 @@
+<!-- BEGIN PAGE HEADER-->
+<div class="row hidden-print" cg-busy="vm.promise">
+  <div class="col-md-6">
+    <h1 class="page-title">Form W-4</h1>
+  </div>
+  <!-- <div class="col-md-6">
+    <div class="page-bar">
+      <ul class="page-breadcrumb">
+        <li>
+          <i class="icon-home"></i>
+          <a href="">Home</a>
+          <i class="fa fa-angle-right"></i>
+        </li>
+        <li>
+          <a href="">Candidate Dashboard</a>
+          <i class="fa fa-angle-right"></i>
+        </li> -->
+  <!--<li>
+					<a href="">
+						<span>BSA Disclosure</span>
+					</a>
+				</li>-->
+  <!-- </ul>
+
+    </div>
+  </div> -->
+</div>
+<!-- END PAGE HEADER-->
+
+<div class="row" ng-show="!vm.isPrint">
+  <div class="col-md-12">
+    <div class="portlet light portlet-fit ">
+      <div class="portlet-title">
+        <div class="caption text-center">
+          <i class=" icon-layers font-green"></i>
+          <span class="caption-subject font-green bold uppercase">Federal Form W-4</span>
+        </div>
+        <div class="tools">
+          <button class="btn btn-primary  btn-xs hidden-print" ng-click="vm.printWFour()" ng-hide="!vm.isEdit">
+            <i class="fa fa-print"></i>
+          </button>
+          <button class="btn btn-primary hidden-print btn-xs" ng-click="vm.edit()" ng-hide="!vm.isEdit">
+            <i class="fa fa-edit"></i> Edit</button>
+        </div>
+      </div>
+      <div class="portlet-body">
+        <div class="row small_cnt">
+          <div class="col-md-4 col-xs-4">
+            <p>
+              <strong>Purpose.</strong> Complete Form W-4 so that your employer can withhold the correct federal income
+              tax
+              from your pay. Consider completing a new Form W-4 each year and when your personal or financial situation
+              changes.</p>
+
+            <p>
+              <strong>Exemption from withholding.</strong> If you are exempt, complete only lines 1, 2, 3, 4, and 7 and
+              sign
+              the form to validate it. Your exemption for 2019 expires February 17, 2020. See Pub. 505, Tax Withholding
+              and
+              Estimated Tax.
+            </p>
+
+            <p>
+              <strong>Note:</strong> If another person can claim you as a dependent on his or her tax return, you can’t
+              claim
+              exemption from withholding if your total income exceeds $1,050 and includes more than $350 of unearned
+              income
+              (for example, interest and dividends).</p>
+
+            <p>
+              <strong> Exceptions.</strong> An employee may be able to claim exemption from withholding even if the
+              employee
+              is a dependent, if the employee: </p>
+            <ul>
+              <li>Is age 65 or older</li>
+              <li>Is blind, or</li>
+              <li>Will claim adjustments to income; tax credits; or itemized deductions, on his or her tax return</li>
+            </ul>
+          </div>
+          <div class="col-md-4 col-xs-4">
+            <p>The exceptions don’t apply to supplemental wages greater than $1,000,000.</p>
+            <p>
+              <strong>Basic instructions.</strong> If you aren’t exempt, complete the Personal Allowances Worksheet
+              below.
+              The worksheets on page 2 further adjust your withholding allowances based on itemized deductions, certain
+              credits,
+              adjustments to income, or two-earners/multiple jobs situations.</p>
+            <p>
+              Complete all worksheets that apply. However, you may claim fewer (or zero) allowances. For regular wages,
+              withholding must
+              be based on allowances you claimed and may not be a flat amount or percentage of wages.</p>
+            <p>
+              <strong>Head of household.</strong> Generally, you can claim head of household filing status on your tax
+              return
+              only if you are unmarried and pay more than 50% of the costs of keeping up a home for yourself and your
+              dependent(s)
+              or other qualifying individuals. See Pub. 501, Exemptions, Standard Deduction, and Filing Information,
+              for
+              information.
+            </p>
+            <p>
+              <strong>Tax credits.</strong> You can take projected tax credits into account in figuring your allowable
+              number
+              of withholding allowances. Credits for child or dependent care expenses and the child tax credit may be
+              claimed
+              using the
+              <p>Personal Allowances Worksheet below.</p> See Pub. 505 for information on converting your other credits
+              into
+              withholding allowances.
+            </p>
+          </div>
+          <div class="col-md-4 col-xs-4">
+            <p>
+              <strong> Nonwage income.</strong> If you have a large amount of nonwage income, such as interest or
+              dividends,
+              consider making estimated tax payments using Form 1040-ES, Estimated Tax for Individuals. Otherwise, you
+              may
+              owe additional tax. If you have pension or annuity income, see Pub. 505 to find out if you should adjust
+              your
+              withholding on Form W-4 or W-4P.
+            </p>
+            <p>
+              <strong> Two earners or multiple jobs.</strong> If you have a working spouse or more than one job, figure
+              the
+              total number of allowances you are entitled to claim on all jobs using worksheets from only one Form W-4.
+              Your
+              withholding usually will be most accurate when all allowances are claimed on the Form W-4 for the highest
+              paying
+              job and zero allowances are claimed on the others. See Pub. 505 for details.</p>
+
+            <p>
+              <strong>Nonresident alien.</strong> If you are a nonresident alien, see Notice 1392, Supplemental Form
+              W-4
+              Instructions for Nonresident Aliens, before completing this form.
+            </p>
+            <p>
+              <strong>Check your withholding.</strong> After your Form W-4 takes effect, use Pub. 505 to see how the
+              amount
+              you are having withheld compares to your projected total tax for 2019. See Pub. 505, especially if your
+              earnings
+              exceed $130,000 (Single) or $180,000 (Married).
+            </p>
+            <p>
+              <strong>Future developments.</strong> Information about any future developments affecting Form W-4 (such
+              as
+              legislation enacted after we release it) will be posted at www.irs.gov/w4
+            </p>
+
+          </div>
+        </div>
+        <!--<hr>
+				<p class="text-center">
+					<strong>Personal Allowances Worksheet</strong> (Keep for your records.)
+				</p>
+				<hr>-->
+        <form name="w4From" novalidate>
+          <div class="row">
+            <div class="col-md-12 w4_check">
+              <hr>
+
+              <div class="row">
+                <div class="col-md-2 col-xs-2">
+                  <p class="font-10">Form
+                    <strong style="font-size: 35px;">W4</strong>
+                  </p>
+                  <p class="font-10">Department of the treasury Internal revenue service. </p>
+                </div>
+                <div class="col-md-8 col-xs-8 text-center">
+                  <p class="text-center">
+                    <strong>Separate here and give Form W-4 to your employer. Keep the top part for your records.</strong>
+                  </p>
+                  <p>
+                    <strong> Employee’s Withholding Allowance Certificate</strong>
+                  </p>
+                  <p class="font-10">Whether you are entitled to claim a certain number of allowances or exemption from
+                    withholding
+                    is subject to review by the IRS. Your employer may be required to send a copy of this form to the
+                    IRS.</p>
+                </div>
+                <div class="col-md-2 col-xs-2">
+                  <p class="font-10">OMB No. 1545-0074</p>
+                  <p>
+                    <strong style="font-size: 40px;">2019</strong>
+                  </p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-md-4 col-xs-4" style="border-right: 1px solid;">
+                  <p class="font-10">
+                    <strong> 1. Your First name and middle initial</strong>
+                  </p>
+                  <br />
+                  <p>{{vm.candidatDetails.First_Name}} {{vm.candidatDetails.Middle_Name}}</p>
+                </div>
+                <div class="col-md-4 col-xs-4" style="border-right: 1px solid;">
+                  <p class="font-10">
+                    <strong> Last name </strong>
+                  </p>
+                  <br />
+                  <p>{{vm.candidatDetails.Last_Name}}</p>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                  <p class="font-10">
+                    <strong>2. Social Security Number </strong>
+                  </p>
+                  <p>XXX-XX-{{vm.candidatDetails.Social_Security_Number.slice(-4);}}
+                    <a href="" class="margin-left-16 btn hidden-print btn-xs btn-primary" data-toggle="modal"
+                      data-target="#basic">
+                      <i class="fa fa-eye"></i>
+                    </a>
+                  </p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-md-6 col-xs-6" style="border-right: 1px solid; min-height: 61px;">
+                  <p class="font-10">Home address (number and street or rural route)</p>
+                  <br />
+                  <p>{{vm.candidatDetails.Address_1}},</p>
+                  <p>{{vm.candidatDetails.Address_2}}</p>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                  <div class="form-group">
+                    <div class="mt-radio-inline">
+                      <strong>3. </strong>
+                      <label class="mt-radio">
+                        <input type="radio" name="maritalstatus" ng-model="vm.wFourDetails.Is_Withhold_Married"
+                          ng-disabled="vm.isEdit" id="inlineCheckbox1" value="1"> Single
+                        <span></span>
+                      </label>
+                      <label class="mt-radio">
+                        <input type="radio" name="maritalstatus" ng-model="vm.wFourDetails.Is_Withhold_Married"
+                          ng-disabled="vm.isEdit" id="inlineCheckbox2" value="2"> Married
+                        <span></span>
+                      </label>
+                      <label class="mt-radio">
+                        <input type="radio" name="maritalstatus" ng-model="vm.wFourDetails.Is_Withhold_Married"
+                          ng-disabled="vm.isEdit" id="inlineCheckbox3" value="3"> Married, but withhold at higher
+                        Single rate
+                        <span></span>
+                      </label>
+                    </div>
+                  </div>
+                  <p class="font-10">Note: If married, but legally separated, or spouse is a nonresident alien, check
+                    the
+                    “Single” box.</p>
+                </div>
+              </div>
+              <hr />
+              <div class="row">
+                <div class="col-md-6 col-xs-6" style="border-right: 1px solid; min-height: 55px;">
+                  <p class="font-10">City or town, state, and ZIP code</p>
+                  <br />
+                  <p>{{vm.candidatDetails.city.Name}}, {{vm.candidatDetails.state.Name}}, {{vm.candidatDetails.ZIP}}</p>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                  <div class="form-group">
+                    <div class="mt-checkbox-inline">
+                      <strong>4. </strong>
+                      <label class="mt-checkbox">
+                        <input type="checkbox" id="inlineCheckbox1" ng-model="vm.wFourDetails.Is_SSC_Replacement"
+                          ng-disabled="vm.isEdit" value="option1"> If
+                        your last name differs from that shown on your social security card, check here. You must call
+                        1-800-772-1213
+                        for a replacement card
+                        <span></span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <hr />
+              <div class="form-group row font-10">
+                <label class="control-lable col-md-6 col-xs-6" for="number of dependent">
+                  <strong>5. </strong> Total number of allowances you are claiming (from the applicable worksheet on
+                  the
+                  following pages)
+                </label>
+                <div class="col-xs-2 col-md-2">
+                  <div class="input-group input-group-sm" ng-class="{ 'has-error' : w4From.totalAllowancesClaim.$invalid && !w4From.totalAllowancesClaim.$pristine}">
+                    <span class="input-group-addon" id="sizing-addon1">@</span>
+                    <input type="number" class="form-control" ng-model="vm.wFourDetails.Total_Allowances_Claim"
+                      ng-disabled="vm.isEdit" name="totalAllowancesClaim" min="0" max="10" placeholder="Allowance"
+                      aria-describedby="sizing-addon1" ng-model="vm.totalAllowancesClaim">
+                  </div>
+                  <span class="help-block" ng-messages="w4From.totalAllowancesClaim.$error" ng-if="w4From.totalAllowancesClaim.$dirty && w4From.totalAllowancesClaim.$invalid">
+                    <span ng-show="w4From.totalAllowancesClaim.$error">Enter digits between 0 to 10 only.</span>
+                  </span>
+                </div>
+              </div>
+
+              <div class="form-group row font-10">
+                <label class="control-lable col-md-6 col-xs-6" for="number of dependent">
+                  <strong>6. </strong>Additional amount, if any, you want withheld from each paycheck</label>
+                <div class="col-xs-2 col-md-2">
+                  <div class="input-group input-group-sm" ng-class="{ 'has-error' : w4From.additionalAmountReq.$invalid && !w4From.additionalAmountReq.$pristine}">
+                    <span class="input-group-addon" id="sizing-addon1">$</span>
+                    <input type="number" class="form-control" ng-model="vm.wFourDetails.Addition_Amt_Required"
+                      ng-disabled="vm.isEdit" name="additionalAmountReq" placeholder="Amount" aria-describedby="sizing-addon1"
+                      ng-model="vm.additionalAmountRequired">
+                  </div>
+                  <span class="help-block" ng-messages="w4From.additionalAmountReq.$error" ng-if="w4From.additionalAmountReq.$dirty && w4From.additionalAmountReq.$invalid">
+                    <span ng-show="w4From.additionalAmountReq.$error">Enter digits only.</span>
+                  </span>
+                </div>
+              </div>
+              <div class="form-group row font-10">
+                <label class="control-lable col-md-6 col-xs-6" for="number of dependent">
+                  <strong>7. </strong> I claim exemption from withholding for 2019, and I certify that I meet both of
+                  the
+                  following conditions for exemption.
+                  <br />Last year I had a right to a refund of all federal income tax withheld because I had no tax
+                  liability,
+                  and
+                  <br /> This year I expect a refund of all federal income tax withheld because I expect to have no tax
+                  liability.
+                  If you meet both conditions, write “Exempt” here . .
+                </label>
+                <div class="col-xs-2 col-md-2">
+                  <div class="input-group input-group-sm" ng-class="{ 'has-error' : w4From.isExempt.$invalid && !w4From.isExempt.$pristine}">
+                    <span class="input-group-addon" id="sizing-addon1">@</span>
+                    <input type="text" class="form-control" ng-model="vm.wFourDetails.Is_Exempt" ng-disabled="vm.isEdit"
+                      name="isExempt" placeholder="" aria-describedby="sizing-addon1" ng-pattern="/^(Exempt|exempt)$/"
+                      ng-model="vm.isExempt">
+                  </div>
+                  <span class="help-block" ng-messages="w4From.isExempt.$error" ng-if="w4From.isExempt.$dirty && w4From.isExempt.$invalid">
+                    <span ng-show="w4From.isExempt.$error.pattern">Write exempt only.</span>
+                  </span>
+                </div>
+              </div>
+              <hr />
+              <p class="font-10"> Under penalties of perjury, I declare that I have examined this certificate and, to
+                the
+                best of my knowledge and belief, it is true, correct, and complete</p>
+
+              <div class="row" ng-hide="vm.isEdit">
+                <div class="col-md-12">
+                  <div class="mt-checkbox-inline">
+                    <label class="mt-checkbox">
+                      <input type="checkbox" ng-change="vm.usePreviousSign()" ng-model="vm.isPreviousSign" id="inlineCheckbox23"
+                        ng-hide="vm.isEdit" ng-value="option1"> Use Previous Signature ?
+                      <span></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row  margin-top-40">
+                <div class="col-md-8 col-xs-8">
+                  <div class="form-group">
+                    <label class="control-label col-md-3">Signature
+                      <span class="required"> * </span>
+                    </label>
+
+                    <div class="col-md-6">
+                      <div class="" ng-hide="vm.isEdit || vm.isPreviousSign" style="min-height: 150px;" ng-style="{'max-width': boundingBox.width + 'px', 'max-height': boundingBox.height + 'px'}">
+                        <signature-pad id="canvas" class="signature_box" ng-class="{disabled: vm.signPadDisable}" style="min-height: 150px;"
+                          accept="accept" clear="clear" height="220" width="568" dataurl="dataurl" disabled="vm.isEdit"
+                          ng-model="vm.signature.dataUrl" ng-required="true"></signature-pad>
+                        <div class="buttons text-right">
+                          <button class="btn btn-xs btn-default" ng-click="vm.clear()" ng-hide="vm.isEdit">Clear</button>
+                          <button class="btn btn-xs btn-success" ng-click="vm.signature = accept();vm.signaturePadDisabled();">Sign</button>
+                        </div>
+                      </div>
+                      <img class="img-responsive signature_img" data-ng-src="{{vm.getImage()}}" ng-if="vm.isEdit || vm.isPreviousSign" />
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-4 col-xs-4">
+                  <div class="form-group">
+                    <label class="control-label col-md-6">Date: {{vm.AssignedDate | date}}</label>
+                    <!--<div class="col-md-8">
+									<input type="text" class="form-control" disabled name="" />
+								</div>-->
+                  </div>
+                </div>
+              </div>
+
+              <div class="row margin-top-20">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <label class="control-label col-md-4">Employee Name
+                      <span class="required"> * </span>
+                    </label>
+                    <div class="col-md-8" ng-if="vm.isEdit">{{vm.Employee_Name}}</div>
+                    <div class="col-md-8" ng-hide="vm.isEdit" ng-class="{ 'has-error' : w4From.employeeName.$invalid && !w4From.employeeName.$pristine}">
+                      <input type="text" class="form-control" name="employeeName" ng-model="vm.Employee_Name"
+                        ng-pattern="/^([a-zA-Z' ]+)$/" ng-minlength="0" ng-maxlength="25" ng-required="true" />
+                      <span class="help-block" ng-messages="w4From.employeeName.$error" ng-if="w4From.employeeName.$dirty && w4From.employeeName.$invalid">
+                        <span ng-show="w4From.employeeName.$error.pattern">Invalid Employee Name.</span>
+                        <span ng-show="w4From.employeeName.$error.maxlength">Employee Name is too long.</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <hr class="margin-top-20" ng-show="vm.showEmployersDetails" />
+              <div class="row" ng-show="vm.showEmployersDetails">
+                <div class="col-md-6 col-xs-6" style="border-right: 1px solid;">
+                  <p class="font-10"> 8. Employer’s name and address (Employer: Complete lines 8 and 10 only if sending
+                    to
+                    the IRS.)</p>
+                  <div class="col-md-8" ng-if="vm.isEdit">
+                    <strong>{{vm.wFourDetails.Employer_Name_Address}}</strong>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" ng-hide="vm.isEdit" ng-model="vm.wFourDetails.Employer_Name_Address" />
+                  </div>
+                </div>
+                <div class="col-md-3 col-xs-3" style="border-right: 1px solid; min-height: 42px;" ng-class="{ 'has-error' : w4From.employerOfficeCode.$invalid && !w4From.employerOfficeCode.$pristine}">
+                  <p class="font-10">9. First date of employment</p>
+                  <div class="col-md-8" ng-if="vm.isEdit">
+                    <strong>{{vm.wFourDetails.Employer_Office_Code}}</strong>
+                  </div>
+                  <div class="input-group date" id="EmploymentDate" ng-hide="vm.isEdit">
+                    <input ng-model="vm.wFourDetails.Employer_Office_Code" class="form-control" name="employerOfficeCode"
+                      ng-model="vm.employerOfficeCode" />
+                    <span class="input-group-addon">
+                      <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+                  </div>
+                  <!--<span class="help-block" ng-messages="w4From.employerOfficeCode.$error" ng-if="w4From.employerOfficeCode.$dirty && w4From.employerOfficeCode.$invalid">
+										<span ng-show="w4From.employerOfficeCode.$error.pattern">Alphanumeric value required.</span>
+									</span>-->
+                </div>
+                <div class="col-md-3 col-xs-3" ng-class="{ 'has-error' : w4From.employerIdentificationNo.$invalid && !w4From.employerIdentificationNo.$pristine}">
+                  <p class="font-10">10. Employer identification number (EIN)</p>
+                  <div class="col-md-8" ng-if="vm.isEdit">
+                    <strong>{{vm.wFourDetails.Employer_Indentification_No}}</strong>
+                  </div>
+                  <div class="form-group">
+                    <input type="text" class="form-control" ng-hide="vm.isEdit" ng-model="vm.wFourDetails.Employer_Indentification_No"
+                      name="employerIdentificationNo" ng-pattern="/^[0-9 \-]{10}$/" />
+                  </div>
+                  <span class="help-block" ng-messages="w4From.employerIdentificationNo.$error" ng-if="w4From.employerIdentificationNo.$dirty && w4From.employerIdentificationNo.$invalid">
+                    <span ng-show="w4From.employerIdentificationNo.$error.pattern">Invalid employer identification
+                      number.</span>
+                  </span>
+                </div>
+              </div>
+              <hr /> <br>
+              <div class="row">
+                <div class="col-md-12 col-xs-12">
+                  <p class="font-10">
+                    <strong>For Privacy Act and Paperwork Reduction Act Notice, </strong> see page 2. Cat. No. 10220Q
+                    <span class="text-right pull-right">
+                      <strong> Form W-4 (2019) </strong>
+                    </span>
+                  </p>
+                </div>
+              </div>
+              <div class="row margin-top-20">
+                <div class="col-md-12">
+                  <div class="text-right">
+                    <ul class="button-list">
+                      <li><button class="btn hidden-print" ng-click="vm.cancel()">Cancel</button></li>
+                      <li><button class="btn btn-primary pull-right" ng-disabled="w4From.$invalid" ng-click="vm.submit()"
+                          ng-hide="vm.isEdit || vm.showUpdateButton">Submit</button></li>
+                      <li><button class="btn btn-primary pull-right" ng-disabled="w4From.$invalid" ng-click="vm.update()"
+                          ng-hide="!vm.showUpdateButton">Update</button></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="basic" tabindex="-1" role="basic" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div ng-hide="vm.hidePopUp">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+            <h4 class="modal-title">Enter Secure password</h4>
+          </div>
+          <div class="modal-body">
+            <input type="password" autocomplete="off" placeholder="Password" name="password" ng-model="vm.securePassword"
+              data-toggle="tooltip" data-placement="top" required />
+          </div>
+        </div>
+        <div class="modal-body" ng-hide="!vm.hidePopUp">
+          <h4 class="modal-title">SSN is :
+            <strong>{{vm.ssn}} </strong>
+          </h4>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn dark btn-outline" data-dismiss="modal" ng-click="vm.close()">Close</button>
+          <button type="button" class="btn green" ng-hide="vm.hidePopUp" ng-click="vm.getSecurePassword()">Validate</button>
+        </div>
+      </div>
+      <!-- /.modal-content -->
+    </div>
+    <!-- /.modal-dialog -->
+  </div>
+</div>
+<!-- BEGIN PAGE HEADER-->
+<!--<div class="row hidden-print" ng-show="vm.isPrint">
+	<div class="col-md-6">
+		<h1 class="page-title">Form W-4 Print</h1>
+	</div>
+	<div class="col-md-6">
+		<div class="page-bar">
+			<ul class="page-breadcrumb">
+				<li>
+					<i class="icon-home"></i>
+					<a href="">Home</a>
+					<i class="fa fa-angle-right"></i>
+				</li>
+				<li>
+					<a href="">
+						<span>W4 Print</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>-->
+<!-- END PAGE HEADER-->
+
+<div class="row" ng-show="vm.isPrint">
+  <div class="col-md-12">
+    <div class="portlet light portlet-fit wfourPrint">
+
+      <div class="portlet-body" style="padding: 3px;">
+        <div class="row small_cnt" style="border-top: 1px solid #000;">
+          <div class="col-md-4 col-xs-4">
+            <p class="wprint-heading">Form W-4 (2019)</p>
+            <p class="wpfont">
+              <strong> Future developments.</strong>For the latest information about any future developments related to
+              Form
+              W-4, such as legislation enacted after it was published, go to
+              <i>www.irs.gov/FormW4.</i>
+            </p>
+
+            <p class="wpfont">
+              <strong>Purpose.</strong>.Complete Form W-4 so that your employer can withhold the correct federal income
+              tax
+              from your pay. Consider completing a new Form W-4 each year and when your personal or financial situation
+              changes.
+            </p>
+
+            <p class="wpfont">
+              <strong>Exemption from withholding:</strong> You may claim exemption from withholding for 2019 if both of
+              the
+              following apply.
+            </p>
+            <ul style="margin: 0px;padding-left: 10px;">
+              <li style="font-size: 9.5px;">For 2018 you had a right to a refund of all federal income tax withheld
+                because
+                you had no tax liability, and</li>
+              <li style="font-size: 9.5px;">For 2019 you expect a refund of all federal income tax withheld because you
+                expect
+                to have no tax liability.</li>
+            </ul>
+            <p class="wpfont">
+              If you're exempt, complete only lines 1, 2, 3, 4, and 7 and sign the form to validate it. Your exemption
+              for 2019 expires
+              February 17, 2020. See Pub. 505, Tax Withholding and Estimated Tax, to learn more about whether you
+              qualify
+              for exemption from withholding.
+            </p>
+            <p class="wpfont gi">General Instructions</p>
+            <p class="wpfont">
+              If you aren't exempt, follow the rest of these instructions to determine the number of withholding
+              allowances you should
+              claim for withholding for 2019 and any additional amount of tax to have withheld.For regular wages,
+              withholding
+              must be based on allowances you claimed and may not be a flat amount or percentage of wages.
+            </p>
+            <p class="wpfont" style="text-indent: 10px;">
+              You can also use the calculator at
+              <strong style="font-style: italic">www.irs..gov/W4App</strong> to determine your tax withholding more
+              accurately.
+              Consider
+            </p>
+          </div>
+          <div class="col-md-4 col-xs-4">
+            <p class="wpfont">using this calculator if you have a more complicated tax situation, such as if you have a
+              working
+              spouse, more than one job, or a large amount of nonwage income outside of your job. After your Form W-4
+              takes
+              effect, you can also use this calculator to see how the amount of tax you're having withheld compares to
+              your
+              projected total tax for 2019.If you use the calculator, you don't need to complete any of the worksheets
+              for
+              Form W-4.</p>
+            <p class="wpfont">
+              Note that if you have too much tax withheld, you will receive a refund when you file your tax return. If
+              you have too little
+              tax withheld, you will owe tax when you file your tax return, and you might owe a penalty.
+            </p>
+            <p class="wpfont">
+              <strong>Filers with multiple jobs or working spouses.</strong> If you have more than one job at a time,
+              or
+              if you're married and your spouse is also working, read all of the instructions including the
+              instructions
+              for the Two-Earners/Multiple Jobs Worksheet before beginning.
+            </p>
+            <p class="wpfont">
+              <strong>Nonwage income. </strong>If you have a large amount of nonwage income, such as interest or
+              dividends,
+              consider making estimated tax payments using Form 1040- ES, Estimated Tax for Individuals. Otherwise, you
+              might
+              owe additional tax. Or, you can use the Deductions, Adjustments, and Other Income Worksheet on Page 3 or
+              the
+              calculator at www.irs.gov/ W4App to make sure you have enough tax withheld from your paycheck. If you
+              have
+              pension or annuity income, see Pub. 505 or use the calculator at
+              <em>www.irs.gov/W4App</em> to find out if you should adjust your withholding on Form W-4 or W-4P.
+            </P>
+            <p class="wpfont">
+              <strong>Nonresident alien. </strong>If you're a nonresident alien, see Notice 1392, Supplemental Form W-4
+              Instructions
+              for Nonresident Aliens, before completing this form.
+            </P>
+          </div>
+          <div class="col-md-4 col-xs-4">
+            <p style="font-size: 12px;margin: 0px;font-weight: bold">Specific Instructions</p>
+            <p style="font-size: 10px ;margin: 0px;font-weight: bold">Personal Allowances Worksheet</p>
+
+            <p class="wpfont">
+              Complete this worksheet on page 3 first to determine the number of withholding allowances to claim.
+            </p>
+            <p class="wpfont">
+              <strong> Line C.
+                <i>Head of household please note:</i>
+              </strong> Generally, you can claim head of household filing status on your tax return only if you're
+              unmarried
+              and pay more than 50% of the costs of keeping up a home for yourself and a qualifying individual. See
+              Pub.
+              501 for more information about filing status.
+            </p>
+
+            <p class="wpfont">
+              <strong>Line E. Child tax credit. </strong> When you file your tax return, you might be eligible to claim
+              a
+              credit for each of your qualifying children. To qualify, the child must be under age 17 as of December 31
+              and
+              must be your dependent who lives with you for more than half the year. To learn more about this credit,
+              see
+              Pub. 972, Child Tax Credit. To reduce the tax withheld from your pay by taking this credit into account,
+              follow
+              the instructions on line E of the worksheet. On the worksheet you will be asked about your total income.
+              For
+              this purpose, total income includes all of your wages and other income, including income earned by a
+              spouse,
+              during the year.
+            </p>
+            <p class="wpfont">
+              <strong>Line F. Credit for other dependents. </strong> When you file your tax return, you might be
+              eligible
+              to claim a credit for each of your dependents that don't qualify for the child tax credit, such as any
+              dependent
+              children age 17 and older. To learn more about this credit, see Pub. 505. To reduce the tax withheld from
+              your
+              pay by taking this credit into account, follow the instructions on line F of the worksheet. On the
+              worksheet,
+              you will be asked about your total income.For this purpose, total income includes all of
+            </p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-xs-2 col-sm-3">
+            <p style="border:1px dashed #000;margin-top: 4px;"></p>
+          </div>
+          <div class="col-xs-8 col-sm-6" style="text-align:center;">
+            <p style="font-size: 9.5px;font-weight: bold;">Separate here and give Form W-4 to your employer. Keep the
+              worksheet(s)
+              for your records.</p>
+          </div>
+          <div class="col-xs-2 col-sm-3">
+            <p style="border:1px dashed #000;margin-top: 4px;"></p>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="border-bottom: 1px solid #000000;margin-top:0px;">
+        <div class="col-md-2 col-xs-2" style="border-right: 1px solid #000000;line-height: 20px;margin-top: 0px;margin:0px;">
+          <p class="font-nine" style="margin:0px;">Form
+            <span style="font-size: 31px; font-weight: bold;margin:0px;"> W-4</span>
+          </p>
+          <p class="margin-0" style="font-size: 7px;line-height: 12px;">Department of the Treasury Internal Revenue
+            Service</p>
+        </div>
+        <div class="col-md-8 col-xs-8" style="margin-top:2px;">
+          <p class="text-center" style="font-size: 13px; font-weight: bold;margin:0px;">Employee’s Withholding
+            Allowance
+            Certificate
+          </p>
+          <p class="text-center" style="font-size: 9.5px; margin-bottom:0px;font-weight: bold;margin-top:4px;">▶
+            Whether
+            you are entitled to claim a certain number of allowances or exemption from withholding is subject to review
+            by
+            the IRS. Your employer may be required to send a copy of this form to the IRS.</p>
+        </div>
+        <div class="col-md-2 col-xs-2" style="border-left: 1px solid #000000;">
+          <p class="font-nine text-center" style="padding-top: 0px;margin:0px;">OMB No. 1545-0074</p>
+          <p class="text-center" style="font-weight: bold; font-size: 22px;margin:0px;padding-bottom:3px;">
+            <span class="year">20</span>19</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-4 col-xs-4">
+          <p class="font-nine" style="margin:0px;">
+            <strong>1</strong> Your first name and middle initial</p>
+          <br />
+          <p class="font-nine margin-0" style="margin-top:0px;">{{vm.candidatDetails.First_Name}}
+            {{vm.candidatDetails.Middle_Name}}</p>
+        </div>
+        <div class="col-md-4 col-xs-4" style="border-right: 1px solid #000000;border-left: 1px solid #000000;padding-left:2px;">
+          <p class="font-nine" style="margin-top:0px;margin-bottom:0px;"> Last Name </p>
+          <br />
+          <p class="font-nine margin-0">{{vm.candidatDetails.Last_Name}}</p>
+        </div>
+        <div class="col-md-4 col-xs-4" style="padding-left:2px;">
+          <p class="font-nine" style="margin:0px;">
+            <strong>2 Your social security number</strong>
+          </p>
+          <p class="font-nine margin-0">XXX-XX-{{vm.candidatDetails.Social_Security_Number.slice(-4);}}</p>
+        </div>
+      </div>
+      <div class="row" style="border-top: 1px solid #000000;">
+        <div class="col-xs-6 col-md-6">
+          <p class="font-nine" style="margin:0px;">Home address (number and street or rural route)</p>
+          <br />
+          <p class="font-nine margin-0">{{vm.candidatDetails.Address_1}},
+            <br>{{vm.candidatDetails.Address_2}}</br>
+          </p>
+        </div>
+        <div class="col-xs-6 col-md-6" style="border-left: 1px solid #000000;padding-left:2px;">
+          <label class="control-label" style="font-size: 9.5px;margin: 0px; display: inline-block;">
+            <strong>3</strong>
+          </label>
+          <div class="mt-checkbox-inline" style="padding: 0px;  display: inline-block;">
+            <label class="mt-checkbox" style="font-size: 9.5px; margin-right: 2px; margin-bottom: 0px; padding-left: 15px;">
+              <input type="checkbox" id="inlineCheckbox21" ng-model="vm.single" value="option1"> Single
+              <span style="width: 12px; height: 12px;"></span>
+            </label>
+            <label class="mt-checkbox" style="font-size: 9.5px; margin-bottom: 0px; margin-right: 2px; padding-left: 15px;">
+              <input type="checkbox" id="inlineCheckbox22" ng-model="vm.married" value="option2"> Married
+              <span style="width: 12px; height: 12px;"></span>
+            </label>
+            <label class="mt-checkbox" style="font-size: 9.5px; margin-bottom: 0px; margin-right: 2px; padding-left: 15px;">
+              <input type="checkbox" id="inlineCheckbox23" ng-model="vm.withhold" value="option3"> Married, but
+              withhold
+              at higher Single rate.
+              <span style="width: 12px; height: 12px;"></span>
+            </label>
+          </div>
+          <p class="font-nine" style="margin:0px;">
+            <strong>Note:</strong> If married filing separately, check "Married, but withhold at higher Single rate."</p>
+        </div>
+      </div>
+      <div class="row" style="border-top: 1px solid #000000;">
+        <div class="col-xs-6 col-md-6">
+          <p class="font-nine" style="margin-top:0px;margin-bottom:0px;">City or town, state, and ZIP code</p>
+          <br />
+          <p class="font-nine margin-0">{{vm.candidatDetails.city.Name}}, {{vm.candidatDetails.state.Name}},
+            {{vm.candidatDetails.ZIP}}</p>
+        </div>
+        <div class="col-xs-6 col-md-6" style="border-left: 1px solid #000000;padding-left:2px;">
+          <p class="font-nine" style="margin-top:1px;line-height: 10px;">
+            <strong>4 If your last name differs from that shown on your social security card, check here. You must call
+              1-800-772-1213
+              for a replacement card. ▶</strong>
+            <label class="mt-checkbox check" style="font-size: 10px; margin-bottom: 0px; margin-right: 2px; padding-left: 15px;">
+              <input type="checkbox" id="inlineCheckbox21" ng-model="vm.wFourDetails.Is_SSC_Replacement" value="option1">
+              <span style="width: 12px; height: 12px;margin-left:3px;margin-top:8px;"></span>
+            </label>
+          </p>
+        </div>
+      </div>
+      <div class="row" style="border-top: 1px solid #000000;margin:0px; ">
+        <div class="col-md-10 col-xs-10">
+          <p class="" style="font-size: 10px; margin:0px;">
+            <strong>5</strong> Total number of allowances you are claiming (from the applicable worksheet on the
+            following
+            pages). . . . . . . . . . . . . . .</p>
+          <p class="font-nine" style="font-size: 10px; margin:0px;">
+            <strong>6</strong> Additional amount, if any, you want withheld from each paycheck. . . . . . . . . . . . .
+            .
+            . </p>
+          <p class="font-nine" style="font-size: 10px; margin:0px;">
+            <strong>7</strong> I claim exemption from withholding for 2019, and I certify that I meet both of the
+            following
+            conditions for exemption.</p>
+          <ul style="margin-bottom: 0px;">
+            <li style="font-size: 10px;">Last year I had a right to a refund of all federal income tax withheld because
+              I
+              had no tax liability, and </li>
+            <li style="font-size: 10px;"> This year I expect a refund of all federal income tax withheld because I
+              expect
+              to have no tax liability. </li>
+          </ul>
+          <p class="font-nine" style="margin:0px 0px 0px 30px;">If you meet both conditions, write “Exempt” here . . .
+            .
+            . . . . . . . . . . . . . . . . . . . .▶ </p>
+        </div>
+        <div class="col-md-2 col-xs-2" style="padding-right: 0px;">
+          <p class="font-nine" style="margin: 0px; border-left: 1px solid #000000;border-bottom: 1px solid #000;padding-left: 2px;">
+            <strong>5</strong>
+            <span style="border-left:1px solid #000000;padding:1px 0px 2px 0px;margin-left: 2px;">{{vm.wFourDetails.Total_Allowances_Claim}}</span>
+          </p>
+          <p class="font-nine" style="margin: 0px; border-left: 1px solid #000000; border-bottom: 1px solid #000;padding-left: 2px;">
+            <strong>6</strong>
+            <span style="border-left: 1px solid #000000;padding:2px 0px 2px 0px;margin-left: 2px;">$
+              {{vm.wFourDetails.Addition_Amt_Required}}</span>
+          </p>
+          <div style="margin-left: 14px; border-left: 1px solid #000000;height: 40px;">
+          </div>
+          <div class="row font-nine" style="border-top: 1px solid #000;border-left:1px solid #000;">
+            <span style="border-right: 1px solid #000;padding:2px 2px 2px 2px;">
+              <strong>7</strong>
+            </span> $ {{vm.wFourDetails.Is_Exempt}}
+          </div>
+        </div>
+      </div>
+      <div class="row" style="border-top: 1px solid #000000;margin-bottom:10px;">
+        <div class="col-md-12 col-xs-12">
+          <p class="font-nine" style="margin:0px;">Under penalties of perjury, I declare that I have examined this
+            certificate
+            and, to the best of my knowledge and belief, it is true, correct, and complete.</p>
+          <div class="row">
+            <div class="col-md-9 col-xs-9">
+              <p class="font-nine" style="margin-bottom:0px;">
+                <strong>Employee’s signature</strong>
+                <br>(This form is not valid unless you sign it.)▶ </p>
+            </div>
+            <div class="col-md-3 col-xs-3">
+              <p class="font-nine" style="margin-bottom:0px;font-weight: bold"> ▶ Date: </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row" style="border-top: 1px solid #000000;">
+        <div class="col-xs-8 col-md-8">
+          <p class="font-nine" style="margin:0px 0px;">
+            <strong>8</strong> Employer's name and address (
+            <strong>Employer:</strong> Complete boxes 8 and 1O If sending to IRS and complete boxes 8, 9, and 10 if
+            sending
+            to State Directory of New Hires.)
+          </p>
+          <p class="font-nine margin-0" style="margin-top:0px;">{{vm.wFourDetails.Employer_Name_Address}}</p>
+        </div>
+        <div class="col-xs-2 col-md-2" style="border-right: 1px solid #000;border-left: 1px solid #000;padding-left:2px;">
+          <p class="font-nine" style="margin-top:0px;margin-bottom:0px;padding:0px 5px 0px 0px;">
+            <strong>9</strong> First date of employment
+          </p>
+          <p class="font-nine margin-0" style="margin-top:0px;">{{vm.wFourDetails.Employer_Office_Code}}</p>
+        </div>
+        <div class="col-xs-2 col-md-2" style="padding-left:2px;">
+          <p class="font-nine" style="margin-top:0px;margin-bottom:0px;">
+            <strong>10</strong> Employer identification number (EIN)</p>
+          <p class="font-nine margin-0" style="margin-top:0px;">81-2599619</p>
+        </div>
+      </div>
+      <div class="row" style="border-top: 1px solid #000000;">
+        <div class="col-xs-5 col-md-5">
+          <p class="font-nine margin-0" style="margin-top:5px !important; ">
+            <strong>For Privacy Act and Paperwork Reduction Act Notice, see page 4.</strong>
+          </p>
+        </div>
+        <div class="col-xs-4 col-md-4">
+          <p class="font-nine text-right margin-0" style="margin-top:5px !important;">Cat. No. 10220Q</p>
+        </div>
+        <div class="col-xs-3 col-md-3">
+          <p class="font-nine pull-right margin-0" style="margin-top:5px !important; ">Form
+            <span style=" font-weight: bold;"> W-4</span> (2019)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<style type="text/css" media="print">
+  @page {
+    size: auto;
+    /* auto is the initial value */
+    margin: 0;
+    /* this affects the margin in the printer settings */
+    padding: 0px 4px;
+  }
+</style>

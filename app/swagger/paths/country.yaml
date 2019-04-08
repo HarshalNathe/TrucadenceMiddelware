@@ -1,0 +1,29 @@
+x-swagger-router-controller: country-controller
+get:
+  operationId: countryGet
+  description: "List of country"
+  summary: "Gets list of country"
+  security:
+    - OAuth2: []
+  tags:
+    - "/country"
+  parameters:
+    - name: id
+      in: query
+      description: "country Id"
+      required: false
+      type: string
+    - name: state
+      in: query
+      description: "get state list"
+      required: false
+      type: boolean
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/Countries"
+    "403":
+      description: "Wrong Tenant Id"
+      schema:
+        $ref: "#/definitions/Error"

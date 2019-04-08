@@ -1,0 +1,124 @@
+type: object
+properties:
+  id:
+    type: string
+  Application_ID :
+    type: string
+  Application_Date :
+    type: string
+  Social_Security_Number :
+    type: string
+  Created_At:
+    type: string
+  Updated_At:
+    type: string
+  First_Name :
+    type: string
+  Middle_Name :
+    type: string
+  Last_Name :
+    type: string
+  Nick_Name :
+    type: string
+  DOB :
+    type: string
+  Gender :
+    type: string
+  Marital_Status :
+    type: string
+  Other_Last_Name :
+    type: string
+  Address_1 :
+    type: string
+  Address_2 :
+    type: string
+  City :
+    type: string
+  State :
+    type: string
+  ZIP :
+    type: string
+  Other_Phone :
+    type: string
+  Cell_Phone :
+    type: string
+  Emergency_Phone :
+    type: string
+  Emergency_Contact_Name :
+    type: string
+  Email_ID :
+    type: string
+  Permanent_Address_1 :
+    type: string
+  Permanent_Address_2 :
+    type: string
+  Permanent_City :
+    type: string
+  Permanent_State :
+    type: string
+  Permanent_ZIP :
+    type: string
+  Ref_Channel_Media :
+    type: array
+    items:
+      type: object
+  Ref_Description :
+    type: string
+  Is_Applied_Before :
+    type: string
+  Pre_Application_Month :
+    type: string
+  Pre_Application_Year :
+    type: string
+  Ex_Trucadence_Employee :
+    type: boolean
+  Decription_Pre_Employment :
+    type: string
+  Is_Adult :
+    type: boolean
+  Underage_WorkPermit :
+    type: boolean
+  Education_Level :
+    type: array
+    items:
+      type: object
+  Is_US_WorkPermit :
+    type: string
+  Area_Of_Work :
+    type: string
+  Positions_Interested :
+    type: string
+  Favourable_Shifts :
+    type: array
+    items:
+      type: object
+  Favourable_Days :
+   type: array
+   items:
+      type: object
+  Is_Part_Time :
+    type: boolean
+  Part_Time_Hours :
+    type: string
+  Mode_Of_Payment :
+    type: array
+    items:
+      type: object
+  Is_Transportation_Available :
+    type: string
+  Is_Suspended :
+    type: boolean
+  Description_For_Suspension :
+    type: string
+  User_Id:
+    type: string
+  Weight:
+    type: string
+  Height:
+    type: string
+  MI:
+    type: string
+  JobProfiles:
+    type: array
+    items:
+      $ref: ./job-profile.yaml

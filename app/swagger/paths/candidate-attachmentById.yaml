@@ -1,0 +1,29 @@
+x-swagger-router-controller: candidate-attachments-controller
+delete:
+  operationId: candidateAttachmentsDeleteById
+  description: "Delete candidate attachments by Id"
+  summary: "Delete candidate attachments by Id"
+  security:
+    - OAuth2: []
+  tags:
+    - "/candidate"
+  parameters:
+    - name: candidateId
+      in: path
+      description: "Provide candidate id"
+      required: true
+      type: string
+    - name: candidateAttachmentId
+      in: path
+      description: "Provide candidate attachment id"
+      required: true
+      type: string
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/CandidateAttachments"
+    "403":
+      description: "Wrong candidateId or candidateAttachmentId"
+      schema:
+        $ref: "#/definitions/Error"

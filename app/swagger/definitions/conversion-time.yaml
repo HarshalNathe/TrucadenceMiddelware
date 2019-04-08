@@ -1,0 +1,12 @@
+type: object
+properties:
+  id:
+    type: string
+  Employer_Profile_Id:
+    type: string
+  From_Hours:
+    type: number
+  To_Hours:
+    type: number
+  Conversion_Fee:
+    type: number

@@ -1,0 +1,29 @@
+x-swagger-router-controller: state-controller
+get:
+  operationId: stateGet
+  description: "List of state"
+  summary: "Gets list of state"
+  security:
+    - OAuth2: []
+  tags:
+    - "/state"
+  parameters:
+    - name: id
+      in: query
+      description: "state Id"
+      required: false
+      type: string
+    - name: city
+      in: query
+      description: "get city list"
+      required: false
+      type: boolean
+  responses:
+    "200":
+      description: "Success"
+      schema:
+        $ref: "#/definitions/States"
+    "403":
+      description: "Wrong Tenant Id"
+      schema:
+        $ref: "#/definitions/Error"

@@ -1,0 +1,105 @@
+<!-- login page
+
+<button ui-sref="app.home">Login</button> -->
+
+<div class=" login" cg-busy="vm.promise">
+  <!-- BEGIN LOGO -->
+  <div class="logo">
+    <a href="">
+      <img src="" alt="" />
+    </a>
+  </div>
+  <!-- END LOGO -->
+  <!-- BEGIN LOGIN -->
+  <div class="content">
+    <!-- BEGIN LOGIN FORM -->
+    <form class="login-form" name="registrationForm" novalidate>
+      <h3 class="form-title font-green">Register</h3>
+      <div class="alert alert-danger display-hide">
+        <button class="close" data-close="alert"></button>
+        <span> Enter any username and password. </span>
+      </div>
+
+      <div class="form-group" ng-class="{ 'has-error' : registrationForm.fName.$invalid && !registrationForm.fName.$pristine}">
+        <input type="text" ng-model="vm.userData.firstName" class="form-control" name="fName" placeholder="First name" ng-minlength="1"
+          ng-maxlength="65" ng-pattern='/^[a-zA-Z]+$/' required />
+        <span class="help-block" ng-messages="registrationForm.fName.$error" ng-if="registrationForm.fName.$dirty && registrationForm.fName.$invalid">
+          <span ng-show="registrationForm.fName.$error.required">First name is required.</span>
+          <span ng-show="registrationForm.fName.$error.pattern">Invalid first name.</span>
+          <span ng-show="registrationForm.fName.$error.minlength">First name is too short.</span>
+          <span ng-show="registrationForm.fName.$error.maxlength">First name is too long.</span>
+
+      </div>
+
+      <div class="form-group" ng-class="{ 'has-error' : registrationForm.lName.$invalid && !registrationForm.lName.$pristine}">
+        <input type="text" ng-model="vm.userData.lastName" class="form-control" name="lName" placeholder="Last name" ng-minlength="1"
+          ng-maxlength="65" ng-pattern='/^[a-zA-Z]+$/' required />
+        <span class="help-block" ng-messages="registrationForm.lName.$error" ng-if="registrationForm.lName.$dirty && registrationForm.lName.$invalid">
+          <span ng-show="registrationForm.lName.$error.required">Last name is required.</span>
+          <span ng-show="registrationForm.lName.$error.pattern">Invalid last name.</span>
+          <span ng-show="registrationForm.lName.$error.minlength">last name is too short.</span>
+          <span ng-show="registrationForm.lName.$error.maxlength">last name is too long.</span>
+      </div>
+
+      <div class="form-group" ng-class="{ 'has-error' : registrationForm.email.$invalid && !registrationForm.email.$pristine}">
+        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+        <label class="control-label visible-ie8 visible-ie9">Email ID</label>
+        <input class="form-control form-control-solid placeholder-no-fix" type="text" autocomplete="off" placeholder="email@mail.com"
+          name="email" ng-model="vm.userData.email" ng-pattern="/^(([^<>()\[\]\\.,;:\s@']+(\.[^<>()\[\]\\.,;:\s@']+)*)|('.+'))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/"
+          required/>
+        <span class="help-block" ng-messages="registrationForm.email.$error" ng-if="registrationForm.email.$dirty && registrationForm.email.$invalid">
+          <span ng-show="registrationForm.email.$error.required">Email is required.</span>
+          <span ng-show="registrationForm.email.$error.pattern">Invalid email address.</span>
+        </span>
+      </div>
+
+      <div class="form-group" ng-class="{ 'has-error' : registrationForm.uName.$invalid && !registrationForm.uName.$pristine}">
+
+        <input type="text" ng-model="vm.userData.email" class="form-control" ng-disabled="true" name="uName" placeholder="User Name"
+          ng-minlength="1" ng-maxlength="65" required />
+        <span class="help-block" ng-messages="registrationForm.uName.$error" ng-if="registrationForm.uName.$dirty && registrationForm.uName.$invalid">
+          <span ng-show="registrationForm.uName.$error.required">User name is required.</span>
+          <!--<span ng-show="registrationForm.uName.$error.pattern">Invalid User name.</span>-->
+          <span ng-show="registrationForm.uName.$error.minlength">User name is too short.</span>
+          <span ng-show="registrationForm.uName.$error.maxlength">User name is too long.</span>
+
+      </div>
+
+      <div class="form-group" ng-class="{ 'has-error' : registrationForm.password.$invalid && !registrationForm.password.$pristine}">
+        <label class="control-label visible-ie8 visible-ie9">Password</label>
+        <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Password"
+          name="password" ng-model="vm.userData.password" ng-pattern="/^(?=(.*[a-zA-Z].*))(?=.*[A-Z])(?=.*\d.*)(?=.*\W.*)[a-zA-Z0-9\S]{8,14}$/"
+          data-toggle="tooltip" data-placement="top" title="Password should contain atlest 1 alphabet, 1 number and 1 special character. Length must be 8-14!"
+          required/>
+        <span class="help-block" ng-messages="registrationForm.password.$error" ng-if="registrationForm.password.$dirty && registrationForm.password.$invalid">
+          <span ng-show="registrationForm.password.$error.required">Password is required.</span>
+          <span ng-show="registrationForm.password.$error.pattern">Password should contain at least 1 alphabet with uppercase,
+            1 number and 1 special character. Length must be 8-14!.</span>
+        </span>
+      </div>
+      <div class="form-group" ng-class="{ 'has-error' : registrationForm.confirmPassword.$invalid && !registrationForm.confirmPassword.$pristine}">
+        <label class="control-label visible-ie8 visible-ie9">Confirm Password</label>
+        <input class="form-control form-control-solid placeholder-no-fix" type="password" autocomplete="off" placeholder="Confirm Password"
+          name="confirmPassword" ng-model="vm.userData.confirmpassword" required data-toggle="tooltip" data-placement="top"
+          title="Password should contain atlest 1 alphabet, 1 number and 1 special character. Length must be 8-14!" password-confirm
+          match-target="vm.userData.password" />
+        <span class="help-block" ng-messages="registrationForm.confirmPassword.$error" ng-if="registrationForm.confirmPassword.$invalid && registrationForm.confirmPassword.$dirty">
+          <span ng-show="registrationForm.confirmPassword.$error.required">Password is required.</span>
+          <span ng-show="registrationForm.confirmPassword.$error.match">Must match the previous entry.</span>
+        </span>
+      </div>
+      <div class="form-actions">
+        <button type="submit" class="btn green uppercase" ng-disabled="registrationForm.$invalid" ng-click="vm.register()">Register</button>
+        <a href="" ui-sref="forgotPassword" class="forget-password pull-right">Trouble with Login </a>
+      </div>
+
+      <div class="create-account">
+        <p>
+          <a href="" ui-sref="login" class="uppercase"> Back To Login </a>
+        </p>
+      </div>
+    </form>
+    <!-- END LOGIN FORM -->
+
+  </div>
+  <div class="copyright"> 2018 © Trucadence. </div>
